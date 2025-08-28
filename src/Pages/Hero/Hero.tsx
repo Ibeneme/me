@@ -18,7 +18,7 @@ const Hero: React.FC = () => {
         backgroundRepeat: "no-repeat",
         filter: "grayscale(100%)",
         position: "relative",
-        minHeight: "80vh",
+        minHeight: "100vh",
         width: "100%",
         display: "flex",
         justifyContent: "center",
