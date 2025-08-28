@@ -1,0 +1,55 @@
+.contact-info {
+    text-align: center;
+    padding: 0px;
+    border-radius: 10px;
+    margin: 20px auto;
+    margin-bottom: 48px
+}
+
+.contact-info h2 {
+    color: #003366;
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.contact-info p {
+    font-size: 16px;
+    color: #333;
+    margin: 5px 0;
+}
+
+.contact-info a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.contact-info a:hover {
+    text-decoration: underline;
+}
+
+.map-container {
+    margin-top: 15px;
+    border-radius: 10px;
+    overflow: hidden;
+    height: 50vh
+}
+
+.leaflet-container {
+    border-radius: 10px;
+}
+
+.directions-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+.directions-button:hover {
+    background-color: #0056b3;
+}

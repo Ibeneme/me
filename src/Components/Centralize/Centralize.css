@@ -1,0 +1,26 @@
+.centralize-container {
+    background-color: #011404;
+    color: #FFD000;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 32px;
+    text-align: center;
+  }
+  
+  .centralize-title {
+    font-size: 4rem;
+    font-weight: 800;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  
+  .centralize-description {
+    font-size: 1.5rem;
+    line-height: 1.8;
+    max-width: 800px;
+    font-weight: 500;
+  }

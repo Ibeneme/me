@@ -1,0 +1,82 @@
+.hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 40vh;
+    background: #020218;
+    text-align: center;
+    color: white;
+    text-transform: uppercase;
+    padding-bottom: 120px;
+    padding-top: 120px;
+    flex-direction: column;
+}
+
+/* Content Wrapper */
+.hero-content {
+    max-width: 1200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 12px;
+
+}
+
+/* Heading */
+.h1-hero {
+    font-size: 3.3rem;
+    font-weight: bold;
+}
+
+/* Paragraph */
+.paragraph-hero {
+    font-size: 1.2rem;
+    margin: 10px 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    opacity: 0.8;
+    margin-bottom: 48px;
+    max-width:800px;
+    line-height: 1.6rem;
+}
+
+/* Call to Action Button */
+.cta {
+    background-color: #FFD000;
+    color: #020218;
+    padding: 8px 8px;
+    padding-left: 24px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border-radius: 100px;
+    width: fit-content;
+    align-self: center;
+    border: 1.6px solid #FFD000;
+    justify-content: space-between;
+    gap: 12px;
+    text-transform: uppercase;
+}
+
+/* Button Hover Effect */
+.cta:hover {
+    background: #FFD000;
+}
+
+@media screen and (max-width: 768px) {
+    .h1-hero {
+        font-size: 2rem;
+    }
+
+    .paragraph-hero {
+        font-size: 1rem;
+        margin: 6px 12px;
+        text-transform: uppercase;
+        margin-bottom: 24px;
+    }
+}
