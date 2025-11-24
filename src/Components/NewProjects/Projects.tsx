@@ -36,16 +36,6 @@ const sampleProjects = [
     thumbnail: kraft,
     link: "https://www.clonekraft.com/",
   },
-
-  // Your existing projects...
-  {
-    id: 1,
-    title: "Emperor Guild Tech",
-    company: "Emperor Guild Tech",
-    role: "The parent company powering innovation across logistics, fintech, AI, and real estate tech.",
-    thumbnail: emperor,
-    link: "https://www.emperorguildtech.com",
-  },
   {
     id: 2,
     title: "Pickars",
@@ -62,6 +52,16 @@ const sampleProjects = [
     thumbnail: bulkup,
     link: "https://www.bulkupdata.com",
   },
+  // Your existing projects...
+  {
+    id: 1,
+    title: "Emperor Guild Tech",
+    company: "Emperor Guild Tech",
+    role: "The parent company powering innovation across logistics, fintech, AI, and real estate tech.",
+    thumbnail: emperor,
+    link: "https://www.emperorguildtech.com",
+  },
+
   {
     id: 4,
     title: "Padiman Route",
@@ -138,6 +138,7 @@ const NewProjects: React.FC = () => {
             whileHover={{
               scale: 1.03,
               boxShadow: "0px 15px 40px rgba(0,0,0,0.15)",
+              padding: 16
             }}
           >
             <img src={project.thumbnail} alt={project.title} />
