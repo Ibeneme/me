@@ -7,7 +7,7 @@ import {
   Briefcase,
   MapPin,
   Heart,
-  GraduationCap,
+
 } from "lucide-react";
 
 // Image Asset (Using the 'me' reference from previous sections)
@@ -109,7 +109,7 @@ const AboutMe: React.FC = () => {
                 </p>
               </div>
 
-              <div className="p-8 bg-white border-2 border-gray-50 rounded-[2.5rem] space-y-4">
+              {/* <div className="p-8 bg-white border-2 border-gray-50 rounded-[2.5rem] space-y-4">
                 <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center shadow-sm text-[#B89600]">
                   <GraduationCap size={22} />
                 </div>
@@ -120,7 +120,7 @@ const AboutMe: React.FC = () => {
                   Leading Boring Thinkers Ltd & Pickars to redefine logistics
                   and AI content in Africa.
                 </p>
-              </div>
+              </div> */}
             </div>
 
             {/* Bottom Signature Vibe */}
