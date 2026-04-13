@@ -8,28 +8,20 @@ import {
 } from "lucide-react";
 
 const recentProjects = [
+
   {
     id: "p1",
-    title: "Kindred",
-    company: "Kindred Web",
-    description:
-      "A private digital sanctuary for families to preserve heritage and share moments with zero-knowledge security.",
-    link: "https://kindred-web.onrender.com/",
-    tag: "Family Tech",
-    code: "01",
-  },
-  {
-    id: "p2",
     title: "Pickars",
-    company: "Pickars Logistics",
+    company: "Pickars",
     description:
       "On-demand courier ecosystem streamlining last-mile logistics for the Port Harcourt metropolitan area.",
     link: "https://www.pickars.com",
     tag: "Logistics On-Demand",
     code: "02",
   },
+
   {
-    id: "p3",
+    id: "p2",
     title: "Clonekraft",
     company: "Clonekraft AI",
     description:
@@ -37,6 +29,26 @@ const recentProjects = [
     link: "https://www.clonekraft.com/",
     tag: "AI Structural Vision",
     code: "03",
+  },
+  {
+    id: "p3",
+    title: "SkyPay Africa",
+    company: "Sky Pay Fintech",
+    description:
+      "A seamless digital payment gateway designed to simplify cross-border transactions and financial management for the modern era.",
+    link: "https://skypay-landing.vercel.app/",
+    tag: "Fintech Solutions",
+    code: "04",
+},
+      {
+    id: "p4",
+    title: "Kindred",
+    company: "Kindred Web",
+    description:
+      "A private digital sanctuary for families to preserve heritage and share moments with zero-knowledge security.",
+    link: "https://kindred-web.onrender.com/",
+    tag: "Family Tech",
+    code: "01",
   },
   {
     id: "p5",
@@ -48,6 +60,7 @@ const recentProjects = [
     tag: "SaaS Collaboration",
     code: "05",
   },
+  
 ];
 
 const ProjectsPage: React.FC = () => {
