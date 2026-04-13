@@ -84,12 +84,12 @@ const ProjectsPage: React.FC = () => {
           </motion.div>
 
           <h1 className="text-5xl md:text-8xl font-black text-[#1A1A1A] tracking-tightest uppercase leading-none mb-6">
-            Latest <br />
-            <span className="text-gray-300">Creations.</span>
+            Most Recent <br />
+            <span className="text-gray-300">Projects.</span>
           </h1>
           <p className="text-gray-500 text-lg max-w-xl font-medium leading-relaxed">
-            A collection of digital products built with performance,
-            scalability, and user-happiness in mind.
+            A collection of Mobile apps, servers, websites and softwares built with performance,
+            scalability in mind.
           </p>
         </header>
 
