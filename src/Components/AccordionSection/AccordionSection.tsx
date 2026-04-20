@@ -4,6 +4,15 @@ import { Plus, Minus, CheckCircle2 } from "lucide-react";
 
 const sections = [
   {
+    title: "AI Automation",
+    items: [
+      "Workflow Automation",
+      "LLM Agent Design",
+      "Custom GPT Actions",
+      "API Orchestration",
+    ],
+  },
+  {
     title: "Branding",
     items: [
       "Logo Design",
@@ -38,9 +47,9 @@ const sections = [
     title: "AI Models Development",
     items: [
       "Custom Model Training",
-      "NLP",
+      "NLP & High-Fidelity Synthesis",
       "Computer Vision",
-      "AI Integration",
+      "Neural Mapping Integration",
     ],
   },
   {
@@ -49,7 +58,7 @@ const sections = [
       "API Architecture",
       "Database Management",
       "Microservices",
-      "Real-Time Systems",
+      "Real-Time Signaling Systems",
     ],
   },
 ];
