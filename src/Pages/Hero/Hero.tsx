@@ -50,7 +50,7 @@ const Hero: React.FC = () => {
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#FFD000] opacity-75"></span>
             <span className="relative inline-flex rounded-full h-2 w-2 bg-[#FFD000]"></span>
           </span>
-          <span className="text-[#FFD000] text-[10px] font-black uppercase tracking-[0.4em]">
+          <span className="text-[#FFD000] text-center text-[10px] font-black uppercase tracking-[0.4em]">
             SOFTWARE ENGINEER • AI AUTOMATION SPECIALIST
           </span>
         </motion.div>
