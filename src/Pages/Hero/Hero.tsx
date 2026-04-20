@@ -3,7 +3,6 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import {
   Star,
   ArrowRight,
-
 } from "lucide-react";
 import me from "../../assets/projects/me.png";
 
@@ -41,7 +40,7 @@ const Hero: React.FC = () => {
 
       {/* --- MAIN CONTENT --- */}
       <div className="relative z-30 max-w-7xl mx-auto px-6 w-full flex flex-col items-center">
-        {/* Availability Badge - Smoother Radius */}
+        {/* Availability Badge */}
         <motion.div
           initial={{ y: -20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
@@ -52,7 +51,7 @@ const Hero: React.FC = () => {
             <span className="relative inline-flex rounded-full h-2 w-2 bg-[#FFD000]"></span>
           </span>
           <span className="text-[#FFD000] text-[10px] font-black uppercase tracking-[0.4em]">
-            SOFTWARE ENGINEER
+            SOFTWARE ENGINEER • AI AUTOMATION SPECIALIST
           </span>
         </motion.div>
 
@@ -72,7 +71,7 @@ const Hero: React.FC = () => {
           </motion.h1>
         </motion.div>
 
-        {/* Description - Updated Copy */}
+        {/* Description */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -82,30 +81,12 @@ const Hero: React.FC = () => {
           <p className="text-gray-400 text-lg md:text-xl font-medium leading-relaxed tracking-tight">
             Specializing in the end-to-end development of
             <span className="text-white"> scalable websites</span>,
-            <span className="text-white"> mobile apps</span>,
-            <span className="text-white"> robust servers</span>, and
-            <span className="text-white"> intelligent models</span>.
+            <span className="text-white"> mobile apps</span>, and
+            <span className="text-white"> AI-driven automation workflows</span> to optimize business growth.
           </p>
-
-          {/* Service Grid - Better Radius & Padding */}
-          {/* <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {services.map((s, i) => (
-              <div
-                key={i}
-                className="group flex flex-col items-center justify-center gap-3 p-6 border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] hover:border-[#FFD000]/30 transition-all duration-500 rounded-[2rem]"
-              >
-                <div className="p-3 bg-white/5 rounded-xl group-hover:text-[#FFD000] transition-colors">
-                  {s.icon}
-                </div>
-                <span className="text-[9px] font-black uppercase tracking-widest text-gray-500 group-hover:text-white">
-                  {s.label}
-                </span>
-              </div>
-            ))}
-          </div> */}
         </motion.div>
 
-        {/* CTA Section - "Squircle" Buttons */}
+        {/* CTA Section */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -130,7 +111,7 @@ const Hero: React.FC = () => {
               ))}
             </div>
             <p className="text-[10px] font-black uppercase tracking-[0.3em] text-gray-600">
-              &gt; SOFTWARE ENGINEER
+              &gt; SOFTWARE ENGINEER & AI SPECIALIST
             </p>
           </div>
         </motion.div>
@@ -144,7 +125,8 @@ const Hero: React.FC = () => {
           </p>
           <p className="text-white/40 text-[9px] font-mono leading-loose uppercase">
             React • Next.js • Node.js <br />
-            PyTorch • AWS • Docker
+            Make.com • Zapier • OpenAI <br />
+            AWS • Docker • Python
           </p>
         </div>
       </div>
