@@ -7,10 +7,10 @@ import {
   Briefcase,
   MapPin,
   Heart,
-
+  Cpu, // Added for AI visual
 } from "lucide-react";
 
-// Image Asset (Using the 'me' reference from previous sections)
+// Image Asset
 import me from "../../assets/projects/me.png";
 
 const AboutMe: React.FC = () => {
@@ -74,23 +74,15 @@ const AboutMe: React.FC = () => {
               </div>
               <h2 className="text-5xl md:text-7xl font-black text-[#1A1A1A] tracking-tightest uppercase leading-[0.9] mb-8">
                 I’m Ikenna. <br />
-                <span className="text-gray-300">Software Architect.</span>
+                <span className="text-gray-300">Software & AI Architect.</span>
               </h2>
               <div className="space-y-6 text-gray-500 text-lg font-medium leading-relaxed">
                 <p>
                   I thrive at the intersection of high-velocity engineering and
-                  intuitive design. As a software developer with over seven
-                  years of professional experience, I’ve dedicated my career to
-                  building systems that aren't just functional, but meaningful.
+                  autonomous intelligence. With over seven years of professional experience, 
+                  I build systems that don't just run—they think. My mission is to bridge 
+                  the gap between complex backend logic and seamless user experiences.
                 </p>
-                {/* <p>
-                  From my early days as a Frontend Developer at{" "}
-                  <span className="text-black font-bold">Passcoder.io</span> to
-                  launching logistics ecosystems like{" "}
-                  <span className="text-black font-bold">Pickars</span>, I’ve
-                  always believed that the best software is built with empathy
-                  and precision.
-                </p> */}
               </div>
             </motion.div>
 
@@ -104,23 +96,23 @@ const AboutMe: React.FC = () => {
                   Full-Stack Core
                 </h4>
                 <p className="text-xs font-bold text-gray-400 uppercase tracking-tight leading-relaxed">
-                  Specialized in React Native, TypeScript, Expo, and Scalable
-                  Backend Architectures.
+                  Expertise in React Native, TypeScript, and high-availability server 
+                  architectures for global applications.
                 </p>
               </div>
 
-              {/* <div className="p-8 bg-white border-2 border-gray-50 rounded-[2.5rem] space-y-4">
+              <div className="p-8 bg-white border-2 border-gray-50 rounded-[2.5rem] space-y-4">
                 <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center shadow-sm text-[#B89600]">
-                  <GraduationCap size={22} />
+                  <Cpu size={22} />
                 </div>
                 <h4 className="font-black text-black uppercase tracking-tight">
-                  Entrepreneurship
+                  AI & Automation
                 </h4>
                 <p className="text-xs font-bold text-gray-400 uppercase tracking-tight leading-relaxed">
-                  Leading Boring Thinkers Ltd & Pickars to redefine logistics
-                  and AI content in Africa.
+                  Designing intelligent agents, autonomous workflows, and 
+                  custom neural mapping models.
                 </p>
-              </div> */}
+              </div>
             </div>
 
             {/* Bottom Signature Vibe */}
@@ -143,7 +135,7 @@ const AboutMe: React.FC = () => {
                   </div>
                 ))}
               </div>
-              <p className="text-sm font-bold text-gray-400 flex items-center gap-2">
+              <p className="text-sm font-bold text-gray-400 flex items-center gap-2 text-center md:text-left">
                 Collaborating with world-class designers & founders{" "}
                 <Heart size={14} className="fill-[#FFD000] text-[#FFD000]" />
               </p>
