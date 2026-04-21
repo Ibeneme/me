@@ -20,16 +20,7 @@ const recentProjects = [
     code: "02",
   },
 
-  {
-    id: "p2",
-    title: "Clonekraft",
-    company: "Clonekraft AI",
-    description:
-      "Harnessing AI vision to bridge the gap between complex furniture design and localized carpentry costing.",
-    link: "https://www.clonekraft.com/",
-    tag: "AI Structural Vision",
-    code: "03",
-  },
+
   {
     id: "p3",
     title: "SkyPay Africa",
@@ -39,7 +30,25 @@ const recentProjects = [
     link: "https://skypay-landing.vercel.app/",
     tag: "Fintech Solutions",
     code: "04",
-},
+},{
+    id: "p0",
+    title: "Yare",
+    company: "Yare Learning Hub",
+    description:
+      "A comprehensive Edutech platform designed to democratize access to high-impact learning resources and digital skill-building.",
+    link: "https://yare-t04i.onrender.com/",
+    tag: "Edutech / E-Learning",
+    code: "01",
+  },  {
+    id: "p2",
+    title: "Clonekraft",
+    company: "Clonekraft AI",
+    description:
+      "Harnessing AI vision to bridge the gap between complex furniture design and localized carpentry costing.",
+    link: "https://www.clonekraft.com/",
+    tag: "AI Structural Vision",
+    code: "03",
+  },
       {
     id: "p4",
     title: "Kindred",
