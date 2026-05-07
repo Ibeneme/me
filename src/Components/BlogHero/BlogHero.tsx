@@ -56,7 +56,7 @@ const BlogHero: React.FC<BlogHeroProps> = ({
           {/* Decorative Side-Label (Vertical) */}
           <div className="absolute -left-12 top-0 hidden xl:block h-full">
             <span className="sticky top-40 text-[10px] font-black text-white/10 uppercase tracking-[1em] [writing-mode:vertical-lr] rotate-180">
-              Technical // Archive
+          
             </span>
           </div>
         </div>
@@ -70,7 +70,7 @@ const BlogHero: React.FC<BlogHeroProps> = ({
         >
           <div className="h-[1px] w-24 bg-gradient-to-r from-[#FFD000] to-transparent" />
           <p className="text-[10px] font-bold text-gray-500 uppercase tracking-[0.4em]">
-            Deep Dive Into Software Architecture
+            IBENEME
           </p>
         </motion.div>
       </div>

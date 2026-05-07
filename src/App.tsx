@@ -20,7 +20,7 @@ function App() {
         <Route path="/projects/:id" element={<ProjectDetails />} />
         <Route path="/" element={<Home />} />
         <Route
-          path="/about-us"
+          path="/about"
           element={
             <>
               <BlogHero title="About Ibeneme"/>
