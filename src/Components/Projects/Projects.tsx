@@ -1,5 +1,4 @@
 import React from "react";
-import { motion } from "framer-motion";
 import { Sparkles, ArrowUpRight, Star } from "lucide-react";
 
 // Project Image Imports
@@ -76,18 +75,15 @@ const recentProjects = [
 const ProjectsPage: React.FC = () => {
   return (
     <section className="relative min-h-screen bg-[#FEFEFE] py-32 px-6 font-sans selection:bg-[#FFD000] selection:text-black overflow-hidden">
+      {/* Background Accents */}
       <div className="absolute -top-48 -right-48 w-[600px] h-[600px] bg-[#FFD000] opacity-[0.07] blur-[120px] rounded-full" />
       <div className="absolute top-1/2 -left-48 w-[500px] h-[500px] bg-[#FFD000] opacity-[0.05] blur-[100px] rounded-full" />
 
       <div className="max-w-7xl mx-auto relative z-10">
         <header className="mb-32 text-center md:text-left">
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#FFD000]/20 text-[#B89600] font-bold text-xs uppercase tracking-wider mb-8"
-          >
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#FFD000]/20 text-[#B89600] font-bold text-xs uppercase tracking-wider mb-8">
             <Sparkles size={14} /> Proven Track Record
-          </motion.div>
+          </div>
 
           <h1 className="text-5xl md:text-8xl font-black text-[#1A1A1A] tracking-tightest uppercase leading-none mb-6">
             Most Recent <br />
@@ -101,13 +97,11 @@ const ProjectsPage: React.FC = () => {
 
         <div className="space-y-48 lg:space-y-72">
           {recentProjects.map((project, index) => (
-            <motion.div
+            <div
               key={project.id}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-10%" }}
               className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center"
             >
+              {/* Text Content */}
               <div
                 className={`lg:col-span-5 ${
                   index % 2 === 0 ? "lg:order-1" : "lg:order-2"
@@ -133,14 +127,12 @@ const ProjectsPage: React.FC = () => {
                   </p>
 
                   <div className="flex items-center gap-6 pt-4">
-                    <motion.a
+                    <a
                       href={project.link}
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="px-8 py-4 bg-[#FFD000] text-black font-black rounded-2xl shadow-[0_15px_30px_-10px_rgba(255,208,0,0.3)] flex items-center gap-3 text-xs uppercase tracking-widest"
+                      className="px-8 py-4 bg-[#FFD000] text-black font-black rounded-2xl flex items-center gap-3 text-xs uppercase tracking-widest transition-colors hover:bg-[#e6bb00]"
                     >
                       Explore Live <ArrowUpRight size={16} />
-                    </motion.a>
+                    </a>
                     <span className="text-black/30 text-[10px] font-black uppercase tracking-widest">
                       {project.company}
                     </span>
@@ -148,22 +140,23 @@ const ProjectsPage: React.FC = () => {
                 </div>
               </div>
 
+              {/* Image Container */}
               <div
                 className={`lg:col-span-7 ${
                   index % 2 === 0 ? "lg:order-2" : "lg:order-1"
                 }`}
               >
                 <div className="relative group">
-                  <div className="relative aspect-video w-full max-w-4xl rounded-[2.5rem] overflow-hidden border-[10px] border-white shadow-[0_50px_100px_-20px_rgba(0,0,0,0.12)] bg-white transition-all duration-700 group-hover:shadow-[0_80px_120px_-20px_rgba(0,0,0,0.2)] group-hover:-translate-y-3">
+                  <div className="relative aspect-video w-full max-w-4xl rounded-[2.5rem] overflow-hidden  bg-white transition-all duration-700  group-hover:-translate-y-3">
                     {project.image ? (
                       <div className="w-full h-full relative overflow-hidden">
                         <img
                           src={project.image}
                           alt={project.title}
-                          className="absolute top-0 left-0 object-cover transition-all duration-1000"
+                          className="absolute top-0 left-0 object-cover transition-all duration-1000  group-hover:opacity-100"
                           style={{
                             width: "calc(100% + 16px)",
-                            height: "calc(100% + 2px)",
+                            height: "calc(100% + 16px)",
                             maxWidth: "none", // Prevents CSS framework overrides
                           }}
                         />
@@ -176,7 +169,7 @@ const ProjectsPage: React.FC = () => {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
 
@@ -185,7 +178,7 @@ const ProjectsPage: React.FC = () => {
             {[1, 2, 3, 4].map((i) => (
               <div
                 key={i}
-                className="w-12 h-12 rounded-full border-4 border-[#FEFEFE] bg-gray-100 overflow-hidden shadow-sm"
+                className="w-12 h-12 rounded-full border-4 border-[#FEFEFE] bg-gray-100 overflow-hidden"
               >
                 <img
                   src={`https://i.pravatar.cc/100?u=project${i}`}
@@ -194,7 +187,7 @@ const ProjectsPage: React.FC = () => {
                 />
               </div>
             ))}
-            <div className="w-12 h-12 rounded-full border-4 border-[#FEFEFE] bg-[#FFD000] flex items-center justify-center text-xs font-black shadow-sm">
+            <div className="w-12 h-12 rounded-full border-4 border-[#FEFEFE] bg-[#FFD000] flex items-center justify-center text-xs font-black">
               +12
             </div>
           </div>
