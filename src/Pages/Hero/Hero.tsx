@@ -27,7 +27,7 @@ const Hero: React.FC = () => {
             className="flex items-center justify-center lg:justify-start gap-4"
           >
             <span className="text-[10px] font-medium text-[#ffd000] uppercase tracking-[0.3em]">
-              Software Engineer & AI Specialist
+              Software Developer & ML Engineer
             </span>
             <div className="hidden lg:block h-px w-12 bg-zinc-800" />
           </motion.div>
