@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import me from "../../assets/images/image.png";
 
-const AboutPage: React.FC = () => {
+const About: React.FC = () => {
   return (
     <section className="bg-[#0C0D0E] py-32 px-6">
       <div className="max-w-5xl mx-auto">
@@ -106,4 +106,4 @@ const AboutPage: React.FC = () => {
   );
 };
 
-export default AboutPage;
+export default About;

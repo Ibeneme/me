@@ -21,6 +21,8 @@ const Hero: React.FC = () => {
             src={me}
             alt="Ibeneme Ikenna"
             className="w-full h-full object-cover opacity-60"
+            loading="eager" // Critical for LCP
+            fetchPriority="high"
           />
           {/* Dark gradient overlay so text is readable */}
           <div className="absolute inset-0 bg-gradient-to-t from-[#0C0D0E] via-[#0C0D0E]/60 to-transparent" />
@@ -138,6 +140,8 @@ const Hero: React.FC = () => {
             src={me}
             alt="Ibeneme Ikenna"
             className="w-full h-full object-cover rounded-2xl opacity-80"
+            loading="eager" // Critical for LCP
+            fetchPriority="high"
           />
           <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/10" />
         </div>

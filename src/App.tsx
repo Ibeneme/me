@@ -1,38 +1,32 @@
+import { Suspense, lazy } from "react";
 import { Route, Routes } from "react-router-dom";
 import ScrollToTop from "./ScrollToTop";
-import Home from "./Pages/Home";
-import Footer from "./Components/Footer/Footer";
-import OurProjectsPage from "./Pages/OurProjectsPage";
-import NotFound from "./Pages/NotFound";
 import Navbar from "./Components/Navbar/Navbar";
-import "./assets/fonts/fonts.css";
-import AboutMe from "./Components/Projects/About";
-import BlogHero from "./Components/BlogHero/BlogHero";
-import We from "./Components/We/We";
+import Footer from "./Components/Footer/Footer";
 import ContactUs from "./Components/Footer/ContactUs";
-import FeatureSection from "./Components/Projects/FeatureSection";
+import LoadingScreen from "./LoadingScreen";
+import "./assets/fonts/fonts.css";
+
+const Home = lazy(() => import("./Pages/Home"));
+const OurProjectsPage = lazy(() => import("./Pages/OurProjectsPage"));
+const NotFound = lazy(() => import("./Pages/NotFound"));
+const AboutPage = lazy(() => import("./Pages/AboutPage")); // Move your "About" logic into a single page file
 
 function App() {
   return (
     <>
       <ScrollToTop />
       <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route
-          path="/about"
-          element={
-            <>
-              <BlogHero title="About Ibeneme" />
-              <AboutMe />
-              <FeatureSection />
-              <We />
-            </>
-          }
-        />
-        <Route path="/projects" element={<OurProjectsPage />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+
+      <Suspense fallback={<LoadingScreen />}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/projects" element={<OurProjectsPage />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Suspense>
+
       <ContactUs />
       <Footer />
     </>
