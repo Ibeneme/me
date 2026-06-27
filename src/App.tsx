@@ -10,25 +10,23 @@ import "./assets/fonts/fonts.css";
 const Home = lazy(() => import("./Pages/Home"));
 const OurProjectsPage = lazy(() => import("./Pages/OurProjectsPage"));
 const NotFound = lazy(() => import("./Pages/NotFound"));
-const AboutPage = lazy(() => import("./Pages/AboutPage")); // Move your "About" logic into a single page file
+const AboutPage = lazy(() => import("./Pages/AboutPage"));
 
 function App() {
   return (
     <>
       <ScrollToTop />
-      <Navbar />
-
       <Suspense fallback={<LoadingScreen />}>
+        <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/projects" element={<OurProjectsPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
+        <ContactUs />
+        <Footer />
       </Suspense>
-
-      <ContactUs />
-      <Footer />
     </>
   );
 }

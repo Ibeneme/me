@@ -1,3 +1,7 @@
+@import "tailwindcss";
+
+
+
 /* Root Variables - Dark Theme */
 :root {
   --primary-font: "Lufga", Arial, sans-serif;

@@ -1,6 +1,6 @@
 import React from "react";
 import { ArrowRight, MessageCircle } from "lucide-react";
-import me from "../../assets/images/image.png";
+import me from "../../assets/images/image.webp";
 
 const STACK = ["REACT", "NEXT.JS", "NODE.JS", "AWS", "PYTHON", "AI AGENTS"];
 
@@ -48,26 +48,33 @@ const Hero: React.FC = () => {
             </p>
 
             <div className="flex flex-row items-center justify-center gap-3">
-  <button
-    onClick={() =>
-      (window.location.href = "mailto:ikennaibenemee@gmail.com")
-    }
-    className="group flex items-center justify-center gap-2 text-white border border-white/20 bg-white/10 backdrop-blur-md px-6 py-2.5 rounded-full active:scale-95 hover:bg-white hover:text-black transition-all duration-300"
-  >
-    <ArrowRight size={13} className="group-hover:translate-x-0.5 transition-transform" />
-    <span className="text-[11px] font-medium uppercase tracking-widest">Email</span>
-  </button>
+              <button
+                onClick={() =>
+                  (window.location.href = "mailto:ikennaibenemee@gmail.com")
+                }
+                className="group flex items-center justify-center gap-2 text-white border border-white/20 bg-white/10 backdrop-blur-md px-6 py-2.5 rounded-full active:scale-95 hover:bg-white hover:text-black transition-all duration-300"
+              >
+                <ArrowRight
+                  size={13}
+                  className="group-hover:translate-x-0.5 transition-transform"
+                />
+                <span className="text-[11px] font-medium uppercase tracking-widest">
+                  Email
+                </span>
+              </button>
 
-  <button
-    onClick={() =>
-      window.open("https://wa.me/2348120710198", "_blank")
-    }
-    className="group flex items-center justify-center gap-2 text-white border border-white/20 bg-white/10 backdrop-blur-md px-6 py-2.5 rounded-full active:scale-95 hover:bg-[#25D366] hover:border-[#25D366] hover:text-black transition-all duration-300"
-  >
-    <MessageCircle size={13} />
-    <span className="text-[11px] font-medium uppercase tracking-widest">WhatsApp</span>
-  </button>
-</div>
+              <button
+                onClick={() =>
+                  window.open("https://wa.me/2348120710198", "_blank")
+                }
+                className="group flex items-center justify-center gap-2 text-white border border-white/20 bg-white/10 backdrop-blur-md px-6 py-2.5 rounded-full active:scale-95 hover:bg-[#25D366] hover:border-[#25D366] hover:text-black transition-all duration-300"
+              >
+                <MessageCircle size={13} />
+                <span className="text-[11px] font-medium uppercase tracking-widest">
+                  WhatsApp
+                </span>
+              </button>
+            </div>
           </div>
         </div>
 

@@ -2,12 +2,12 @@ import React from "react";
 import { ArrowUpRight } from "lucide-react";
 
 // Assuming imports remain the same as your original
-import pickarsImg from "../../assets/projects/new/pickars.png";
-import kindredImg from "../../assets/projects/new/kindred.png";
-import skypayImg from "../../assets/projects/new/skypay.png";
-import yareImg from "../../assets/projects/new/yare.png";
-import clonekraft from "../../assets/projects/new/clonekraft.png";
-import colsphere from "../../assets/projects/new/colsphere.png";
+import pickarsImg from "../../assets/projects/new/pickars.webp";
+import kindredImg from "../../assets/projects/new/kindred.webp";
+import skypayImg from "../../assets/projects/new/skypay.webp";
+import yareImg from "../../assets/projects/new/yare.webp";
+import clonekraft from "../../assets/projects/new/clonekraft.webp";
+import colsphere from "../../assets/projects/new/colsphere.webp";
 
 const recentProjects = [
   {
