@@ -1,141 +1,118 @@
-import React, { useRef } from "react";
+import React from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import {
-  Star,
-  ArrowRight,
-} from "lucide-react";
-import me from "../../assets/projects/me.png";
+import { ArrowRight, MessageCircle } from "lucide-react";
+import me from "../../assets/images/image.png";
+
+const STACK = ["REACT", "NEXT.JS", "NODE.JS", "AWS", "PYTHON", "AI AGENTS"];
 
 const Hero: React.FC = () => {
-  const containerRef = useRef(null);
   const { scrollY } = useScroll();
-
-  const y1 = useTransform(scrollY, [0, 500], [0, -150]);
-  const textOpacity = useTransform(scrollY, [0, 400], [1, 0]);
-  const scale = useTransform(scrollY, [0, 500], [1, 1.1]);
-
-  const handleSendMail = () => {
-    window.location.href = "mailto:ikennaibenemee@gmail.com";
-  };
+  // Reduce parallax effect on mobile to prevent layout instability
+  const y1 = useTransform(scrollY, [0, 500], [0, -30]);
 
   return (
-    <section
-      ref={containerRef}
-      className="relative min-h-[100vh] pt-[180px] pb-[180px] w-full flex items-center justify-center bg-[#050505] overflow-hidden font-sans selection:bg-[#FFD000] selection:text-black"
-    >
-      {/* --- BACKGROUND LAYERS --- */}
-      <motion.div
-        style={{ y: y1, scale, opacity: 0.2 }}
-        className="absolute inset-0 z-0 flex items-center justify-center pointer-events-none"
-      >
-        <div
-          className="w-full h-full bg-cover bg-center grayscale contrast-125"
-          style={{ backgroundImage: `url(${me})` }}
-        />
-      </motion.div>
+    <section className="relative min-h-[90vh] pt-[120px] pb-32 flex items-center justify-center bg-[#0C0D0E] overflow-hidden selection:bg-[#FFD000]/30">
+      {/* Optimized Ambient Glows: Added clip-path to prevent overflow */}
+      <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden clip-path-inset">
+        <div className="absolute -top-[10%] -right-[10%] w-[50vw] h-[50vw] bg-[#FFD000] opacity-[0.03] blur-[120px] rounded-full" />
+        <div className="absolute bottom-[10%] -left-[10%] w-[40vw] h-[40vw] bg-[#FFD000] opacity-[0.03] blur-[120px] rounded-full" />
+      </div>
 
-      {/* Grid Overlay */}
-      <div className="absolute inset-0 z-10 opacity-[0.15] pointer-events-none bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:32px_32px]" />
-      <div className="absolute inset-0 z-10 bg-gradient-to-b from-transparent via-[#050505]/80 to-[#050505]" />
+      <div className="relative z-10 max-w-6xl mx-auto px-6 w-full flex flex-col-reverse lg:flex-row items-center gap-12 lg:gap-24">
+        {/* Text Content */}
+        <div className="flex-1 w-full space-y-8 text-center lg:text-left">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="flex items-center justify-center lg:justify-start gap-4"
+          >
+            <span className="text-[10px] font-medium text-[#ffd000] uppercase tracking-[0.3em]">
+              Software Engineer & AI Specialist
+            </span>
+            <div className="hidden lg:block h-px w-12 bg-zinc-800" />
+          </motion.div>
 
-      {/* --- MAIN CONTENT --- */}
-      <div className="relative z-30 max-w-7xl mx-auto px-6 w-full flex flex-col items-center">
-        {/* Availability Badge */}
-        <motion.div
-          initial={{ y: -20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          className="mb-10 flex items-center gap-3 px-5 py-2.5 bg-white/[0.03] border border-white/10 backdrop-blur-2xl rounded-2xl"
-        >
-          <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#FFD000] opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-[#FFD000]"></span>
-          </span>
-          <span className="text-[#FFD000] text-center text-[10px] font-black uppercase tracking-[0.4em]">
-            SOFTWARE ENGINEER • AI AUTOMATION SPECIALIST
-          </span>
-        </motion.div>
-
-        {/* Headline Section */}
-        <motion.div
-          style={{ opacity: textOpacity }}
-          className="relative text-center mb-12"
-        >
           <motion.h1
-            initial={{ y: 60, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="text-white text-[16vw] md:text-[8rem] font-[1000] tracking-tighter leading-[0.8] uppercase"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            // Responsive font sizing adjusted for small mobile screens
+            className="text-5xl sm:text-7xl lg:text-8xl uppercase font-black tracking-tight text-white leading-[0.85]"
           >
-            Ibeneme <br />
-            Ikenna
+            Ibeneme
+            <br />
+            <span className="text-zinc-600">Ikenna</span>
           </motion.h1>
-        </motion.div>
 
-        {/* Description */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4 }}
-          className="max-w-2xl w-full text-center space-y-12"
-        >
-          <p className="text-gray-400 text-lg md:text-xl font-medium leading-relaxed tracking-tight">
-            Specializing in the end-to-end development of
-            <span className="text-white"> scalable websites</span>,
-            <span className="text-white"> mobile apps</span>, and
-            <span className="text-white"> AI-driven automation workflows</span> to optimize business growth.
-          </p>
-        </motion.div>
-
-        {/* CTA Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.7 }}
-          className="mt-20 flex flex-col md:flex-row items-center gap-10"
-        >
-          <button
-            onClick={handleSendMail}
-            className="group relative flex items-center gap-6 bg-[#FFD000] text-black px-12 py-7 rounded-[8rem] font-black uppercase tracking-[0.2em] text-xs transition-transform hover:scale-[1.03] active:scale-95"
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.2 }}
+            className="max-w-md mx-auto lg:mx-0 text-zinc-400 text-lg leading-relaxed font-light"
           >
-            <span className="relative z-10">SEND A MESSAGE</span>
-            <ArrowRight
-              size={18}
-              className="relative z-10 group-hover:translate-x-2 transition-transform"
-            />
-          </button>
+            Building thoughtful digital experiences and AI-driven workflows that
+            prioritize clarity, scalability, and ease of use.
+          </motion.p>
 
-          <div className="flex flex-col items-center md:items-start gap-2 border-l-2 border-white/5 pl-8">
-            <div className="flex gap-1 text-[#FFD000]">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} size={14} fill="currentColor" />
-              ))}
-            </div>
-            <p className="text-[10px] font-black uppercase tracking-[0.3em] text-gray-600">
-              &gt; SOFTWARE ENGINEER & AI SPECIALIST
-            </p>
-          </div>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.4 }}
+            className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4"
+          >
+            <button
+              onClick={() =>
+                (window.location.href = "mailto:ikennaibenemee@gmail.com")
+              }
+              className="w-full sm:w-auto group flex items-center justify-center gap-3 text-white border border-white/10 px-8 py-3 rounded-full hover:bg-white hover:text-black transition-all duration-300"
+            >
+              <span className="text-xs uppercase tracking-widest">Email</span>
+              <ArrowRight
+                size={14}
+                className="group-hover:translate-x-1 transition-transform"
+              />
+            </button>
+
+            <button
+              onClick={() =>
+                window.open("https://wa.me/2348120710198", "_blank")
+              }
+              className="w-full sm:w-auto group flex items-center justify-center gap-3 text-white border border-white/10 px-8 py-3 rounded-full hover:bg-[#25D366] hover:border-[#25D366] hover:text-black transition-all duration-300"
+            >
+              <MessageCircle size={14} />
+              <span className="text-xs uppercase tracking-widest">
+                WhatsApp
+              </span>
+            </button>
+          </motion.div>
+        </div>
+
+        {/* Portrait - Responsive Sizing */}
+        <motion.div
+          style={{ y: y1 }}
+          className="relative w-64 h-72 sm:w-[350px] sm:h-[400px] lg:w-[450px] lg:h-[500px] grayscale hover:grayscale-0 transition-all duration-700 ease-in-out shrink-0"
+        >
+          <img
+            src={me}
+            alt="Ibeneme Ikenna"
+            className="w-full h-full object-cover rounded-2xl opacity-80"
+          />
+          <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/10" />
         </motion.div>
       </div>
 
-      {/* Corner Tech Stack */}
-      <div className="absolute bottom-10 right-10 hidden xl:block text-right">
-        <div className="bg-white/[0.02] border border-white/5 p-6 rounded-[2rem] backdrop-blur-md">
-          <p className="text-[#FFD000] text-[10px] font-black uppercase tracking-[0.4em] mb-2">
-            Technical Core
-          </p>
-          <p className="text-white/40 text-[9px] font-mono leading-loose uppercase">
-            React • Next.js • Node.js <br />
-            Make.com • Zapier • OpenAI <br />
-            AWS • Docker • Python
-          </p>
+      {/* Stack Footer - Improved alignment */}
+      <div className="absolute bottom-8 w-full px-6 flex flex-col lg:flex-row justify-between items-center gap-6">
+        <div className="flex flex-wrap justify-center gap-6">
+          {STACK.map((tech) => (
+            <span
+              key={tech}
+              className="text-[9px] text-zinc-600 tracking-[0.2em] uppercase"
+            >
+              {tech}
+            </span>
+          ))}
         </div>
       </div>
-
-      <style>{`
-        .outline-title {
-          -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.2);
-        }
-      `}</style>
     </section>
   );
 };

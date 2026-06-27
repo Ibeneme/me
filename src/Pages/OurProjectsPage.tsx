@@ -5,7 +5,7 @@ import Projects from "../Components/Projects/Projects";
 const OurProjectsPage = () => {
   return (
     <div>
-      <BlogHero title={`2024" - 25`} />
+      <BlogHero title={`2025" - 26`} />
       <Projects />
     </div>
   );

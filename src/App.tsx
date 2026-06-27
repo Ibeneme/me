@@ -9,7 +9,9 @@ import ProjectDetails from "./Components/NewProjects/ProjectDetails";
 import "./assets/fonts/fonts.css";
 import AboutMe from "./Components/Projects/About";
 import BlogHero from "./Components/BlogHero/BlogHero";
-import ProjectsPage from "./Components/Projects/Projects";
+import We from "./Components/We/We";
+import ContactUs from "./Components/Footer/ContactUs";
+import FeatureSection from "./Components/Projects/FeatureSection";
 
 function App() {
   return (
@@ -23,15 +25,17 @@ function App() {
           path="/about"
           element={
             <>
-              <BlogHero title="About Ibeneme"/>
+              <BlogHero title="About Ibeneme" />
               <AboutMe />
-              <ProjectsPage />
+              <FeatureSection />
+              <We />
             </>
           }
         />
         <Route path="/projects" element={<OurProjectsPage />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
+      <ContactUs />
       <Footer />
     </>
   );
