@@ -1,49 +1,53 @@
-/* @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap'); */
-/* @import url('https://fonts.googleapis.com/css2?family=Podkova:wght@400..800&display=swap'); */
-
-/* Root Variables */
+/* Root Variables - Dark Theme */
 :root {
   --primary-font: "Lufga", Arial, sans-serif;
-  /* --secondary-font: 'Podkova', serif; */
   --secondary-font: "Lufga", Arial, sans-serif;
-  --bg-color: #ffffff;
-  --text-color: #333;
-  --primary-color: #515FDF;
-  --secondary-color: #f0a500;
+  
+  /* Dark Theme Colors */
+  --bg-color: #0C0D0E;
+  --text-color: #e4e4e7;       /* Soft white for readability */
+  --muted-text: #a1a1aa;       /* Muted gray for secondary text */
+  --primary-color: #ffd000;    /* Your signature yellow */
+  --accent-color: #ffffff;
 }
 
-/* index.css or App.css */
-
-
-
+/* Global Styles */
 html,
 body {
   width: 100%;
   overflow-x: hidden;
+  /* Ensure background covers the full page */
+  background-color: var(--bg-color);
 }
-
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Lufga", Arial, sans-serif;
+  font-family: var(--primary-font);
+  /* Smoother text rendering for dark backgrounds */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
   background-color: var(--bg-color);
   color: var(--text-color);
+  line-height: 1.6;
 }
 
-p,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: "Lufga", Arial, sans-serif;
-}
-
-h1 {
+/* Typography settings for dark mode */
+h1, h2, h3, h4, h5, h6 {
+  color: #ffffff; /* Brighter white for headings */
   font-family: var(--primary-font);
+}
+
+p {
+  color: var(--muted-text);
+}
+
+/* Optional: Highlight color for text selection */
+::selection {
+  background-color: var(--primary-color);
+  color: #000;
 }
