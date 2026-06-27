@@ -37,11 +37,11 @@ const MarqueeRow: React.FC<{
             <ReactCountryFlag
               countryCode={code}
               svg
-              style={{ width: "32px", height: "20px" }} // Scaled down for mobile
-              className="md:!w-[48px] md:!h-[32px] rounded-[2px]"
+              style={{ width: "48px", height: "36px" }} // Scaled down for mobile
+              className="md:!w-[48px] md:!h-[48px] rounded-[2px]"
               title={name}
             />
-            <span className="text-[12px] md:text-[14px] font-medium uppercase tracking-[0.2em] text-zinc-400">
+            <span className="text-[16px] md:text-[16px] font-medium uppercase tracking-[0.2em] text-zinc-400">
               {name}
             </span>
           </div>
@@ -55,10 +55,10 @@ const FlagsRow: React.FC = () => {
   return (
     <section className="relative w-full bg-[#0C0D0E] py-16 md:py-24 overflow-hidden border-t border-zinc-900">
       <div className="relative z-10 max-w-4xl mx-auto px-6 mb-16 md:mb-20 text-center">
-        <h2 className="text-3xl md:text-6xl font-black text-white tracking-tight mb-6">
+        <h2 className="text-5xl md:text-6xl text-left md:text-center font-black text-white tracking-tight mb-6">
           Building across borders.
         </h2>
-        <p className="text-zinc-500 text-sm md:text-base font-light max-w-sm mx-auto leading-relaxed">
+        <p className="text-zinc-500  text-left md:text-center  text-xl font-light max-w-xl mx-auto leading-relaxed">
           Operational reach across seven countries, delivering high-impact
           solutions from a unified stack.
         </p>

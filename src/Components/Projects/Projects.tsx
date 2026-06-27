@@ -66,8 +66,8 @@ const ProjectsPage: React.FC = () => {
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="mb-24">
-          <h2 className="text-4xl md:text-6xl font-black text-white tracking-tight mb-4">
-            Recent Projects
+          <h2 className="text-5xl md:text-6xl font-black text-white tracking-tight mb-4">
+            Recent Projects Built
           </h2>
           <div className="h-px w-20 bg-white/20 mb-8" />
           <p className="text-zinc-500 text-lg max-w-lg font-light">
@@ -94,7 +94,7 @@ const ProjectsPage: React.FC = () => {
                   <span className="text-[10px] font-black text-[#FFD000] uppercase tracking-[0.2em]">
                     {project.tag}
                   </span>
-                  <h3 className="text-4xl font-medium text-white mt-1">
+                  <h3 className="text-4xl font-bold text-white mt-1">
                     {project.title}
                   </h3>
                   <p className="text-zinc-500 text-sm font-light mt-2">

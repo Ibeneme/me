@@ -6,32 +6,37 @@ const Footer: React.FC = () => {
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
   return (
-    <footer className="bg-[#0C0D0E] pt-24 pb-12 px-6 border-t border-zinc-900">
+    <footer className="bg-[#0C0D0E] pt-24 pb-16 px-6 border-t border-zinc-900">
       <div className="max-w-6xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
+        {/* Main Footer Content */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-x-8 gap-y-16 mb-20">
           {/* Brand */}
-          <div className="space-y-4">
-            <span className="text-sm font-medium text-white">
-              Ibeneme Ikenna
-            </span>
-            <p className="text-sm text-zinc-500 leading-relaxed max-w-[200px]">
+          <div className="lg:col-span-5 space-y-6">
+            <div>
+              <span className="text-xl font-semibold text-white tracking-tight">
+                Ibeneme Ikenna
+              </span>
+            </div>
+            <p className="text-zinc-400 leading-relaxed max-w-md text-[15px]">
               Building thoughtful digital experiences and AI-driven workflows.
             </p>
           </div>
 
-          {/* Links */}
-          <div className="space-y-4">
-            <h4 className="text-[10px] uppercase tracking-[0.2em] text-zinc-400">
+          {/* Navigation */}
+          <div className="lg:col-span-2">
+            <h4 className="text-xs uppercase tracking-[0.125em] text-zinc-500 mb-6">
               Navigation
             </h4>
-            <ul className="space-y-3">
+            <ul className="space-y-4">
               {["Home", "About", "Projects"].map((item) => (
                 <li key={item}>
                   <Link
-                    to={`/${
-                      item.toLowerCase() === "home" ? "" : item.toLowerCase()
-                    }`}
-                    className="text-sm text-zinc-500 hover:text-white transition-colors"
+                    to={
+                      item.toLowerCase() === "home"
+                        ? "/"
+                        : `/${item.toLowerCase()}`
+                    }
+                    className="text-zinc-400 hover:text-white transition-all duration-200 hover:translate-x-1 inline-block"
                   >
                     {item}
                   </Link>
@@ -40,16 +45,16 @@ const Footer: React.FC = () => {
             </ul>
           </div>
 
-          {/* Contact */}
-          <div className="space-y-4">
-            <h4 className="text-[10px] uppercase tracking-[0.2em] text-zinc-400">
+          {/* Connect */}
+          <div className="lg:col-span-2">
+            <h4 className="text-xs uppercase tracking-[0.125em] text-zinc-500 mb-6">
               Connect
             </h4>
-            <ul className="space-y-3">
+            <ul className="space-y-4">
               <li>
                 <a
                   href="mailto:ikennaibenemee@gmail.com"
-                  className="text-sm text-zinc-500 hover:text-white transition-colors"
+                  className="text-zinc-400 hover:text-white transition-all duration-200 hover:translate-x-1 inline-block"
                 >
                   Email
                 </a>
@@ -57,7 +62,9 @@ const Footer: React.FC = () => {
               <li>
                 <a
                   href="https://wa.me/2348120710198"
-                  className="text-sm text-zinc-500 hover:text-white transition-colors"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-zinc-400 hover:text-white transition-all duration-200 hover:translate-x-1 inline-block"
                 >
                   WhatsApp
                 </a>
@@ -66,15 +73,17 @@ const Footer: React.FC = () => {
           </div>
 
           {/* Socials */}
-          <div className="space-y-4">
-            <h4 className="text-[10px] uppercase tracking-[0.2em] text-zinc-400">
+          <div className="lg:col-span-3">
+            <h4 className="text-xs uppercase tracking-[0.125em] text-zinc-500 mb-6">
               Socials
             </h4>
-            <ul className="space-y-3">
+            <ul className="space-y-4">
               <li>
                 <a
                   href="#"
-                  className="text-sm text-zinc-500 hover:text-white transition-colors"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-zinc-400 hover:text-white transition-all duration-200 hover:translate-x-1 inline-block"
                 >
                   GitHub
                 </a>
@@ -82,26 +91,31 @@ const Footer: React.FC = () => {
               <li>
                 <a
                   href="#"
-                  className="text-sm text-zinc-500 hover:text-white transition-colors"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-zinc-400 hover:text-white transition-all duration-200 hover:translate-x-1 inline-block"
                 >
-                  Twitter
+                  Twitter / X
                 </a>
               </li>
             </ul>
           </div>
         </div>
 
-        {/* Footer Bottom */}
-        <div className="flex flex-col md:flex-row justify-between items-center gap-8 pt-8 border-t border-zinc-900">
-          <p className="text-[10px] text-zinc-600 uppercase tracking-[0.2em]">
-            © 2026 Ibeneme Ikenna. All rights reserved.
+        {/* Bottom Bar */}
+        <div className="flex flex-col md:flex-row justify-between items-center gap-6 pt-8 border-t border-zinc-900 text-xs">
+          <p className="text-zinc-600 tracking-widest">
+            © {new Date().getFullYear()} Ibeneme Ikenna. All rights reserved.
           </p>
 
           <button
             onClick={scrollToTop}
-            className="flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] text-zinc-500 hover:text-white transition-colors"
+            className="group flex items-center gap-2 text-zinc-500 hover:text-white transition-all duration-300 uppercase tracking-[0.125em]"
           >
-            Back to top <IoArrowUpOutline size={12} />
+            Back to top
+            <div className="transition-transform duration-300 group-hover:-translate-y-0.5">
+              <IoArrowUpOutline size={14} />
+            </div>
           </button>
         </div>
       </div>

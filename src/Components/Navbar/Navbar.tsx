@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { X, Menu } from "lucide-react"; // Added Menu icon for clarity
-import { motion, AnimatePresence } from "framer-motion";
+import { X, Menu } from "lucide-react";
 import logo from "../../assets/images/logo.png";
 
 const Navbar: React.FC = () => {
@@ -73,13 +72,10 @@ const Navbar: React.FC = () => {
       </nav>
 
       {/* Mobile Overlay with Slide-down effect */}
-      <AnimatePresence>
+      <div>
         {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3 }}
+          <div
+   
             className="fixed inset-0 bg-[#0C0D0E]/95 backdrop-blur-md z-[110] flex flex-col items-center justify-center gap-8"
           >
             {navItems.map(({ name, path }) => (
@@ -100,9 +96,9 @@ const Navbar: React.FC = () => {
             >
               Get in touch
             </button>
-          </motion.div>
+          </div>
         )}
-      </AnimatePresence>
+      </div>
     </>
   );
 };
