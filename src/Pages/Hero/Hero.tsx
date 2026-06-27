@@ -49,9 +49,7 @@ const Hero: React.FC = () => {
             transition={{ delay: 0.2 }}
             className="max-w-md mx-auto lg:mx-0 text-zinc-400 text-lg leading-relaxed font-light"
           >
-            Building thoughtful digital experiences and AI-driven workflows that
-            prioritize clarity, scalability, and ease of use.
-          </motion.p>
+            I build modern software and AI tools that are powerful yet effortless to use.</motion.p>
 
           <motion.div
             initial={{ opacity: 0 }}
