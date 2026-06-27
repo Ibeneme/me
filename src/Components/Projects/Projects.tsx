@@ -71,8 +71,8 @@ const ProjectsPage: React.FC = () => {
           </h2>
           <div className="h-px w-20 bg-white/20 mb-8" />
           <p className="text-zinc-500 text-lg max-w-lg font-light">
-            A curation of recent engagements, architectural builds, and deployed
-            systems.
+            A curation of recent projects, mobile apps and websites built, and
+            deployed cloud servers and systems.
           </p>
         </div>
 
@@ -113,7 +113,6 @@ const ProjectsPage: React.FC = () => {
         </div>
 
         {/* Closing Footer */}
-
       </div>
     </section>
   );
