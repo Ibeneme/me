@@ -11,8 +11,6 @@ const flags = [
   { code: "GB", name: "United Kingdom" },
 ];
 
-//const flagsReversed = [...flags].reverse();
-
 // Memoize the MarqueeRow to prevent unnecessary re-renders
 const MarqueeRow = memo(
   ({
@@ -33,19 +31,22 @@ const MarqueeRow = memo(
               ? "animate-marquee-left"
               : "animate-marquee-right"
           }`}
-          style={{ animationDuration: `${speed}s`, willChange: "transform" }} // Performance optimization
+          style={{ animationDuration: `${speed}s`, willChange: "transform" }}
         >
           {doubled.map(({ code, name }, i) => (
             <div
               key={`${code}-${i}`}
               className="flex items-center gap-3 opacity-60 hover:opacity-100 transition-opacity duration-500 shrink-0"
             >
-              <ReactCountryFlag
-                countryCode={code}
-                svg
-                style={{ width: "40px", height: "30px" }}
-                title={name}
-              />
+              {/* Added a stable container for the flag to prevent layout jump */}
+              <div className="w-[40px] h-[30px] rounded-[2px] overflow-hidden bg-zinc-900 flex items-center justify-center">
+                <ReactCountryFlag
+                  countryCode={code}
+                  svg
+                  style={{ width: "40px", height: "30px" }}
+                  title={name}
+                />
+              </div>
               <span className="text-[14px] font-medium uppercase tracking-[0.2em] text-zinc-400">
                 {name}
               </span>
