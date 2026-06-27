@@ -1,7 +1,5 @@
 import React from "react";
 import { ArrowUpRight } from "lucide-react";
-
-// Assuming imports remain the same as your original
 import pickarsImg from "../../assets/projects/new/pickars.webp";
 import kindredImg from "../../assets/projects/new/kindred.webp";
 import skypayImg from "../../assets/projects/new/skypay.webp";
@@ -63,8 +61,12 @@ const recentProjects = [
 const ProjectsPage: React.FC = () => {
   return (
     <section className="bg-[#0C0D0E] py-32 px-6">
+      <style>{`
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 0.8; } }
+        .animate-fade-in { animation: fadeIn 0.8s ease-in-out forwards; }
+      `}</style>
+
       <div className="max-w-6xl mx-auto">
-        {/* Header */}
         <div className="mb-24">
           <h2 className="text-5xl md:text-6xl font-black text-white tracking-tight mb-4">
             Recent Projects Built
@@ -76,7 +78,6 @@ const ProjectsPage: React.FC = () => {
           </p>
         </div>
 
-        {/* Project Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-24">
           {recentProjects.map((project, index) => (
             <div key={index} className="group flex flex-col gap-6">
@@ -84,7 +85,8 @@ const ProjectsPage: React.FC = () => {
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-full  object-cover opacity-80 group-hover:scale-[1.03] transition-transform duration-700 ease-out"
+                  className="w-full h-full object-cover opacity-0 animate-fade-in group-hover:scale-[1.03] transition-transform duration-700 ease-out"
+                  loading="lazy"
                 />
                 <div className="absolute inset-0 border border-white/5 rounded-xl" />
               </div>
@@ -111,8 +113,6 @@ const ProjectsPage: React.FC = () => {
             </div>
           ))}
         </div>
-
-        {/* Closing Footer */}
       </div>
     </section>
   );
