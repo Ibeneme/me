@@ -2,9 +2,7 @@ import React from "react";
 import { ArrowUpRight } from "lucide-react";
 import pickarsImg from "../../assets/projects/new/pickars.webp";
 import kindredImg from "../../assets/projects/new/kindred.webp";
-import skypayImg from "../../assets/projects/new/skypay.webp";
 import yareImg from "../../assets/projects/new/yare.webp";
-import clonekraft from "../../assets/projects/new/clonekraft.webp";
 import colsphere from "../../assets/projects/new/colsphere.webp";
 
 const recentProjects = [
@@ -24,14 +22,7 @@ const recentProjects = [
     tag: "Fintech",
     image: kindredImg,
   },
-  {
-    title: "SkyPay Africa",
-    company: "Sky Pay Fintech",
-    description: "Digital gateway for cross-border transactions.",
-    link: "#",
-    tag: "Payments",
-    image: skypayImg,
-  },
+
   {
     title: "Yare",
     company: "Yare Learning Hub",
@@ -40,14 +31,7 @@ const recentProjects = [
     tag: "Edutech",
     image: yareImg,
   },
-  {
-    title: "Clonekraft",
-    company: "Clonekraft AI",
-    description: "AI vision bridging design and carpentry.",
-    link: "#",
-    tag: "AI Vision",
-    image: clonekraft,
-  },
+
   {
     title: "Colsphere",
     company: "Colsphere",
