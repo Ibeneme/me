@@ -19,7 +19,7 @@ const recentProjects = [
     company: "Boring Thinkers Ltd",
     description: "Cooperative management for financial transparency.",
     link: "#",
-    tag: "Fintech",
+    tag: "Management",
     image: kindredImg,
   },
 
