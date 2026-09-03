@@ -85,11 +85,9 @@ const TypewriterCode = ({
       setDone(true);
       return;
     }
-
     const timeout = setTimeout(() => {
       setIndex((prev) => prev + 1);
     }, speed);
-
     return () => clearTimeout(timeout);
   }, [index, fullText.length, speed]);
 
@@ -100,11 +98,8 @@ const TypewriterCode = ({
       {tokens.map((token, i) => {
         const start = currentLength;
         currentLength += token.text.length;
-
         if (index <= start) return null;
-
         const visibleText = token.text.slice(0, Math.max(0, index - start));
-
         return (
           <span key={i} className={token.color}>
             {visibleText}
@@ -135,7 +130,6 @@ const CodePreview = ({
       {title}
       <span className="h-px flex-1 bg-zinc-800" />
     </h3>
-
     <div className="bg-[#0D0E11] rounded-xl overflow-hidden border border-zinc-800 shadow-2xl min-h-[420px]">
       <div className="px-4 py-3 flex items-center gap-2 bg-[#16171D] border-b border-zinc-800/60">
         <div className="flex gap-2 mr-4">
