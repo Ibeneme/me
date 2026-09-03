@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { X, Menu, Terminal } from "lucide-react";
+import { X, Menu, Terminal, ArrowRight } from "lucide-react";
 import logo from "../../assets/images/logo.png";
 
 const navItems = [
@@ -40,58 +40,44 @@ const Navbar: React.FC = () => {
     <>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap');
-
         .ide-font { font-family: 'JetBrains Mono', ui-monospace, monospace; }
-
         @keyframes pulseDot {
           0%, 100% { opacity: 1; }
           50% { opacity: 0.4; }
         }
         .status-dot { animation: pulseDot 2.4s ease-in-out infinite; }
-
         @keyframes overlayIn {
           from { opacity: 0; }
           to { opacity: 1; }
         }
         .overlay-in { animation: overlayIn 280ms ease both; }
-
-        @keyframes itemIn {
-          from { opacity: 0; transform: translateY(12px); }
-          to { opacity: 1; transform: translateY(0); }
+        @keyframes cardIn {
+          from { opacity: 0; transform: translateY(16px) scale(0.98); }
+          to { opacity: 1; transform: translateY(0) scale(1); }
         }
-        .item-in { animation: itemIn 400ms cubic-bezier(0.16, 1, 0.3, 1) both; }
-
+        .card-in { animation: cardIn 320ms cubic-bezier(0.16, 1, 0.3, 1) both; }
         @keyframes glowPulse {
           0%, 100% { box-shadow: 0 0 0 0 rgba(255, 208, 0, 0.3); }
           50% { box-shadow: 0 0 0 8px rgba(255, 208, 0, 0); }
         }
         .cta-glow:hover { animation: glowPulse 1.6s ease-in-out infinite; }
-
         .nav-focus:focus-visible {
           outline: 2px solid #FFD000;
           outline-offset: 3px;
           border-radius: 10px;
         }
-
-        .grad-text {
-          background: linear-gradient(110deg, #FFD000 0%, #E8D5FF 55%, #FFFFFF 100%);
-          -webkit-background-clip: text;
-          background-clip: text;
-          color: transparent;
-        }
-
         @media (prefers-reduced-motion: reduce) {
-          .status-dot, .overlay-in, .item-in, .cta-glow:hover {
+          .status-dot, .overlay-in, .card-in, .cta-glow:hover {
             animation: none !important;
           }
         }
       `}</style>
 
       {/* Floating Navbar */}
-      <nav className="fixed inset-x-0 top-0 z-50 px-4 pt-4 sm:px-6">
+      <nav className="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-6 sm:pt-4">
         <div className="mx-auto max-w-5xl">
           <div
-            className={`relative flex h-14 items-center justify-between rounded-full border px-4 transition-all duration-500 sm:h-16 sm:px-6 ${
+            className={`relative flex h-14 items-center justify-between rounded-full border px-3.5 transition-all duration-500 sm:h-16 sm:px-6 ${
               scrolled
                 ? "border-[#270668]/80 bg-[#0A0314]/90 shadow-[0_12px_40px_rgba(0,0,0,0.7)] backdrop-blur-2xl"
                 : "border-[#270668]/50 bg-[#0A0314]/75 shadow-[0_8px_32px_rgba(0,0,0,0.55)] backdrop-blur-xl"
@@ -102,14 +88,14 @@ const Navbar: React.FC = () => {
             {/* Brand */}
             <Link
               to="/"
-              className="nav-focus group flex items-center gap-2.5 transition-transform duration-300 hover:scale-[1.03]"
+              className="nav-focus group flex items-center gap-2 transition-transform duration-300 hover:scale-[1.03]"
             >
               <img
                 src={logo}
                 alt="Logo"
-                className="h-8 w-8 object-contain transition-transform duration-300 group-hover:rotate-6"
+                className="h-7 w-7 object-contain transition-transform duration-300 group-hover:rotate-6 sm:h-8 sm:w-8"
               />
-              <span className="ide-font hidden text-sm font-bold tracking-tight text-white transition-colors duration-300 group-hover:text-[#FFD000] sm:inline-block">
+              <span className="ide-font text-xs font-bold tracking-tight text-white transition-colors duration-300 group-hover:text-[#FFD000] sm:text-sm">
                 ibeneme.dev
               </span>
             </Link>
@@ -155,7 +141,7 @@ const Navbar: React.FC = () => {
             <button
               onClick={() => setIsOpen(!isOpen)}
               aria-label={isOpen ? "Close menu" : "Open menu"}
-              className="nav-focus grid h-10 w-10 place-items-center rounded-full border border-[#270668] bg-[#270668]/40 text-white transition-all duration-300 hover:bg-[#270668]/70 md:hidden"
+              className="nav-focus grid h-9 w-9 place-items-center rounded-full border border-[#270668] bg-[#270668]/40 text-white transition-all duration-300 hover:bg-[#270668]/70 sm:h-10 sm:w-10 md:hidden"
             >
               {isOpen ? <X size={18} /> : <Menu size={18} />}
             </button>
@@ -163,84 +149,67 @@ const Navbar: React.FC = () => {
         </div>
       </nav>
 
-      {/* Mobile Menu - Clean & Professional */}
+      {/* Mobile Menu - Themed #0A0314 Card Overlay */}
       {isOpen && (
         <div
           onClick={() => setIsOpen(false)}
-          className="fixed inset-0 z-40 bg-[#0A0314]/97 backdrop-blur-xl md:hidden"
+          className="fixed inset-0 z-40 flex items-start justify-center bg-[#0A0314]/80 backdrop-blur-md pt-20 px-4 sm:pt-24 sm:px-6 md:hidden overlay-in w-full"
         >
           <div
             onClick={(e) => e.stopPropagation()}
-            className="overlay-in flex h-full flex-col"
+            className="card-in w-full max-w-[500px] rounded-[24px] border border-[#27066845] bg-[#0A0314] shadow-[0_20px_50px_rgba(0,0,0,0.9)] overflow-hidden sm:max-w-[340px] sm:rounded-[28px]"
           >
-            {/* Top bar */}
-            <div className="flex items-center justify-between px-6 pt-6">
-              <div className="ide-font flex items-center gap-2 text-xs text-purple-300/50">
-                <span className="status-dot h-1.5 w-1.5 rounded-full bg-[#FFD000]" />
-                menu
-              </div>
-              <button
-                onClick={() => setIsOpen(false)}
-                className="nav-focus grid h-9 w-9 place-items-center rounded-full border border-[#270668]/60 text-white/70 transition-colors hover:bg-[#270668]/40 hover:text-white"
-              >
-                <X size={16} />
-              </button>
+            {/* Links */}
+            <div className="px-5 pt-5 pb-2 sm:px-6 sm:pt-6">
+              {navItems.map(({ name, path }) => {
+                const active = location.pathname === path;
+                return (
+                  <Link
+                    key={name}
+                    to={path}
+                    onClick={() => setIsOpen(false)}
+                    className="nav-focus flex items-center justify-between py-3.5 group border-b border-[#270668]/30 last:border-none"
+                  >
+                    <span
+                      className={`text-[1.2rem] font-semibold tracking-tight transition-colors sm:text-[1.35rem] ${
+                        active ? "text-[#FFD000]" : "text-white group-hover:text-[#FFD000]"
+                      }`}
+                    >
+                      {name.toLowerCase()}
+                    </span>
+                    <ArrowRight
+                      size={18}
+                      className="text-[#FFD000] transition-transform duration-200 group-hover:translate-x-1"
+                      strokeWidth={2.5}
+                    />
+                  </Link>
+                );
+              })}
             </div>
 
-            {/* Content */}
-            <div className="flex flex-1 flex-col justify-center px-8">
-              <nav className="flex flex-col gap-1">
-                {navItems.map(({ name, path }, i) => {
-                  const active = location.pathname === path;
-                  return (
-                    <Link
-                      key={name}
-                      to={path}
-                      onClick={() => setIsOpen(false)}
-                      className="nav-focus item-in ide-font group flex items-center gap-3 py-4 text-[1.75rem] font-medium leading-none tracking-tight"
-                      style={{ animationDelay: `${60 + i * 60}ms` }}
-                    >
-                      <span
-                        className={`text-sm transition-colors ${
-                          active
-                            ? "text-[#FFD000]"
-                            : "text-purple-400/40 group-hover:text-[#FFD000]"
-                        }`}
-                      >
-                        0{i + 1}
-                      </span>
-                      <span
-                        className={
-                          active
-                            ? "grad-text font-semibold"
-                            : "text-white/80 transition-colors duration-200 group-hover:text-white"
-                        }
-                      >
-                        {name}
-                      </span>
-                    </Link>
-                  );
-                })}
-              </nav>
+            {/* Divider */}
+            <div className="mx-5 border-t border-[#270668]/50 sm:mx-6" />
 
-              {/* CTA */}
-              <div
-                className="item-in mt-12"
-                style={{ animationDelay: "280ms" }}
-              >
+            {/* Bottom section */}
+            <div className="px-5 pt-4 pb-5 sm:px-6 sm:pt-5 sm:pb-6">
+              <p className="ide-font text-[10px] font-medium tracking-[0.1em] text-purple-200/50 uppercase mb-3 sm:mb-4">
+                Get in touch
+              </p>
+              <div className="flex gap-2.5 sm:gap-3">
                 <button
                   onClick={handleContact}
-                  className="nav-focus ide-font inline-flex items-center gap-2.5 rounded-full bg-[#FFD000] px-6 py-3 text-sm font-semibold text-[#0A0314] transition-all duration-300 active:scale-[0.97]"
+                  className="nav-focus flex-1 flex items-center justify-center gap-2 rounded-full bg-[#FFD000] py-2.5 text-xs font-bold text-[#0A0314] transition-transform active:scale-[0.97] sm:py-3 sm:text-sm"
                 >
-                  <Terminal size={15} strokeWidth={2.5} />
-                  Get in touch
+                  <Terminal size={14} strokeWidth={2.5} />
+                  WhatsApp
+                </button>
+                <button
+                  onClick={() => setIsOpen(false)}
+                  className="nav-focus flex-1 flex items-center justify-center rounded-full border border-[#270668] bg-[#270668]/40 py-2.5 text-xs font-semibold text-white transition-colors hover:bg-[#270668]/70 sm:py-3 sm:text-sm"
+                >
+                  Close
                 </button>
               </div>
-            </div>
-
-            {/* Bottom subtle line */}
-            <div className="px-8 pb-10">
-              <div className="h-px w-full bg-gradient-to-r from-transparent via-[#ffffff15] to-transparent" />
             </div>
           </div>
         </div>
