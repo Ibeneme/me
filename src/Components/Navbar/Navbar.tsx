@@ -14,12 +14,10 @@ const Navbar: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
 
-  // Close menu on route change
   useEffect(() => {
     setIsOpen(false);
   }, [location.pathname]);
 
-  // Lock body scroll when mobile menu is open
   useEffect(() => {
     document.body.style.overflow = isOpen ? "hidden" : "";
     return () => {
@@ -27,7 +25,6 @@ const Navbar: React.FC = () => {
     };
   }, [isOpen]);
 
-  // Detect scroll for subtle style change
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
@@ -45,29 +42,28 @@ const Navbar: React.FC = () => {
         @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap');
 
         .ide-font { font-family: 'JetBrains Mono', ui-monospace, monospace; }
-        .body-font { font-family: 'Inter', system-ui, sans-serif; }
 
         @keyframes pulseDot {
-          0%, 100% { opacity: 1; transform: scale(1); }
-          50% { opacity: 0.45; transform: scale(0.8); }
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0.4; }
         }
-        .status-dot { animation: pulseDot 2.2s ease-in-out infinite; }
+        .status-dot { animation: pulseDot 2.4s ease-in-out infinite; }
 
         @keyframes overlayIn {
-          from { opacity: 0; clip-path: inset(0 0 100% 0); }
-          to { opacity: 1; clip-path: inset(0 0 0 0); }
+          from { opacity: 0; }
+          to { opacity: 1; }
         }
-        .overlay-in { animation: overlayIn 420ms cubic-bezier(0.16, 1, 0.3, 1) both; }
+        .overlay-in { animation: overlayIn 280ms ease both; }
 
         @keyframes itemIn {
-          from { opacity: 0; transform: translateY(22px); }
+          from { opacity: 0; transform: translateY(12px); }
           to { opacity: 1; transform: translateY(0); }
         }
-        .item-in { animation: itemIn 500ms cubic-bezier(0.16, 1, 0.3, 1) both; }
+        .item-in { animation: itemIn 400ms cubic-bezier(0.16, 1, 0.3, 1) both; }
 
         @keyframes glowPulse {
-          0%, 100% { box-shadow: 0 0 0 0 rgba(255, 208, 0, 0.35); }
-          50% { box-shadow: 0 0 0 10px rgba(255, 208, 0, 0); }
+          0%, 100% { box-shadow: 0 0 0 0 rgba(255, 208, 0, 0.3); }
+          50% { box-shadow: 0 0 0 8px rgba(255, 208, 0, 0); }
         }
         .cta-glow:hover { animation: glowPulse 1.6s ease-in-out infinite; }
 
@@ -101,7 +97,6 @@ const Navbar: React.FC = () => {
                 : "border-[#270668]/50 bg-[#0A0314]/75 shadow-[0_8px_32px_rgba(0,0,0,0.55)] backdrop-blur-xl"
             }`}
           >
-            {/* Top highlight line */}
             <div className="pointer-events-none absolute inset-x-4 top-0 h-px rounded-full bg-gradient-to-r from-transparent via-[#FFD000]/40 to-transparent" />
 
             {/* Brand */}
@@ -168,36 +163,32 @@ const Navbar: React.FC = () => {
         </div>
       </nav>
 
-      {/* Mobile Overlay */}
+      {/* Mobile Menu - Clean & Professional */}
       {isOpen && (
         <div
           onClick={() => setIsOpen(false)}
-          className="fixed inset-0 z-40 bg-[#0A0314]/95 backdrop-blur-2xl md:hidden"
+          className="fixed inset-0 z-40 bg-[#0A0314]/97 backdrop-blur-xl md:hidden"
         >
           <div
             onClick={(e) => e.stopPropagation()}
-            className="overlay-in relative flex h-full flex-col justify-center px-8 pb-28 pt-24"
+            className="overlay-in flex h-full flex-col"
           >
-            {/* Subtle grid */}
-            <div
-              className="pointer-events-none absolute inset-0 opacity-[0.04]"
-              style={{
-                backgroundImage: "radial-gradient(#FFD000 1px, transparent 1px)",
-                backgroundSize: "26px 26px",
-              }}
-            />
-
-            {/* Soft purple glow */}
-            <div className="pointer-events-none absolute left-1/2 top-[38%] h-80 w-80 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#270668] opacity-50 blur-[130px]" />
-
-            <div className="relative">
-              {/* Terminal header */}
-              <div className="ide-font mb-12 flex items-center gap-2.5 text-xs tracking-wide text-purple-300/55">
-                <span className="status-dot h-2 w-2 rounded-full bg-[#FFD000] shadow-[0_0_14px_#FFD000]" />
-                root@ibeneme ~ % menu
+            {/* Top bar */}
+            <div className="flex items-center justify-between px-6 pt-6">
+              <div className="ide-font flex items-center gap-2 text-xs text-purple-300/50">
+                <span className="status-dot h-1.5 w-1.5 rounded-full bg-[#FFD000]" />
+                menu
               </div>
+              <button
+                onClick={() => setIsOpen(false)}
+                className="nav-focus grid h-9 w-9 place-items-center rounded-full border border-[#270668]/60 text-white/70 transition-colors hover:bg-[#270668]/40 hover:text-white"
+              >
+                <X size={16} />
+              </button>
+            </div>
 
-              {/* Links */}
+            {/* Content */}
+            <div className="flex flex-1 flex-col justify-center px-8">
               <nav className="flex flex-col gap-1">
                 {navItems.map(({ name, path }, i) => {
                   const active = location.pathname === path;
@@ -206,35 +197,50 @@ const Navbar: React.FC = () => {
                       key={name}
                       to={path}
                       onClick={() => setIsOpen(false)}
-                      className="nav-focus item-in ide-font group flex items-baseline gap-3 rounded-xl py-3.5 text-[2.1rem] font-medium leading-none sm:text-[2.5rem]"
-                      style={{ animationDelay: `${90 + i * 80}ms` }}
+                      className="nav-focus item-in ide-font group flex items-center gap-3 py-4 text-[1.75rem] font-medium leading-none tracking-tight"
+                      style={{ animationDelay: `${60 + i * 60}ms` }}
                     >
-                      <span className="text-lg text-[#FFD000] opacity-80 transition-opacity group-hover:opacity-100">
-                        $
+                      <span
+                        className={`text-sm transition-colors ${
+                          active
+                            ? "text-[#FFD000]"
+                            : "text-purple-400/40 group-hover:text-[#FFD000]"
+                        }`}
+                      >
+                        0{i + 1}
                       </span>
                       <span
                         className={
                           active
-                            ? "grad-text font-bold"
-                            : "text-purple-100/70 transition-colors duration-300 group-hover:text-white"
+                            ? "grad-text font-semibold"
+                            : "text-white/80 transition-colors duration-200 group-hover:text-white"
                         }
                       >
-                        {name.toLowerCase()}
+                        {name}
                       </span>
                     </Link>
                   );
                 })}
               </nav>
 
-              {/* Mobile CTA */}
-              <button
-                onClick={handleContact}
-                className="nav-focus item-in ide-font mt-14 inline-flex w-fit items-center gap-2.5 rounded-2xl bg-[#FFD000] px-7 py-3.5 text-sm font-bold text-[#0A0314] shadow-lg shadow-[#FFD000]/25 transition-all duration-300 active:scale-95"
-                style={{ animationDelay: "340ms" }}
+              {/* CTA */}
+              <div
+                className="item-in mt-12"
+                style={{ animationDelay: "280ms" }}
               >
-                <Terminal size={16} strokeWidth={2.5} />
-                get in touch
-              </button>
+                <button
+                  onClick={handleContact}
+                  className="nav-focus ide-font inline-flex items-center gap-2.5 rounded-full bg-[#FFD000] px-6 py-3 text-sm font-semibold text-[#0A0314] transition-all duration-300 active:scale-[0.97]"
+                >
+                  <Terminal size={15} strokeWidth={2.5} />
+                  Get in touch
+                </button>
+              </div>
+            </div>
+
+            {/* Bottom subtle line */}
+            <div className="px-8 pb-10">
+              <div className="h-px w-full bg-gradient-to-r from-transparent via-[#ffffff15] to-transparent" />
             </div>
           </div>
         </div>
