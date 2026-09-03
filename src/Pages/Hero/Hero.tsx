@@ -1,6 +1,6 @@
 import React from "react";
 import { ArrowUpRight, MessageCircle } from "lucide-react";
-import me from "../../assets/images/ikenna.png";
+import me from "../../assets/images/image.webp";
 
 /**
  * Fonts used: Space Grotesk (display), Inter (body), JetBrains Mono (labels).
@@ -122,7 +122,7 @@ const Hero: React.FC = () => {
               <img
                 src={me}
                 alt="Ibeneme Ikenna"
-                className="h-full w-full object-cover object-top transition-transform duration-700 ease-out hover:scale-[1.03]"
+                className="h-full grayscale w-full object-cover object-top transition-transform duration-700 ease-out hover:scale-[1.03]"
                 loading="eager"
                 fetchPriority="high"
               />
