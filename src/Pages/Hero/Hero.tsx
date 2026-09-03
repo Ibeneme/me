@@ -56,10 +56,10 @@ const Hero: React.FC = () => {
             production.
           </p>
 
-          <div className="mb-12 flex flex-wrap items-center gap-3">
+          <div className="mb-12  flex flex-wrap items-center gap-3">
             <a
               href="mailto:ikennaibenemee@gmail.com"
-              className="group inline-flex items-center gap-2 rounded-[48px] bg-[#FFD000] px-6 py-3 text-sm font-medium text-[#08110F] transition-colors duration-200 hover:bg-[#6FE1D6] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FFD000] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0A0314]"
+              className="group inline-flex items-center gap-2 rounded-[48px] bg-[#FFD000]  px-6 py-3 text-sm font-bold  text-[#08110F] transition-colors duration-200 hover:bg-[#6FE1D6] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FFD000] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0A0314]"
             >
               Email me
               <ArrowUpRight
@@ -74,7 +74,7 @@ const Hero: React.FC = () => {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Message me on WhatsApp (opens in a new tab)"
-              className="inline-flex items-center gap-2 rounded-[48px] border border-[#232830] px-6 py-3 text-sm font-medium text-[#ECEFF3] transition-colors duration-200 hover:border-[#FFD000]/50 hover:text-[#FFD000] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FFD000] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0A0314]"
+              className="inline-flex items-center gap-2 rounded-[48px] border border-[#232830] px-6 py-3 text-sm font-bold  text-[#ECEFF3] transition-colors duration-200 hover:border-[#FFD000]/50 hover:text-[#FFD000] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FFD000] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0A0314]"
             >
               <MessageCircle size={15} aria-hidden="true" />
               WhatsApp
