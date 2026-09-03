@@ -60,11 +60,18 @@ const MarqueeRow = memo(
 
 const FlagsRow: React.FC = () => {
   return (
-    <section className="relative w-full bg-[#0C0D0E] py-16 md:py-24 overflow-hidden border-t border-zinc-900">
+    <section
+      style={{
+        // @ts-expect-error -- custom CSS vars
+        "--font-display": "'Space Grotesk', sans-serif",
+        "--font-mono": "'JetBrains Mono', monospace",
+      }}
+      className="relative w-full bg-[#0A0314] py-16 md:py-24 overflow-hidden border-t border-zinc-900"
+    >
       {/* Text Section */}
       <div className="max-w-4xl mx-auto px-6 mb-16 text-center">
         <h2 className="text-4xl md:text-6xl font-black text-white tracking-tight mb-6">
-          Building across borders.
+          Building across <span style={{ color: "#ffd000" }}>Borders.</span>
         </h2>
         <p className="text-zinc-500 text-lg md:text-xl font-light max-w-xl mx-auto">
           Operational reach across seven countries, delivering high-impact

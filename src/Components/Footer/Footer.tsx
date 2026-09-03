@@ -6,7 +6,7 @@ const Footer: React.FC = () => {
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
   return (
-    <footer className="bg-[#0C0D0E] pt-24 pb-16 px-6 border-t border-zinc-900">
+    <footer className="bg-[#0A0314] pt-24 pb-12 px-6 border-t border-zinc-900">
       <div className="max-w-6xl mx-auto">
         {/* Main Footer Content */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-x-8 gap-y-16 mb-20">
@@ -103,20 +103,31 @@ const Footer: React.FC = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="flex flex-col md:flex-row justify-between items-center gap-6 pt-8 border-t border-zinc-900 text-xs">
-          <p className="text-zinc-600 tracking-widest">
-            © {new Date().getFullYear()} Ibeneme Ikenna. All rights reserved.
-          </p>
+        <div className="pt-10 border-t border-zinc-900">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-6 mb-12">
+            <p className="text-zinc-600 text-xs tracking-widest">
+              © {new Date().getFullYear()} All rights reserved.
+            </p>
 
-          <button
-            onClick={scrollToTop}
-            className="group flex items-center gap-2 text-zinc-500 hover:text-white transition-all duration-300 uppercase tracking-[0.125em]"
-          >
-            Back to top
-            <div className="transition-transform duration-300 group-hover:-translate-y-0.5">
-              <IoArrowUpOutline size={14} />
-            </div>
-          </button>
+            <button
+              onClick={scrollToTop}
+              className="group flex items-center gap-2 text-zinc-500 hover:text-white transition-all duration-300 uppercase tracking-[0.125em] text-xs"
+            >
+              Back to top
+              <div className="transition-transform duration-300 group-hover:-translate-y-0.5">
+                <IoArrowUpOutline size={14} />
+              </div>
+            </button>
+          </div>
+
+          {/* Decorative lines + Big name */}
+          <div className="relative">
+            {/* Top line */}
+
+            <h2 className="text-[64px] sm:text-[100px] md:text-[160px] lg:text-[220px] xl:text-[250px] font-bold text-[#ffffff] tracking-tighter leading-none select-none text-center">
+              Ibeneme <span style={{ color: "#ffd000" }}>.</span>
+            </h2>
+          </div>
         </div>
       </div>
     </footer>

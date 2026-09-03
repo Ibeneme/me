@@ -22,7 +22,6 @@ const recentProjects = [
     tag: "Management",
     image: kindredImg,
   },
-
   {
     title: "Yare",
     company: "Yare Learning Hub",
@@ -31,7 +30,6 @@ const recentProjects = [
     tag: "Edutech",
     image: yareImg,
   },
-
   {
     title: "Colsphere",
     company: "Colsphere",
@@ -44,13 +42,20 @@ const recentProjects = [
 
 const ProjectsPage: React.FC = () => {
   return (
-    <section className="bg-[#0C0D0E] py-32 px-6">
-      <style>{`
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 0.8; } }
-        .animate-fade-in { animation: fadeIn 0.8s ease-in-out forwards; }
-      `}</style>
+    <section className="relative bg-[#0A0314] py-32 px-6 overflow-hidden">
 
-      <div className="max-w-6xl mx-auto">
+      {/* Subtle grid */}
+      <div
+        className="pointer-events-none absolute inset-0 opacity-10"
+        style={{
+          backgroundImage:
+            "linear-gradient(#ffffff75 1px, transparent 1px), linear-gradient(90deg, #ffffff75 1px, transparent 1px)",
+          backgroundSize: "50px 50px",
+        }}
+      />
+
+      <div className="relative max-w-6xl mx-auto">
+        {/* Header */}
         <div className="mb-24">
           <h2 className="text-5xl md:text-6xl font-black text-white tracking-tight mb-4">
             Recent Projects Built
@@ -62,20 +67,23 @@ const ProjectsPage: React.FC = () => {
           </p>
         </div>
 
+        {/* Projects grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-24">
           {recentProjects.map((project, index) => (
             <div key={index} className="group flex flex-col gap-6">
+              {/* Image */}
               <div className="relative aspect-[4/3] overflow-hidden rounded-xl bg-zinc-900">
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-full object-cover opacity-0 animate-fade-in group-hover:scale-[1.03] transition-transform duration-700 ease-out"
+                  className="w-full h-full object-cover opacity-80 transition-all duration-700 ease-out group-hover:scale-[1.03] group-hover:opacity-100"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 border border-white/5 rounded-xl" />
+                <div className="absolute inset-0 border border-white/5 rounded-xl pointer-events-none" />
               </div>
 
-              <div className="flex justify-between items-start">
+              {/* Meta */}
+              <div className="flex justify-between items-start gap-4">
                 <div>
                   <span className="text-[10px] font-black text-[#FFD000] uppercase tracking-[0.2em]">
                     {project.tag}
@@ -83,13 +91,15 @@ const ProjectsPage: React.FC = () => {
                   <h3 className="text-4xl font-bold text-white mt-1">
                     {project.title}
                   </h3>
-                  <p className="text-zinc-500 text-sm font-light mt-2">
+                  <p className="text-zinc-500 text-sm font-light mt-2 max-w-sm">
                     {project.description}
                   </p>
                 </div>
+
                 <a
                   href={project.link}
-                  className="p-3 border border-white/10 rounded-full hover:bg-white hover:text-black transition-all"
+                  className="shrink-0 p-3 border border-white/10 rounded-full text-white hover:bg-white hover:text-black transition-all duration-300"
+                  aria-label={`View ${project.title}`}
                 >
                   <ArrowUpRight size={16} />
                 </a>

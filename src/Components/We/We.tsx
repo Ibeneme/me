@@ -31,7 +31,7 @@ const sections = [
 
 const We: React.FC = () => {
   return (
-    <section className="bg-[#0C0D0E] py-32 px-6">
+    <section className="bg-[#0A0314] py-32 px-6">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="mb-24">

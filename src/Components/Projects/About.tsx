@@ -4,56 +4,57 @@ import me from "../../assets/images/image.png";
 
 const About: React.FC = () => {
   return (
-    <section className="bg-[#0C0D0E] py-32 px-6">
+    <section className="bg-[#0A0314] py-24 md:py-32 px-6">
       <div className="max-w-5xl mx-auto">
-        {/* Intro Section */}
-        <div className="grid md:grid-cols-12 gap-16 mb-32 items-start">
+        {/* Intro */}
+        <div className="grid md:grid-cols-12 gap-12 md:gap-16 mb-24 md:mb-32 items-start">
           <div className="md:col-span-4">
             <div className="aspect-[4/5] overflow-hidden rounded-sm bg-zinc-900 border border-zinc-800">
               <img
                 src={me}
                 alt="Ikenna Ibeneme"
-                className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-[1000ms]"
+                className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000"
               />
             </div>
           </div>
 
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            className="md:col-span-8 flex flex-col justify-center h-full"
+            initial={{ opacity: 0, x: 24 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="md:col-span-8 flex flex-col justify-center"
           >
-            <span className="text-[11px] uppercase tracking-[0.4em] text-[#FFD000] mb-8 block">
+            <span className="text-[11px] uppercase tracking-[0.35em] text-[#FFD000] mb-6 block">
               The Developer
             </span>
-            <h1 className="text-5xl md:text-6xl font-black text-white tracking-tighter leading-[0.95] mb-10">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tighter leading-[0.95] mb-8">
               I build software systems that prioritize clarity, performance, and
               intent.
             </h1>
-            <p className="text-zinc-400 text-lg leading-relaxed font-light">
+            <p className="text-zinc-400 text-lg leading-relaxed font-light max-w-xl">
               Based in Port Harcourt, I operate at the intersection of complex
               software architecture and product design. With over seven years of
               building, I specialize in crafting full-stack ecosystems that turn
               high-level technical requirements into intuitive, high-velocity
-              digital tools. My focus remains on bridging the gap between
-              advanced backend logic and refined, human-centric design.
+              digital tools.
             </p>
           </motion.div>
         </div>
 
-        {/* Philosophy Grid */}
-        <div className="grid md:grid-cols-2 gap-x-20 gap-y-16 border-t border-zinc-900 pt-20">
+        {/* Philosophy */}
+        <div className="grid md:grid-cols-2 gap-x-16 gap-y-12 border-t border-zinc-900 pt-16 md:pt-20">
           <div>
-            <h3 className="text-white font-bold text-lg mb-6">The Approach</h3>
+            <h3 className="text-white font-bold text-lg mb-4">The Approach</h3>
             <p className="text-zinc-400 text-base leading-relaxed">
-              I champion a "tech-brutalist" philosophy: efficiency over ego.
+              I champion a “tech-brutalist” philosophy: efficiency over ego.
               Whether developing a logistics gateway or an AI-vision engine, I
               strip away unnecessary complexity to leave behind only what is
               robust, functional, and exceptionally performant.
             </p>
           </div>
           <div>
-            <h3 className="text-white font-bold text-lg mb-6">The Core</h3>
+            <h3 className="text-white font-bold text-lg mb-4">The Core</h3>
             <p className="text-zinc-400 text-base leading-relaxed">
               Built on a foundation of React, TypeScript, and Node.js, my work
               is defined by scalability. I engineer systems designed to evolve,
@@ -63,17 +64,17 @@ const About: React.FC = () => {
           </div>
         </div>
 
-        {/* Professional Context */}
-        <div className="mt-32 bg-[#0C0D0E] border border-zinc-900 p-16 rounded-sm">
-          <h3 className="text-white font-bold text-xl mb-12">
+        {/* Timeline */}
+        <div className="mt-24 md:mt-32 bg-[#0A0314] border border-zinc-900 p-10 md:p-14 rounded-sm">
+          <h3 className="text-white font-bold text-xl mb-10">
             Professional Trajectory
           </h3>
           <ul className="space-y-10">
-            <li className="flex gap-10">
-              <span className="text-zinc-700 font-mono text-sm mt-1 shrink-0">
+            <li className="flex gap-8 md:gap-10">
+              <span className="text-zinc-600 font-mono text-sm mt-1 shrink-0 w-12">
                 2026
               </span>
-              <div className="border-l border-zinc-800 pl-8">
+              <div className="border-l border-zinc-800 pl-7 md:pl-8">
                 <h4 className="text-white text-lg font-bold">
                   Software Developer & Founder
                 </h4>
@@ -84,11 +85,11 @@ const About: React.FC = () => {
                 </p>
               </div>
             </li>
-            <li className="flex gap-10">
-              <span className="text-zinc-700 font-mono text-sm mt-1 shrink-0">
+            <li className="flex gap-8 md:gap-10">
+              <span className="text-zinc-600 font-mono text-sm mt-1 shrink-0 w-12">
                 2019
               </span>
-              <div className="border-l border-zinc-800 pl-8">
+              <div className="border-l border-zinc-800 pl-7 md:pl-8">
                 <h4 className="text-white text-lg font-bold">
                   Software Developer
                 </h4>

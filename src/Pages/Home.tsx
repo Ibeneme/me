@@ -2,7 +2,6 @@ import Hero from "./Hero/Hero";
 import FlagsRow from "./Hero/FlagsRow";
 import Projects from "../Components/Projects/Projects";
 import AccordionSection from "../Components/AccordionSection/AccordionSection";
-import SlidingPage from "../Components/Footer/SlidingPage";
 
 const Home = () => {
   return (
@@ -11,7 +10,6 @@ const Home = () => {
       <FlagsRow />
       <Projects />
       <AccordionSection />
-      <SlidingPage />
     </div>
   );
 };

@@ -15,7 +15,7 @@ const AboutPage = () => {
       <BlogHero title="About Ibeneme" />
 
       {/* Remaining sections load when ready */}
-      <Suspense fallback={<div className="h-64 bg-[#0C0D0E]" />}>
+      <Suspense fallback={<div className="h-64 bg-[#0A0314]" />}>
         <About />
         <FeatureSection />
         <CurrentlySectionPage />
