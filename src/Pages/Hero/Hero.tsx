@@ -6,10 +6,12 @@ const Hero: React.FC = () => {
   return (
     <section
       className="relative min-h-[100dvh] pt-[48px] overflow-hidden bg-[#0A0314] text-[#ECEFF3]"
-      style={{
-        "--font-display": "'Space Grotesk', sans-serif",
-        "--font-mono": "'JetBrains Mono', monospace",
-      }}
+      style={
+        {
+          "--font-display": "'Space Grotesk', sans-serif",
+          "--font-mono": "'JetBrains Mono', monospace",
+        } as React.CSSProperties & Record<string, string>
+      }
     >
       <div
         aria-hidden="true"

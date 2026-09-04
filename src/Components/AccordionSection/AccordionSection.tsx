@@ -68,9 +68,9 @@ const serviceCategories = [
 ];
 
 const ExpertiseSection = () => {
-  const sectionRef = useRef(null);
-  const stackRef = useRef(null);
-  const cardRefs = useRef([]);
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const stackRef = useRef<HTMLDivElement | null>(null);
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -155,7 +155,9 @@ const ExpertiseSection = () => {
             return (
               <div
                 key={cat.title}
-                ref={(el) => (cardRefs.current[idx] = el)}
+                ref={(el) => {
+                  cardRefs.current[idx] = el;
+                }}
                 className="absolute inset-0 flex items-center justify-center will-change-transform"
                 style={{ zIndex: idx + 1 }}
               >
