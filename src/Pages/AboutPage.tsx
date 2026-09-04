@@ -11,9 +11,7 @@ const AboutSkeleton = () => (
   <div className="min-h-[70vh] bg-[#0A0314] animate-pulse" />
 );
 
-const CurrentlySkeleton = () => (
-  <div className="min-h-[50vh] bg-[#0A0314] animate-pulse" />
-);
+
 
 const AboutPage = () => {
   return (

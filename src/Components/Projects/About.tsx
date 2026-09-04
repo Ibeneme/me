@@ -1,20 +1,20 @@
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import me from "../../assets/images/image.png";
 
-// Animation variant for the newly integrated sections
-const rise = {
+// Animation variant with proper typing for Framer Motion
+const rise: Variants = {
   hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as const },
   },
 };
 
 const About: React.FC = () => {
   return (
-    <section className="relative bg-[#0A0314] py-24 md:py-32 overflow-x-clip">
+    <section className="relative bg-[#0A0314] py-24 md:py-32 overflow-hidden">
       {/* Background ambient glow matching your theme */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-[#ffd000]/[0.02] blur-[120px] pointer-events-none rounded-full" />
 
@@ -122,15 +122,14 @@ const About: React.FC = () => {
         </motion.div>
       </div>
 
-      {/* Absolute Full-Width Marquee Banner — fixed so it is never clipped */}
+      {/* Absolute Full-Width Marquee Banner breaking out of container */}
       <div
         aria-hidden="true"
-        className="relative z-10 w-full my-12 -rotate-1 border-y-2 border-black bg-[#D4FF3F] py-6 overflow-hidden"
+        className="relative z-10 w-screen left-1/2 -translate-x-1/2 my-12 -rotate-1 border-y-2 border-black bg-[#D4FF3F] py-6 overflow-hidden"
       >
         <div className="flex w-max animate-marquee gap-12 whitespace-nowrap text-xl font-black uppercase tracking-tight text-[#0B0014]">
-          {/* Duplicate the content twice for a seamless loop */}
-          {[...Array(2)].map((_, setIndex) => (
-            <span key={setIndex} className="flex items-center gap-8">
+          {Array.from({ length: 3 }).map((_, i) => (
+            <span key={i} className="flex items-center gap-8">
               <span>open to work</span>
               <span>✦</span>
               <span>react native</span>
