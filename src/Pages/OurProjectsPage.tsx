@@ -1,5 +1,6 @@
 
 import BlogHero from "../Components/BlogHero/BlogHero";
+import CurrentlySection from "../Components/Projects/CurrentlySection";
 import Projects from "../Components/Projects/Projects";
 
 const OurProjectsPage = () => {
@@ -7,6 +8,7 @@ const OurProjectsPage = () => {
     <div>
       <BlogHero title={`2025" - 26`} />
       <Projects />
+      <CurrentlySection />
     </div>
   );
 };

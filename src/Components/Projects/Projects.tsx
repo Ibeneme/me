@@ -4,8 +4,18 @@ import pickarsImg from "../../assets/projects/new/pickars.webp";
 import kindredImg from "../../assets/projects/new/kindred.webp";
 import yareImg from "../../assets/projects/new/yare.webp";
 import colsphere from "../../assets/projects/new/colsphere.webp";
+import care from "../../assets/projects/new/care.png";
+// (Make sure to include your other existing image imports like pickarsImg, kindredImg, etc. above)
 
 const recentProjects = [
+  {
+    title: "Colsphere",
+    company: "Colsphere",
+    description: "Collaborative ecosystem for team interaction.",
+    link: "#",
+    tag: "SaaS",
+    image: colsphere,
+  },
   {
     title: "Pickars",
     company: "Pickars Courier Limited",
@@ -31,12 +41,13 @@ const recentProjects = [
     image: yareImg,
   },
   {
-    title: "Colsphere",
-    company: "Colsphere",
-    description: "Collaborative ecosystem for team interaction.",
-    link: "#",
-    tag: "SaaS",
-    image: colsphere,
+    title: "One Community Home Health",
+    company: "JACOP Healthcare Services, Inc.",
+    description:
+      "Modern digital interface and brand bento grids for a Texas-based care provider.",
+    link: "https://one-community-one.vercel.app/",
+    tag: "Healthcare",
+    image: care,
   },
 ];
 
@@ -60,7 +71,7 @@ const ProjectsPage: React.FC = () => {
             Selected Work
           </p>
           <h2
-            style={{ fontFamily: '"Parkinsans", sans-serif' }}
+            // style={{ fontFamily: '"Parkinsans", sans-serif' }}
             className="text-4xl md:text-6xl font-semibold text-white tracking-tight leading-[1.1] mb-6"
           >
             Most Recent Clients

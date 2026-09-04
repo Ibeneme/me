@@ -3,25 +3,35 @@ import BlogHero from "../Components/BlogHero/BlogHero";
 
 // Lazy load complex sections
 const About = lazy(() => import("../Components/Projects/About"));
-const FeatureSection = lazy(() => import("../Components/Projects/FeatureSection"));
-const We = lazy(() => import("../Components/We/We"));
-const CurrentlySectionPage = lazy(
-  () => import("../Components/Projects/CurrentlySection")
+
+
+// Skeletons sized close to the real sections so there's no layout jump
+// when each one pops in.
+const AboutSkeleton = () => (
+  <div className="min-h-[70vh] bg-[#0A0314] animate-pulse" />
 );
+
+const CurrentlySkeleton = () => (
+  <div className="min-h-[50vh] bg-[#0A0314] animate-pulse" />
+);
+
 const AboutPage = () => {
   return (
-    <div>
+    <main className="bg-[#0A0314]">
       {/* Hero loads instantly for immediate visual feedback */}
       <BlogHero title="About Ibeneme" />
 
-      {/* Remaining sections load when ready */}
-      <Suspense fallback={<div className="h-64 bg-[#0A0314]" />}>
+      {/* Separate boundaries so a slow section never blocks the one after it */}
+      <Suspense fallback={<AboutSkeleton />}>
         <About />
-        <FeatureSection />
-        <CurrentlySectionPage />
-        <We />
       </Suspense>
-    </div>
+
+      {/* <Suspense fallback={<CurrentlySkeleton />}>
+        <CurrentlySectionPage />
+      </Suspense> */}
+
+      {/* <We /> */}
+    </main>
   );
 };
 

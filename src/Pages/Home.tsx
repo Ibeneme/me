@@ -1,7 +1,7 @@
 import Hero from "./Hero/Hero";
 import FlagsRow from "./Hero/FlagsRow";
 import Projects from "../Components/Projects/Projects";
-import AccordionSection from "../Components/AccordionSection/AccordionSection";
+//import AccordionSection from "../Components/AccordionSection/AccordionSection";
 
 
 const Home = () => {
@@ -10,7 +10,7 @@ const Home = () => {
       <Hero />
       <FlagsRow />
       <Projects />
-      <AccordionSection />
+      {/* <AccordionSection /> */}
     </div>
   );
 };

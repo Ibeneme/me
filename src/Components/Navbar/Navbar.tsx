@@ -99,7 +99,7 @@ const Navbar: React.FC = () => {
                 style={{ fontFamily: '"Parkinsans", sans-serif' }}
                 className="ide-font text-xs font-bold tracking-tight text-white transition-colors duration-300 group-hover:text-[#FFD000] sm:text-sm"
               >
-                ibeneme.dev
+                ibeneme.com
               </span>
             </Link>
 

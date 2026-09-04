@@ -174,6 +174,51 @@ const FlagsRow: React.FC = () => {
           Your browser does not support the video tag.
         </video>
       </div>
+      <div
+        aria-hidden="true"
+        className="relative z-10 -rotate-1 -translate-y-4 border-y-2 border-black bg-[#D4FF3F] py-6"
+      >
+        <div className="flex w-max animate-marquee gap-12 whitespace-nowrap text-xl font-black uppercase tracking-tight text-[#0B0014]">
+          {Array.from({ length: 3 }).map((_, i) => (
+            <span key={i} className="flex items-center gap-8">
+              <span>open to work</span>
+              <span>✦</span>
+              <span>react native</span>
+              <span>✦</span>
+              <span>node.js</span>
+              <span>✦</span>
+              <span>ml that ships</span>
+              <span>✦</span>
+              <span>port harcourt → anywhere</span>
+              <span>✦</span>
+            </span>
+          ))}
+        </div>
+      </div>
+
+      <style>{`
+        @keyframes reveal-up {
+          from { transform: translateY(100%); opacity: 0; }
+          to { transform: translateY(0); opacity: 1; }
+        }
+        .animate-reveal-up {
+          animation: reveal-up 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .animate-reveal-up { animation: none; }
+        }
+
+        @keyframes marquee {
+          from { transform: translateX(0); }
+          to { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+          animation: marquee 18s linear infinite;
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .animate-marquee { animation: none; }
+        }
+      `}</style>
 
       <style>{`
         .manifest-mask {
