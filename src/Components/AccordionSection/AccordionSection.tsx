@@ -1,166 +1,225 @@
-import  { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useEffect, useRef } from "react";
+import { Code2, Smartphone, Sparkles, Palette } from "lucide-react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const serviceCategories = [
   {
-    id: "01",
-    shortTitle: "Software Development",
-    description:
-      "Robust, scalable, high-performance applications built from the ground up no shortcuts, no technical debt left behind.",
-    services: [
-      "Full-Stack Development",
-      "React & Next.js Applications",
-      "Node.js & Backend Systems",
-      "API Development & Integration",
+    icon: Code2,
+    title: "Websites & Web Apps",
+    plain:
+      "The engine behind your site or app — built to actually work, not just to look good.",
+    items: [
+      "Custom websites",
+      "Web apps people log into",
+      "Connecting your tools together",
     ],
+    bgClass: "bg-[#E2FF44]",
+    textClass: "text-[#0A0314]",
+    accent: "#0A0314",
+    iconBg: "bg-[#0A0314]/12",
+    bgImage:
+      "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1200&auto=format&fit=crop",
   },
   {
-    id: "02",
-    shortTitle: "Mobile Apps",
-    description:
-      "Native-feeling mobile experiences that users love shipped to both iOS and Android without compromise.",
-    services: [
-      "Cross-Platform (React Native)",
-      "iOS & Android Development",
-      "App Store Optimization",
-      "Seamless Backend Sync",
-    ],
+    icon: Smartphone,
+    title: "Mobile Apps",
+    plain: "The app people download — for iPhone and Android, from one build.",
+    items: ["iOS & Android apps", "App Store setup", "Live chat & tracking"],
+    bgClass: "bg-[#F3E8FF]",
+    textClass: "text-[#5B21B6]",
+    accent: "#7C3AED",
+    iconBg: "bg-[#7C3AED]/12",
+    bgImage:
+      "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=1200&auto=format&fit=crop",
   },
   {
-    id: "03",
-    shortTitle: "AI & Agents",
-    description:
-      "Intelligent systems and automated workflows that think, adapt, and scale so you don't have to do it manually.",
-    services: [
-      "LLM Agent Development",
-      "Custom AI Solutions",
-      "Workflow Automation",
-      "Smart API Orchestration",
+    icon: Sparkles,
+    title: "AI Tools & Automation",
+    plain:
+      "Smart features that do repetitive work automatically, so you don't have to.",
+    items: [
+      "AI chat assistants",
+      "Automating manual tasks",
+      "Apps that talk to each other",
     ],
+    bgClass: "bg-[#C4F1FF]",
+    textClass: "text-[#0A0314]",
+    accent: "#0284C7",
+    iconBg: "bg-[#0284C7]/12",
+    bgImage:
+      "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1200&auto=format&fit=crop",
   },
   {
-    id: "04",
-    shortTitle: "UX Design",
-    description:
-      "Technical depth meets refined design sensibility every pixel earns its place, every interaction feels inevitable.",
-    services: [
-      "UI/UX Design",
-      "Prototyping & User Testing",
-      "Brand-Aligned Interfaces",
-      "Product Strategy",
-    ],
+    icon: Palette,
+    title: "Design",
+    plain:
+      "How your product looks and feels — and how easy it actually is to use.",
+    items: ["App & website design", "User testing", "Consistent branding"],
+    bgClass: "bg-[#FFD000]",
+    textClass: "text-[#0A0314]",
+    accent: "#0A0314",
+    iconBg: "bg-[#0A0314]/12",
+    bgImage:
+      "https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=1200&auto=format&fit=crop",
   },
 ];
 
 const ExpertiseSection = () => {
-  const [activeIdx, setActiveIdx] = useState(0);
-  const active = serviceCategories[activeIdx];
+  const sectionRef = useRef(null);
+  const stackRef = useRef(null);
+  const cardRefs = useRef([]);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      const cards = cardRefs.current.filter(Boolean);
+      if (!cards.length || !stackRef.current) return;
+
+      cards.forEach((card) => {
+        gsap.set(card, { transformOrigin: "50% 100%" });
+      });
+
+      gsap.set(cards[0], {
+        yPercent: 0,
+        scale: 1,
+        rotate: 0,
+        filter: "brightness(1)",
+      });
+
+      cards.slice(1).forEach((card) => {
+        gsap.set(card, {
+          yPercent: 100,
+          scale: 1,
+          rotate: 0,
+          filter: "brightness(1)",
+        });
+      });
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: stackRef.current,
+          start: "top top",
+          end: `+=${(cards.length - 1) * 100}%`,
+          scrub: 1,
+          pin: true,
+          pinSpacing: true,
+        },
+      });
+
+      cards.forEach((card, i) => {
+        if (i === 0) return;
+        const segment = i - 1;
+
+        tl.to(
+          cards[i - 1],
+          {
+            scale: 0.92,
+            y: -28,
+            rotate: -6,
+            filter: "brightness(0.78)",
+            duration: 1,
+            ease: "none",
+          },
+          segment
+        );
+
+        tl.to(card, { yPercent: 0, duration: 1, ease: "none" }, segment);
+      });
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
 
   return (
-    <section className="bg-[#0A0314] py-20 md:py-28 overflow-hidden">
-      {/* Header */}
-      <div className="px-5 md:px-6 max-w-6xl mx-auto mb-12 md:mb-16">
-        <p className="text-[10px] text-[#FFD000] uppercase tracking-[0.35em] mb-4">
-          Capabilities
-        </p>
-        <h2 className="text-[clamp(2.6rem,10vw,5.5rem)] font-black text-white tracking-tight leading-[0.88] uppercase">
-          What I{" "}
-          <span className="relative inline-block">
-            Build
-            <span
-              className="absolute -bottom-1.5 left-0 h-[4px] md:h-[5px] w-full"
-              style={{ background: "#FFD000" }}
-            />
+    <section
+      ref={sectionRef}
+      className="relative w-full bg-[#0A0314] overflow-hidden"
+    >
+      <div className="relative z-10 w-full flex flex-col items-center px-4 sm:px-6 md:px-10 lg:px-16">
+        {/* Header */}
+        <div className="text-center pt-20 md:pt-28 pb-12 md:pb-16 mb-[-60px] md:mb-[-80px]">
+          <span className="inline-block text-[11px] md:text-xs font-semibold uppercase tracking-[0.25em] text-[#FFD000] mb-5">
+            Capabilities
           </span>
-          .
-        </h2>
-        <p className="text-zinc-500 mt-8 max-w-lg text-sm md:text-base font-light leading-relaxed">
-          Clean code, thoughtful design, intelligent systems combined into
-          digital products that are fast, scalable, and genuinely delightful.
-        </p>
-      </div>
+          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-[#ECEFF3] leading-[1.05] max-w-4xl mx-auto">
+            What I build for you.
+          </h2>
+        </div>
 
-      {/* Tabs */}
-      <div className="px-5 md:px-6 max-w-6xl mx-auto">
-        {/* Tab bar scrollable row on mobile, full row on desktop */}
-        <div className="flex md:grid md:grid-cols-4 border-t border-b border-white/[0.07] overflow-x-auto no-scrollbar">
-          {serviceCategories.map((cat, i) => {
-            const isActive = activeIdx === i;
+        {/* Stack */}
+        <div ref={stackRef} className="relative w-full max-w-5xl h-screen">
+          {serviceCategories.map((cat, idx) => {
+            const Icon = cat.icon;
             return (
-              <button
-                key={cat.id}
-                onClick={() => setActiveIdx(i)}
-                aria-selected={isActive}
-                className={`relative shrink-0 md:shrink flex flex-col items-start gap-2 px-5 md:px-2 py-6 md:py-8 text-left transition-colors duration-300 ${
-                  i !== 0 ? "border-l border-white/[0.07]" : ""
-                }`}
+              <div
+                key={cat.title}
+                ref={(el) => (cardRefs.current[idx] = el)}
+                className="absolute inset-0 flex items-center justify-center will-change-transform"
+                style={{ zIndex: idx + 1 }}
               >
-                <span
-                  className={`text-[11px] font-mono transition-colors duration-300 ${
-                    isActive ? "text-[#FFD000]" : "text-zinc-700"
-                  }`}
+                <div
+                  className={`relative w-full rounded-[2rem] md:rounded-[2.5rem] p-7 sm:p-10 md:p-14 lg:p-16 min-h-[420px] md:min-h-[480px] max-h-[82vh] flex flex-col justify-between overflow-hidden border border-black/5 ${cat.bgClass}`}
                 >
-                  {cat.id}
-                </span>
-                <span
-                  className={`text-sm md:text-lg font-black uppercase tracking-tight whitespace-nowrap md:whitespace-normal transition-colors duration-300 ${
-                    isActive ? "text-white" : "text-zinc-500"
-                  }`}
-                >
-                  {cat.shortTitle}
-                </span>
-                <motion.span
-                  initial={false}
-                  animate={{ scaleX: isActive ? 1 : 0 }}
-                  transition={{ duration: 0.35, ease: [0.25, 0, 0, 1] }}
-                  className="absolute left-0 -bottom-px h-[2px] w-full origin-left"
-                  style={{ background: "#FFD000" }}
-                />
-              </button>
+                  {/* Soft background image */}
+                  <div className="absolute inset-0 z-0 pointer-events-none">
+                    <img
+                      src={cat.bgImage}
+                      alt=""
+                      className="w-full h-full object-cover opacity-[0.18] mix-blend-overlay"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-black/10" />
+                  </div>
+
+                  {/* Top row: icon + index */}
+                  <div className="relative z-10 flex items-start justify-between">
+                    <div
+                      className={`w-12 h-12 md:w-14 md:h-14 rounded-2xl flex items-center justify-center ${cat.iconBg}`}
+                    >
+                      <Icon
+                        className={`w-6 h-6 md:w-7 md:h-7 ${cat.textClass}`}
+                        strokeWidth={1.75}
+                      />
+                    </div>
+                    <span
+                      className={`text-sm font-medium opacity-50 ${cat.textClass}`}
+                    >
+                      0{idx + 1}
+                    </span>
+                  </div>
+
+                  {/* Title */}
+                  <h3
+                    className={`relative z-10 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.05] mt-8 mb-6 ${cat.textClass}`}
+                  >
+                    {cat.title}
+                  </h3>
+
+                  {/* Description + tags */}
+                  <div className="relative z-10 max-w-2xl">
+                    <p
+                      className={`text-base sm:text-lg md:text-xl font-medium leading-relaxed mb-6 opacity-90 ${cat.textClass}`}
+                    >
+                      {cat.plain}
+                    </p>
+
+                    <ul className="flex flex-wrap gap-2.5">
+                      {cat.items.map((item) => (
+                        <li
+                          key={item}
+                          className={`text-xs sm:text-sm font-medium rounded-full px-3.5 py-1.5 bg-black/8 ${cat.textClass}`}
+                        >
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
             );
           })}
         </div>
-
-        {/* Panel */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={active.id}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.3, ease: [0.25, 0, 0, 1] }}
-            className="pt-8 md:pt-14 pb-4 flex flex-col md:grid md:grid-cols-2 gap-7 md:gap-16"
-          >
-            <p className="text-zinc-300 text-base md:text-xl font-light leading-relaxed">
-              {active.description}
-            </p>
-
-            <div className="grid grid-cols-2 md:flex md:flex-col gap-2.5 md:gap-3">
-              {active.services.map((item, j) => (
-                <motion.div
-                  key={item}
-                  initial={{ opacity: 0, y: 8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.05 * j, duration: 0.25 }}
-                  className="flex items-center gap-2.5 bg-white/[0.04] border border-white/[0.06] rounded-xl px-3.5 py-3 md:bg-transparent md:border-none md:rounded-none md:px-0 md:py-0"
-                >
-                  <div className="w-1 h-1 rounded-full bg-[#FFD000] shrink-0" />
-                  <span className="text-zinc-300 text-[13px] md:text-[15px] leading-snug tracking-wide">
-                    {item}
-                  </span>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-        </AnimatePresence>
-      </div>
-
-      {/* Footer */}
-      <div className="px-5 md:px-6 max-w-6xl mx-auto mt-10 md:mt-16 flex items-center gap-4">
-        <div className="h-px flex-1 bg-white/[0.04]" />
-        <span className="text-[10px] text-zinc-700 uppercase tracking-[0.3em]">
-          {serviceCategories.length} Disciplines
-        </span>
       </div>
     </section>
   );

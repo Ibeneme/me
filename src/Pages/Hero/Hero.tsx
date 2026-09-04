@@ -1,26 +1,16 @@
 import React from "react";
 import { ArrowUpRight, MessageCircle } from "lucide-react";
-import me from "../../assets/images/image.webp";
-
-/**
- * Fonts used: Space Grotesk (display), Inter (body), JetBrains Mono (labels).
- * Add these to your index.html <head> if not already present:
- *
- * <link rel="preconnect" href="https://fonts.googleapis.com">
- * <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
- */
+import meVideo from "../../assets/videos/me.mp4";
 
 const Hero: React.FC = () => {
   return (
     <section
       className="relative min-h-[100dvh] pt-[48px] overflow-hidden bg-[#0A0314] text-[#ECEFF3]"
       style={{
-        // @ts-expect-error -- custom CSS vars
         "--font-display": "'Space Grotesk', sans-serif",
         "--font-mono": "'JetBrains Mono', monospace",
       }}
     >
-      {/* decorative grid */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 opacity-[0.04]"
@@ -30,30 +20,29 @@ const Hero: React.FC = () => {
           backgroundSize: "56px 56px",
         }}
       />
-
       <div className="relative mx-auto grid min-h-[100dvh] max-w-6xl grid-cols-1 gap-14 px-6 pt-28 pb-16 lg:grid-cols-[1.15fr_auto_0.85fr] lg:items-center lg:gap-0 lg:px-10 lg:pt-16">
-        {/* Left: content */}
         <div className="max-w-4xl lg:pr-14">
           <p
-            className="mb-6 flex font-bold items-center gap-2 text-[15px] tracking-wide text-[#FFD000]"
+            className="mb-6 flex uppercase font-bold items-center gap-2 text-[17px] tracking-wide text-[#FFD000]"
             style={{}}
           >
-            Software developer &amp; ML Engineer
+            Software developer &amp; AI Engineer
           </p>
 
-          <h1
-            className="mb-6 overflow-hidden text-[clamp(2.6rem,6vw,4.2rem)] font-semibold leading-[1.02] tracking-tight"
-            style={{ fontFamily: "var(--font-display)" }}
-          >
-            <span className="block animate-reveal-up [animation-delay:120ms]">
+          <h1 className="mb-6 overflow-hidden text-[clamp(2.6rem,6vw,4.2rem)] font-semibold leading-[1.02] tracking-tight">
+            <span
+              style={{ fontFamily: '"Parkinsans", sans-serif' }}
+              className="block animate-reveal-up [animation-delay:120ms]"
+            >
               Ibeneme Ikenna
             </span>
           </h1>
 
           <p className="mb-10 max-w-[38ch] text-[15px] leading-relaxed text-[#8891A0] sm:text-base">
-            I build high-performance software and intelligent systems —
-            interfaces that feel effortless, and models that hold up in
-            production.
+            I build high-performance{" "}
+            <span style={{ color: "#ffd000" }}>software</span> and intelligent{" "}
+            <span style={{ color: "#ffd000" }}>systems</span> that feel
+            effortless, and ML models that hold up in production.
           </p>
 
           <div className="mb-12  flex flex-wrap items-center gap-3">
@@ -103,7 +92,7 @@ const Hero: React.FC = () => {
           className="hidden h-full w-px bg-gradient-to-b from-transparent via-[#1A1F26] to-transparent lg:block"
         />
 
-        {/* Right: framed portrait */}
+        {/* Right: framed portrait video */}
         <div className="relative mx-auto w-full max-w-[340px] lg:mx-0 lg:ml-14 lg:max-w-none">
           {/* outer frame */}
           <div className="relative aspect-[4.5/5] w-full">
@@ -117,14 +106,17 @@ const Hero: React.FC = () => {
               className="pointer-events-none absolute -top-3 -left-3 h-8 w-8 border-t-2 border-l-2 border-[#FFD000]"
             />
 
-            {/* main image container */}
+            {/* main video container */}
             <div className="relative h-full w-full overflow-hidden rounded-[clamp(28px,7vw,52px)] border border-[#FFD000]/40 bg-[#0F0A1A] shadow-[0_0_0_1px_rgba(255,208,0,0.08),0_24px_48px_-12px_rgba(0,0,0,0.55)]">
-              <img
-                src={me}
-                alt="Ibeneme Ikenna"
+              <video
+                src={meVideo}
+                autoPlay
+                loop
+                muted
+                playsInline
+                preload="auto"
+                aria-label="Ibeneme Ikenna"
                 className="h-full grayscale w-full object-cover object-top transition-transform duration-700 ease-out hover:scale-[1.03]"
-                loading="eager"
-                fetchPriority="high"
               />
 
               {/* bottom gradient fade */}
@@ -145,6 +137,28 @@ const Hero: React.FC = () => {
         </div>
       </div>
 
+      <div
+        aria-hidden="true"
+        className="relative z-10 -rotate-1 -translate-y-4 border-y-2 border-black bg-[#D4FF3F] py-6"
+      >
+        <div className="flex w-max animate-marquee gap-12 whitespace-nowrap text-xl font-black uppercase tracking-tight text-[#0B0014]">
+          {Array.from({ length: 3 }).map((_, i) => (
+            <span key={i} className="flex items-center gap-8">
+              <span>open to work</span>
+              <span>✦</span>
+              <span>react native</span>
+              <span>✦</span>
+              <span>node.js</span>
+              <span>✦</span>
+              <span>ml that ships</span>
+              <span>✦</span>
+              <span>port harcourt → anywhere</span>
+              <span>✦</span>
+            </span>
+          ))}
+        </div>
+      </div>
+
       <style>{`
         @keyframes reveal-up {
           from { transform: translateY(100%); opacity: 0; }
@@ -155,6 +169,17 @@ const Hero: React.FC = () => {
         }
         @media (prefers-reduced-motion: reduce) {
           .animate-reveal-up { animation: none; }
+        }
+
+        @keyframes marquee {
+          from { transform: translateX(0); }
+          to { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+          animation: marquee 18s linear infinite;
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .animate-marquee { animation: none; }
         }
       `}</style>
     </section>

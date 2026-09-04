@@ -95,7 +95,10 @@ const Navbar: React.FC = () => {
                 alt="Logo"
                 className="h-7 w-7 object-contain transition-transform duration-300 group-hover:rotate-6 sm:h-8 sm:w-8"
               />
-              <span className="ide-font text-xs font-bold tracking-tight text-white transition-colors duration-300 group-hover:text-[#FFD000] sm:text-sm">
+              <span
+                style={{ fontFamily: '"Parkinsans", sans-serif' }}
+                className="ide-font text-xs font-bold tracking-tight text-white transition-colors duration-300 group-hover:text-[#FFD000] sm:text-sm"
+              >
                 ibeneme.dev
               </span>
             </Link>
@@ -172,7 +175,9 @@ const Navbar: React.FC = () => {
                   >
                     <span
                       className={`text-[1.2rem] font-semibold tracking-tight transition-colors sm:text-[1.35rem] ${
-                        active ? "text-[#FFD000]" : "text-white group-hover:text-[#FFD000]"
+                        active
+                          ? "text-[#FFD000]"
+                          : "text-white group-hover:text-[#FFD000]"
                       }`}
                     >
                       {name.toLowerCase()}
