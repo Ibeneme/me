@@ -77,7 +77,7 @@ const Navbar: React.FC = () => {
       <nav className="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-6 sm:pt-4">
         <div className="mx-auto max-w-5xl">
           <div
-            className={`relative flex h-14 items-center justify-between rounded-full border px-3.5 transition-all duration-500 sm:h-16 sm:px-6 ${
+            className={`relative flex h-20 items-center justify-between rounded-full border px-3.5 transition-all duration-500 sm:h-16 sm:px-6 ${
               scrolled
                 ? "border-[#270668]/80 bg-[#0A0314]/90 shadow-[0_12px_40px_rgba(0,0,0,0.7)] backdrop-blur-2xl"
                 : "border-[#270668]/50 bg-[#0A0314]/75 shadow-[0_8px_32px_rgba(0,0,0,0.55)] backdrop-blur-xl"
@@ -93,9 +93,9 @@ const Navbar: React.FC = () => {
               <img
                 src={logo}
                 alt="Logo"
-                className="h-7 w-7 object-contain transition-transform duration-300 group-hover:rotate-6 sm:h-8 sm:w-8"
+                className="h-10 w-10 object-contain transition-transform duration-300 group-hover:rotate-6 sm:h-8 sm:w-8"
               />
-              <span className="text-xs font-bold tracking-tight text-white transition-colors duration-300 group-hover:text-[#FFD000] sm:text-sm">
+              <span className="text-[20px] font-bold tracking-tight text-white transition-colors duration-300 group-hover:text-[#FFD000]">
                 ibeneme.com
               </span>
             </Link>
@@ -141,7 +141,7 @@ const Navbar: React.FC = () => {
             <button
               onClick={() => setIsOpen(!isOpen)}
               aria-label={isOpen ? "Close menu" : "Open menu"}
-              className="nav-focus grid h-9 w-9 place-items-center rounded-full border border-[#270668] bg-[#270668]/40 text-white transition-all duration-300 hover:bg-[#270668]/70 sm:h-10 sm:w-10 md:hidden"
+              className="nav-focus grid h-12 w-12 place-items-center rounded-full border border-[#270668] bg-[#270668]/40 text-white transition-all duration-300 hover:bg-[#270668]/70 sm:h-10 sm:w-10 md:hidden"
             >
               {isOpen ? <X size={18} /> : <Menu size={18} />}
             </button>
