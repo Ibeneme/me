@@ -141,7 +141,7 @@ const FlagsRow: React.FC = () => {
           loop
           muted
           playsInline
-          className="w-full h-[650px] md:h-[650px] block object-cover"
+          className="w-full h-[500px] md:h-[650px] block object-cover"
         >
           <source src={actionVideo} type="video/mp4" />
           Your browser does not support the video tag.
