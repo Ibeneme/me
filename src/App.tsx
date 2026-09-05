@@ -19,7 +19,7 @@ function App() {
     // Ensures the loader stays active for exactly 10 seconds on initial application mount
     const timer = setTimeout(() => {
       setIsFirstLoad(false);
-    }, 4000);
+    }, 3000);
 
     return () => clearTimeout(timer);
   }, []);
@@ -28,7 +28,7 @@ function App() {
     <>
       <ScrollToTop />
       {/* Show custom LoadingScreen during the initial 10-second window */}
-      {isFirstLoad && <LoadingScreen minDisplayTime={4000} />}
+      {isFirstLoad && <LoadingScreen minDisplayTime={3000} />}
       <Navbar />
       <Suspense fallback={null}>
         <Routes>
