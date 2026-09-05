@@ -110,7 +110,7 @@ const Navbar: React.FC = () => {
                       to={path}
                       className={`nav-focus relative flex items-center gap-2 rounded-full px-4 py-2 transition-all duration-300 ${
                         active
-                          ? "bg-[#270668]/60 text-white font-medium border border-[#270668]"
+                          ? "bg-[#270668]/60 text-white font-medium"
                           : "text-purple-200/65 hover:bg-[#270668]/35 hover:text-white"
                       }`}
                     >

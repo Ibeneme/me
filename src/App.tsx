@@ -1,4 +1,4 @@
-import { Suspense, lazy } from "react";
+import { Suspense, lazy, useState, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import ScrollToTop from "./ScrollToTop";
 import Navbar from "./Components/Navbar/Navbar";
@@ -13,20 +13,33 @@ const NotFound = lazy(() => import("./Pages/NotFound"));
 const AboutPage = lazy(() => import("./Pages/AboutPage"));
 
 function App() {
+  const [isFirstLoad, setIsFirstLoad] = useState(true);
+
+  useEffect(() => {
+    // Ensures the loader stays active for exactly 10 seconds on initial application mount
+    const timer = setTimeout(() => {
+      setIsFirstLoad(false);
+    }, 4000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <>
       <ScrollToTop />
-      <Suspense fallback={<LoadingScreen />}>
-        <Navbar />
+      {/* Show custom LoadingScreen during the initial 10-second window */}
+      {isFirstLoad && <LoadingScreen minDisplayTime={4000} />}
+      <Navbar />
+      <Suspense fallback={null}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/projects" element={<OurProjectsPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
-        <ContactUs />
-        <Footer />
       </Suspense>
+      <ContactUs />
+      <Footer />
     </>
   );
 }

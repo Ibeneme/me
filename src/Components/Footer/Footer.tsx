@@ -133,7 +133,7 @@ const Footer: React.FC = () => {
 
           {/* Decorative lines + Big name */}
           <div className="relative">
-            {/* Top line */}
+
 
             <h2 className="text-[64px] sm:text-[100px] md:text-[160px] lg:text-[220px] xl:text-[250px] font-bold text-[#ffffff] tracking-tighter leading-none select-none text-center">
               Ibeneme <span style={{ color: "#ffd000" }}>.</span>
