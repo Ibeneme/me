@@ -76,24 +76,7 @@ const FlagsRow: React.FC = () => {
   useEffect(() => {
     const ctx = gsap.context(() => {
       // Simple scale + opacity reveal (no filters)
-      gsap.fromTo(
-        videoRef.current,
-        {
-          scale: 1.12,
-          opacity: 1,
-        },
-        {
-          scale: 1,
-          opacity: 1,
-          ease: "none",
-          scrollTrigger: {
-            trigger: videoSectionRef.current,
-            start: "top 90%",
-            end: "top 25%",
-            scrub: 1,
-          },
-        }
-      );
+
 
       // Subtle parallax while it's in frame
       gsap.to(videoRef.current, {
