@@ -1,8 +1,8 @@
 import React from "react";
 import { ArrowUpRight } from "lucide-react";
-import pickarsImg from "../../assets/projects/new/pickars.webp";
+import pickarsImg from "../../assets/projects/new/new_pickars.png";
 import kindredImg from "../../assets/projects/new/kindred.webp";
-import yareImg from "../../assets/projects/new/yare.webp";
+import yareImg from "../../assets/projects/new/yare.png";
 import colsphere from "../../assets/projects/new/colsphere.webp";
 import care from "../../assets/projects/new/care.png";
 // (Make sure to include your other existing image imports like pickarsImg, kindredImg, etc. above)
