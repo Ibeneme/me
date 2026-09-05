@@ -28,7 +28,7 @@ const Hero: React.FC = () => {
             className="mb-6 flex uppercase font-bold items-center gap-2 text-[17px] tracking-wide text-[#FFD000]"
             style={{}}
           >
-            Software developer &amp; AI Engineer
+            Software developer &amp; ML Engineer
           </p>
 
           <h1 className="mb-6 overflow-hidden text-[clamp(2.6rem,6vw,4.2rem)] font-semibold leading-[1.02] tracking-tight">
