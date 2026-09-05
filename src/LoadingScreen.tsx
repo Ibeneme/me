@@ -44,9 +44,9 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({
           ease: "back.out(1.8)",
         })
 
-        // Domain text slides in from the right
+        // Domain text slides in from the right (Fixed using class selector)
         .fromTo(
-          topBarRef.current?.children[1],
+          ".topbar-title",
           { x: 30, opacity: 0 },
           { x: 0, opacity: 1, duration: 0.6, ease: "power3.out" },
           "-=0.35"
@@ -275,7 +275,8 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({
                 className="w-8 h-8 md:w-9 md:h-9 object-contain opacity-90"
               />
             </div>
-            <div className="text-xs md:text-sm font-semibold tracking-[0.25em] text-[#fff] uppercase">
+            {/* Added topbar-title class here */}
+            <div className="topbar-title text-xs md:text-sm font-semibold tracking-[0.25em] text-[#fff] uppercase">
               ibeneme.com
             </div>
           </div>
