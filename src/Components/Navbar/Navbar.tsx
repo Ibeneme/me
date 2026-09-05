@@ -95,16 +95,13 @@ const Navbar: React.FC = () => {
                 alt="Logo"
                 className="h-7 w-7 object-contain transition-transform duration-300 group-hover:rotate-6 sm:h-8 sm:w-8"
               />
-              <span
-                style={{ fontFamily: '"Parkinsans", sans-serif' }}
-                className="ide-font text-xs font-bold tracking-tight text-white transition-colors duration-300 group-hover:text-[#FFD000] sm:text-sm"
-              >
+              <span className="text-xs font-bold tracking-tight text-white transition-colors duration-300 group-hover:text-[#FFD000] sm:text-sm">
                 ibeneme.com
               </span>
             </Link>
 
             {/* Desktop Links */}
-            <ul className="ide-font hidden items-center gap-1 text-[13px] md:flex">
+            <ul className="hidden items-center gap-1 text-[13px] md:flex">
               {navItems.map(({ name, path }) => {
                 const active = location.pathname === path;
                 return (
@@ -197,7 +194,7 @@ const Navbar: React.FC = () => {
 
             {/* Bottom section */}
             <div className="px-5 pt-4 pb-5 sm:px-6 sm:pt-5 sm:pb-6">
-              <p className="ide-font text-[10px] font-medium tracking-[0.1em] text-purple-200/50 uppercase mb-3 sm:mb-4">
+              <p className="text-[10px] font-medium tracking-[0.1em] text-purple-200/50 uppercase mb-3 sm:mb-4">
                 Get in touch
               </p>
               <div className="flex gap-2.5 sm:gap-3">

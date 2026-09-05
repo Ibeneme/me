@@ -1,4 +1,4 @@
-import actionVideo from "../../assets/videos/actions.mp4";
+import actionVideo from "../../assets/videos/action.mp4";
 import React, { memo, useEffect, useRef } from "react";
 import ReactCountryFlag from "react-country-flag";
 import gsap from "gsap";
@@ -54,11 +54,9 @@ const ManifestPanel = memo(() => {
                     title={name}
                   />
                 </div>
-                {/* Bolder country names */}
                 <span className="text-[14px] font-semibold text-white flex-1">
                   {name}
                 </span>
-                {/* Bolder coordinates/items */}
                 <span className="font-[var(--font-mono)] text-[11px] font-medium text-zinc-400 whitespace-nowrap">
                   {coords}
                 </span>
@@ -77,19 +75,16 @@ const FlagsRow: React.FC = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Reveal: scales down slightly, fades in, and settles into its
-      // final (darker, sharper) grayscale grade as it enters the viewport
+      // Simple scale + opacity reveal (no filters)
       gsap.fromTo(
         videoRef.current,
         {
           scale: 1.12,
-          opacity: 0,
-          filter: "grayscale(0.71) brightness(0.62) contrast(1.05)",
+          opacity: 1,
         },
         {
           scale: 1,
           opacity: 1,
-          filter: "grayscale(0.71) brightness(0.62) contrast(1.05)",
           ease: "none",
           scrollTrigger: {
             trigger: videoSectionRef.current,
@@ -126,9 +121,8 @@ const FlagsRow: React.FC = () => {
       className="relative w-full bg-[#0A0314] pt-20 md:pt-28 overflow-hidden border-t border-zinc-900"
     >
       <div className="max-w-6xl mx-auto px-6">
-        {/* Left content stays left, right panel stays right */}
         <div className="flex flex-col md:flex-row md:justify-between gap-12 md:gap-16 items-center">
-          {/* Copy block — left aligned */}
+          {/* Copy block */}
           <div className="w-full max-w-md">
             <h2 className="text-4xl md:text-5xl font-bold text-white tracking-tight leading-[1.1] mb-6">
               Building across{" "}
@@ -148,15 +142,15 @@ const FlagsRow: React.FC = () => {
             </p>
           </div>
 
-          {/* Manifest panel — right aligned */}
+          {/* Manifest panel */}
           <ManifestPanel />
         </div>
       </div>
 
-      {/* Full-width bottom section with autoplay video, zero max-width constraints */}
+      {/* Full-width video — natural colors + purple overlay */}
       <div
         ref={videoSectionRef}
-        className="w-full mt-20 md:mt-28 overflow-hidden max-h-[550px]"
+        className="relative w-full mt-20 md:mt-28 overflow-hidden max-h-[800px]"
       >
         <video
           ref={videoRef}
@@ -164,61 +158,24 @@ const FlagsRow: React.FC = () => {
           loop
           muted
           playsInline
-          className="w-full h-auto block object-cover"
-          style={{
-            filter: " brightness(0.22) contrast(1.05)",
-            willChange: "transform, filter, opacity",
-          }}
+          className="w-full h-[650px] md:h-[650px] block object-cover"
         >
           <source src={actionVideo} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
-      </div>
-      <div
-        aria-hidden="true"
-        className="relative z-10 -rotate-1 -translate-y-4 border-y-2 border-black bg-[#D4FF3F] py-6"
-      >
-        <div className="flex w-max animate-marquee gap-12 whitespace-nowrap text-xl font-black uppercase tracking-tight text-[#0B0014]">
-          {Array.from({ length: 3 }).map((_, i) => (
-            <span key={i} className="flex items-center gap-8">
-              <span>open to work</span>
-              <span>✦</span>
-              <span>react native</span>
-              <span>✦</span>
-              <span>node.js</span>
-              <span>✦</span>
-              <span>ml that ships</span>
-              <span>✦</span>
-              <span>port harcourt → anywhere</span>
-              <span>✦</span>
-            </span>
-          ))}
+
+        {/* Purple overlay */}
+        <div className="absolute inset-0 bg-[#00000095] pointer-events-none" />
+
+        {/* Bottom text overlay */}
+        <div className="absolute bottom-0 left-0 right-0 pb-4 md:pb-6 pointer-events-none">
+          <div className="relative">
+            <h2 className="text-[64px] sm:text-[100px] md:text-[160px] lg:text-[220px] xl:text-[250px] font-bold text-[#ffffff] tracking-tighter leading-none select-none text-center">
+              Ibeneme <span style={{ color: "#ffd000" }}>.</span>
+            </h2>
+          </div>
         </div>
       </div>
-
-      <style>{`
-        @keyframes reveal-up {
-          from { transform: translateY(100%); opacity: 0; }
-          to { transform: translateY(0); opacity: 1; }
-        }
-        .animate-reveal-up {
-          animation: reveal-up 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
-        }
-        @media (prefers-reduced-motion: reduce) {
-          .animate-reveal-up { animation: none; }
-        }
-
-        @keyframes marquee {
-          from { transform: translateX(0); }
-          to { transform: translateX(-50%); }
-        }
-        .animate-marquee {
-          animation: marquee 18s linear infinite;
-        }
-        @media (prefers-reduced-motion: reduce) {
-          .animate-marquee { animation: none; }
-        }
-      `}</style>
 
       <style>{`
         .manifest-mask {

@@ -13,7 +13,7 @@ const BlogHero: React.FC<BlogHeroProps> = ({
   date = "April 2026",
 }) => {
   return (
-    <section className="bg-[#0A0314] pt-40 pb-32 md:pt-52 md:pb-40 px-6 border-b border-zinc-900">
+    <section className="bg-[#0A0314] pt-40 pb-32 md:pt-52 md:pb-40 px-6">
       <div className="max-w-4xl mx-auto">
         {/* Metadata */}
         <motion.div

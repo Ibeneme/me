@@ -1,154 +1,264 @@
 import React from "react";
 import { motion, Variants } from "framer-motion";
+import { Code2, Terminal, MapPin, GitCommit } from "lucide-react";
 import me from "../../assets/images/image.png";
 
-// Animation variant with proper typing for Framer Motion
+/* ─────────────────────────────────────────────
+   Content & config (single source of truth)
+───────────────────────────────────────────── */
+
+const content = {
+  headline: "I build fast, dependable software and keep it simple.",
+  intro: [
+    "I've shipped fintech apps that move real money, logistics platforms tracking deliveries in real time, and the AI features layered on top of them. My focus stays the same across all of it: fewer moving parts, faster load times, and software that still works the way it's supposed to a year later.",
+  ],
+  approach: {
+    title: "How I work",
+    body: "I keep architecture simple and cut anything that doesn't earn its place whether that's a payment flow, live tracking, or an AI feature. The goal is always software that stays fast and doesn't break under real use. I'd rather ship something small and solid than something big and fragile.",
+  },
+  stackTitle: "What I build with",
+  stack: ["React Native", "TypeScript", "Node.js", "Next.js", "Rust"] as const,
+  importLine: {
+    items: ["React Native", "TypeScript", "Node.js"],
+    from: "@ikenna/core",
+  },
+  marquee: [
+    "open to work",
+    "react native",
+    "node.js",
+    "ml that ships",
+    "port harcourt → anywhere",
+  ] as const,
+  timeline: [
+    {
+      hash: "9f2a1c4",
+      role: "Lead Software Developer & Architect",
+      period: "2024 — now",
+      copy: "Building complete systems for finance, logistics, and AI products — mobile apps, backend services, and the infrastructure that keeps transactions moving. Most weeks that means owning a product end to end, from the database schema up to the screen someone taps.",
+      active: true,
+    },
+    {
+      hash: "3c8e9a2",
+      role: "Full-Stack & Mobile Engineer",
+      period: "2021 — 2024",
+      copy: "Built scalable web and mobile products for growing teams, and settled into TypeScript and cloud infrastructure as a daily practice. This is where I learned to think in systems instead of one-off features.",
+      active: false,
+    },
+    {
+      hash: "5b7e001",
+      role: "Systems & Software Engineer",
+      period: "2019",
+      copy: "Started out focused on performance and backend fundamentals — the foundation everything since has built on.",
+      active: false,
+    },
+  ],
+} as const;
+
+/* ─────────────────────────────────────────────
+   Animation
+───────────────────────────────────────────── */
+
 const rise: Variants = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0, y: 16 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as const },
+    transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
   },
 };
 
+const viewport = { once: true, margin: "-60px" } as const;
+
+/* ─────────────────────────────────────────────
+   Component
+───────────────────────────────────────────── */
+
 const About: React.FC = () => {
   return (
-    <section className="relative bg-[#0A0314] py-24 md:py-32 overflow-hidden">
-      {/* Background ambient glow matching your theme */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-[#ffd000]/[0.02] blur-[120px] pointer-events-none rounded-full" />
+    <section className="relative pt-4 bg-[#0A0314] pb-24 md:pb-32 selection:bg-[#FFD000] selection:text-black">
+      {/* Ambient glow */}
+      <div
+        className="pointer-events-none absolute left-1/2 top-0 h-[280px] w-[560px] -translate-x-1/2 rounded-full bg-[#FFD000]/[0.04] blur-[140px]"
+        aria-hidden
+      />
 
-      {/* Main container with horizontal padding preserved for boxed content */}
-      <div className="max-w-5xl mx-auto px-5 sm:px-8 relative z-10">
-        {/* Intro */}
-        <div className="grid md:grid-cols-12 gap-12 md:gap-16 mb-24 md:mb-32 items-center">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            className="md:col-span-4"
-          >
-            <div className="aspect-[4/5] overflow-hidden rounded-2xl bg-white/[0.02] border border-white/[0.07] shadow-[0_20px_40px_-12px_rgba(0,0,0,0.5)] group">
-              <img
-                src={me}
-                alt="Ikenna Ibeneme"
-                className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-out"
-              />
-            </div>
-          </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, x: 24 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
-            className="md:col-span-8 flex flex-col justify-center"
-          >
-            <span className="text-[11px] uppercase tracking-[0.35em] text-[#FFD000] mb-6 block font-medium">
-              The Developer & Architect
-            </span>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tighter leading-[0.98] mb-8">
-              I build software systems that prioritize clarity, performance, and
-              intent.
-            </h1>
-            <p className="text-zinc-400 text-lg leading-relaxed font-light max-w-xl">
-              Based in Port Harcourt, I operate at the intersection of complex
-              software architecture, mobile engineering, and product design.
-              With over seven years of professional building, I specialize in
-              crafting full-stack ecosystems that turn high-level technical
-              requirements into intuitive, high-velocity digital tools.
-            </p>
-          </motion.div>
-        </div>
-
-        {/* Philosophy & Capabilities Grid */}
+      <div className="relative z-10 px-6 sm:px-8">
+        {/* Intro — widest section, sets the outer measure */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="grid md:grid-cols-2 gap-x-16 gap-y-12 border-t border-white/[0.07] pt-16 md:pt-20 mb-16"
+          variants={rise}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-80px" }}
+          className="mx-auto mb-20 grid max-w-4xl items-center gap-10 md:grid-cols-[220px_1fr] md:gap-14"
         >
-          <div className="p-6 sm:p-8 rounded-2xl bg-white/[0.01] border border-white/[0.04] transition-all duration-300 hover:border-white/[0.08]">
-            <h3 className="text-white font-bold text-lg mb-3 tracking-tight flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#FFD000]" />
-              The Approach
-            </h3>
-            <p className="text-zinc-400 text-base leading-relaxed font-light mb-4">
-              I champion a “tech-brutalist” philosophy: efficiency over ego.
-              Whether developing a cross-border fintech gateway, a logistics
-              dispatch app, or an AI vision-processing pipeline, I strip away
-              unnecessary complexity to leave behind systems that are robust,
-              functional, and exceptionally performant.
-            </p>
-            <div className="flex flex-wrap gap-2 pt-2">
-              {["Software Dev", "Server Architecture", "AI Engineering"].map(
-                (tag, i) => (
-                  <span
-                    key={i}
-                    className="text-[11px] font-mono px-2.5 py-1 rounded-md bg-white/[0.03] text-zinc-300 border border-white/[0.05]"
-                  >
-                    {tag}
-                  </span>
-                )
-              )}
-            </div>
+          <div className="group relative mx-auto aspect-[4/5] w-full overflow-hidden rounded-2xl border border-white/10 shadow-[0_20px_40px_-12px_rgba(0,0,0,0.6)] sm:w-56 md:w-full">
+            <img
+              src={me}
+              alt="Ikenna Ibeneme"
+              className="h-full w-full object-cover grayscale transition-all duration-500 ease-out group-hover:grayscale-0"
+            />
           </div>
 
-          <div className="p-6 sm:p-8 rounded-2xl bg-white/[0.01] border border-white/[0.04] transition-all duration-300 hover:border-white/[0.08]">
-            <h3 className="text-white font-bold text-lg mb-3 tracking-tight flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#FFD000]" />
-              The Core Stack
-            </h3>
-            <p className="text-zinc-400 text-base leading-relaxed font-light mb-4">
-              Engineered for absolute scalability and seamless multi-platform
-              experiences. My primary toolkit bridges lightning-fast systems
-              programming with fluid frontend and mobile application dynamics.
+          <div>
+            <h1 className="mb-5 text-3xl font-black leading-[1.05] tracking-tight text-white md:text-5xl">
+              I build fast, dependable{" "}
+              <span style={{ color: "#ffd000" }}>software</span> and keep it
+              simple.
+            </h1>
+            <p className="mb-4 text-base text-zinc-300 md:text-lg">
+              I'm a full-stack and mobile developer with{" "}
+              <span style={{ color: "#ffd000" }}> 5+ years </span>turning
+              complex problems into apps people actually enjoy using from mobile
+              products to the backends that carry them.
             </p>
-            <div className="flex flex-wrap gap-2 pt-2">
-              {["React", "React Native", "JavaScript", "Swift", "Rust"].map(
-                (tech, i) => (
-                  <span
-                    key={i}
-                    className="text-[11px] font-mono px-2.5 py-1 rounded-md bg-[#ffd000]/[0.05] text-[#FFD000] border border-[#ffd000]/20"
-                  >
-                    {tech}
-                  </span>
-                )
-              )}
-            </div>
+            {content.intro.map((paragraph, i) => (
+              <p
+                key={i}
+                className={`max-w-lg font-light leading-relaxed ${
+                  i === 1
+                    ? "mb-4 text-base text-zinc-300 md:text-lg"
+                    : "text-sm text-zinc-400 md:text-base"
+                }`}
+              >
+                {paragraph}
+              </p>
+            ))}
           </div>
         </motion.div>
       </div>
 
-      {/* Absolute Full-Width Marquee Banner breaking out of container */}
-      <div
-        aria-hidden="true"
-        className="relative z-10 w-screen left-1/2 -translate-x-1/2 my-12 -rotate-1 border-y-2 border-black bg-[#D4FF3F] py-6 overflow-hidden"
+      {/* Marquee — full-bleed, edge to edge of its parent (no vw-based breakout, which mis-centers inside nested layouts) */}
+      {/* <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true, margin: "-40px" }}
+        transition={{ duration: 0.6 }}
+        className="mb-20 overflow-hidden py-3"
       >
-        <div className="flex w-max animate-marquee gap-12 whitespace-nowrap text-xl font-black uppercase tracking-tight text-[#0B0014]">
-          {Array.from({ length: 3 }).map((_, i) => (
-            <span key={i} className="flex items-center gap-8">
-              <span>open to work</span>
-              <span>✦</span>
-              <span>react native</span>
-              <span>✦</span>
-              <span>node.js</span>
-              <span>✦</span>
-              <span>ml that ships</span>
-              <span>✦</span>
-              <span>port harcourt → anywhere</span>
-              <span>✦</span>
-            </span>
-          ))}
+        <div
+          aria-hidden
+          className="relative z-10 -rotate-1 overflow-hidden border-y-2 border-black bg-[#ffd000] py-6"
+        >
+          <div className="animate-marquee flex w-max gap-12 whitespace-nowrap text-xl font-black uppercase tracking-tight text-[#0B0014]">
+            {Array.from({ length: 3 }).map((_, i) => (
+              <span key={i} className="flex items-center gap-8">
+                {content.marquee.map((item) => (
+                  <React.Fragment key={item}>
+                    <span>{item}</span>
+                    <span>✦</span>
+                  </React.Fragment>
+                ))}
+              </span>
+            ))}
+          </div>
         </div>
+      </motion.div> */}
+
+      <div className="relative z-10 px-6 sm:px-8">
+        {/* Approach + stack — matches intro measure */}
+        <motion.div
+          variants={rise}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewport}
+          className="mx-auto mb-6 max-w-4xl rounded-2xl border border-white/10 bg-[#0F0619] p-8 md:p-10"
+        >
+          <div className="grid gap-10 sm:grid-cols-2">
+            <div>
+              <h3 className="mb-3 text-base font-semibold text-white">
+                {content.approach.title}
+              </h3>
+              <p className="text-sm font-light leading-relaxed text-zinc-400">
+                {content.approach.body}
+              </p>
+            </div>
+
+            <div>
+              <h3 className="mb-3 text-base font-semibold text-white">
+                {content.stackTitle}
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                {content.stack.map((tech) => (
+                  <span
+                    key={tech}
+                    className="rounded-lg border border-[#FFD000]/15 bg-[#FFD000]/[0.08] px-3 py-1.5 text-xs text-[#FFD000]"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Fake import — same measure as approach card */}
+        <motion.div
+          variants={rise}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewport}
+          className="mx-auto mb-16 flex max-w-4xl items-center gap-2 px-1 text-xs text-zinc-500"
+        >
+          <Code2 className="h-3.5 w-3.5" />
+          <span className="overflow-x-auto whitespace-pre">
+            <span className="text-[#9876AA]">import</span>
+            {" { "}
+            {content.importLine.items.map((item, i) => (
+              <React.Fragment key={item}>
+                {i > 0 && <span className="text-zinc-600">, </span>}
+                <span className="text-[#FFD000]">{item}</span>
+              </React.Fragment>
+            ))}
+            {" } "}
+            <span className="text-[#9876AA]">from</span>{" "}
+            <span className="text-[#6A8759]">"{content.importLine.from}"</span>
+          </span>
+        </motion.div>
+
+        {/* Timeline — narrower measure, better for reading long copy */}
+        <motion.div
+          variants={rise}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewport}
+          className="mx-auto max-w-3xl"
+        >
+          <div className="mb-8 flex items-center gap-2 text-xs text-zinc-500">
+            <Terminal className="h-3.5 w-3.5" />
+            git log --oneline career
+          </div>
+
+          <ol className="relative space-y-10 border-l border-white/10 pl-8">
+            {content.timeline.map((item) => (
+              <li key={item.hash} className="relative">
+                <span
+                  className={`absolute -left-[calc(2rem+7px)] top-1.5 h-3 w-3 rounded-full ring-4 ring-[#07020D] ${
+                    item.active ? "bg-[#FFD000]" : "bg-purple-500/60"
+                  }`}
+                />
+                <div className="mb-2 flex flex-wrap items-center gap-2 text-xs text-zinc-500">
+                  <GitCommit className="h-3.5 w-3.5" />
+                  {item.hash}
+                  <span className="text-zinc-600">·</span>
+                  {item.period}
+                </div>
+                <h4 className="mb-1.5 text-lg font-semibold tracking-tight text-white">
+                  {item.role}
+                </h4>
+                <p className="max-w-xl text-sm font-light leading-relaxed text-zinc-400">
+                  {item.copy}
+                </p>
+              </li>
+            ))}
+          </ol>
+        </motion.div>
       </div>
 
       <style>{`
         @keyframes marquee {
           from { transform: translateX(0); }
-          to { transform: translateX(-50%); }
+          to   { transform: translateX(-33.333%); }
         }
         .animate-marquee {
           animation: marquee 18s linear infinite;
@@ -158,123 +268,6 @@ const About: React.FC = () => {
           .animate-marquee { animation: none; }
         }
       `}</style>
-
-      {/* Main container resumed for remaining content */}
-      <div className="max-w-5xl mx-auto px-5 sm:px-8 relative z-10">
-        {/* ====================================================== */}
-        {/* Stack as import statement                              */}
-        {/* ====================================================== */}
-        <motion.div
-          variants={rise}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-60px" }}
-          className="mb-8 rounded-xl border border-white/[0.08] bg-white/[0.015] px-6 py-5 font-mono text-[13px] sm:text-[14px] overflow-x-auto"
-        >
-          <p className="text-zinc-500 mb-2.5"># tools reached for most often</p>
-          <p className="whitespace-pre text-zinc-300">
-            <span className="text-[#7C7CE0]">import</span> {"{ "}
-            {[
-              "React",
-              "React Native",
-              "TypeScript",
-              "Node.js",
-              "Swift",
-              "Rust",
-            ].map((tech, i, arr) => (
-              <React.Fragment key={tech}>
-                <span className="text-[#FFD000]">{tech}</span>
-                {i < arr.length - 1 && (
-                  <span className="text-zinc-500">, </span>
-                )}
-              </React.Fragment>
-            ))}
-            {" }"} <span className="text-[#7C7CE0]">from</span>{" "}
-            <span className="text-[#B8E986]">"@ikenna/stack"</span>
-            <span className="text-zinc-500">;</span>
-          </p>
-        </motion.div>
-
-        {/* ====================================================== */}
-        {/* Career as git log                                      */}
-        {/* ====================================================== */}
-        <motion.div
-          variants={rise}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-60px" }}
-          className="rounded-xl border border-white/[0.08] bg-white/[0.015] overflow-hidden"
-        >
-          <div className="px-6 py-3.5 border-b border-white/[0.08] font-mono text-[12px] text-zinc-500 flex items-center gap-3">
-            <span>$ git log --graph --oneline --decorate career</span>
-          </div>
-
-          <div className="px-6 py-7 sm:px-8">
-            <ol className="relative border-l border-white/[0.12] space-y-11">
-              {/* Present */}
-              <li className="relative pl-8">
-                <span className="absolute -left-[7px] top-1.5 w-3.5 h-3.5 rounded-full bg-[#FFD000] ring-[5px] ring-[#0A0314]" />
-                <div className="font-mono text-[12px] text-zinc-500 mb-2 flex flex-wrap items-center gap-2">
-                  <span className="text-zinc-400">9f2a1c4</span>
-                  <span className="text-[#FFD000] border border-[#FFD000]/35 bg-[#FFD000]/10 rounded px-1.5 py-0.5 text-[11px]">
-                    HEAD → present
-                  </span>
-                </div>
-                <h4 className="text-white text-lg font-bold tracking-tight mb-2">
-                  Lead Software Developer &amp; Architect
-                </h4>
-                <p className="text-zinc-400 text-[15px] leading-relaxed max-w-2xl">
-                  Leading full product lifecycles across fintech, logistics, and
-                  AI. Shipping scalable native apps (React Native + Swift),
-                  high-performance web platforms, and resilient backend
-                  infrastructure. Currently focused on cross-border payments and
-                  two-sided marketplace systems.
-                </p>
-              </li>
-
-              {/* Mid career */}
-              <li className="relative pl-8">
-                <span className="absolute -left-[7px] top-1.5 w-3.5 h-3.5 rounded-full bg-zinc-500 ring-[5px] ring-[#0A0314]" />
-                <div className="font-mono text-[12px] text-zinc-500 mb-2 flex flex-wrap items-center gap-2">
-                  <span className="text-zinc-400">3c8e9a2</span>
-                  <span className="text-zinc-500 border border-white/10 bg-white/[0.03] rounded px-1.5 py-0.5 text-[11px]">
-                    2021 – 2024
-                  </span>
-                </div>
-                <h4 className="text-white text-lg font-bold tracking-tight mb-2">
-                  Full-Stack &amp; Mobile Engineer
-                </h4>
-                <p className="text-zinc-400 text-[15px] leading-relaxed max-w-2xl">
-                  Built and shipped production systems for startups and product
-                  teams. Deepened expertise in React Native, TypeScript,
-                  Node.js, and cloud infrastructure while owning features from
-                  architecture through release.
-                </p>
-              </li>
-
-              {/* Origin */}
-              <li className="relative pl-8">
-                <span className="absolute -left-[7px] top-1.5 w-3.5 h-3.5 rounded-full bg-zinc-600 ring-[5px] ring-[#0A0314]" />
-                <div className="font-mono text-[12px] text-zinc-500 mb-2 flex flex-wrap items-center gap-2">
-                  <span className="text-zinc-400">5b7e001</span>
-                  <span className="text-zinc-500 border border-white/10 bg-white/[0.03] rounded px-1.5 py-0.5 text-[11px]">
-                    2019
-                  </span>
-                </div>
-                <h4 className="text-white text-lg font-bold tracking-tight mb-2">
-                  Systems &amp; Software Engineer
-                </h4>
-                <p className="text-zinc-400 text-[15px] leading-relaxed max-w-2xl">
-                  Started the journey focusing on server-side reliability,
-                  performant client applications, and clean, maintainable
-                  codebases. Laid the foundation for seven years of deliberate,
-                  end-to-end engineering.
-                </p>
-              </li>
-            </ol>
-          </div>
-        </motion.div>
-      </div>
     </section>
   );
 };

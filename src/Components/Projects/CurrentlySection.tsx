@@ -25,7 +25,7 @@ const PlayIcon = () => (
 );
 
 type AppLink = {
-  name?: string; // Replaces the parallel labels array
+  name?: string;
   ios?: string;
   android?: string;
 };
@@ -74,6 +74,19 @@ const projects: Project[] = [
         ios: "https://apps.apple.com/us/app/pickars-riders/id6748903962",
         android:
           "https://play.google.com/store/apps/details?id=com.pickars.drivers&hl=en",
+      },
+    ],
+  },
+  {
+    label: "Live product",
+    title: "Colsphere",
+    description:
+      "A clean, focused mobile experience designed for seamless everyday use.",
+    status: "Live",
+    statusColor: "#4ade80",
+    apps: [
+      {
+        android: "https://play.google.com/store/apps/details?id=com.colz.app",
       },
     ],
   },
@@ -268,7 +281,7 @@ const CurrentlySection: React.FC = () => {
                 {isUpcoming ? (
                   <button
                     onClick={() =>
-                      window.open("mailto:ikennaibenemee@gmail.com", "_blank")
+                      window.open("https://wa.me/2348120710198", "_blank")
                     }
                     className="group/btn inline-flex items-center gap-2.5 text-[12px] uppercase tracking-[0.16em] text-amber-400 hover:text-[#ffd000] transition-colors duration-300 cursor-pointer"
                   >

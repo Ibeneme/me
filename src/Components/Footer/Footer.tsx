@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { IoArrowUpOutline } from "react-icons/io5";
+import logo from "../../assets/images/logo.png";
 
 const Footer: React.FC = () => {
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
@@ -13,9 +14,19 @@ const Footer: React.FC = () => {
           {/* Brand */}
           <div className="lg:col-span-5 space-y-6">
             <div>
-              <span className="text-xl font-semibold text-white tracking-tight">
-                Ibeneme Ikenna
-              </span>
+              <Link
+                to="/"
+                className="nav-focus group flex items-center gap-2 transition-transform duration-300 hover:scale-[1.03]"
+              >
+                <img
+                  src={logo}
+                  alt="Logo"
+                  className="h-7 w-7 object-contain transition-transform duration-300 group-hover:rotate-6 sm:h-8 sm:w-8"
+                />
+                <span className="text-xs font-bold tracking-tight text-white transition-colors duration-300 group-hover:text-[#FFD000] sm:text-sm">
+                  ibeneme.com
+                </span>
+              </Link>
             </div>
             <p className="text-zinc-400 leading-relaxed max-w-md text-[15px]">
               Building thoughtful digital experiences and AI-driven workflows.
