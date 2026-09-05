@@ -1,6 +1,6 @@
 import React from "react";
 import { motion, Variants } from "framer-motion";
-import { Code2, Terminal, MapPin, GitCommit } from "lucide-react";
+import { Code2, Terminal,  GitCommit } from "lucide-react";
 import me from "../../assets/images/image.png";
 
 /* ─────────────────────────────────────────────
