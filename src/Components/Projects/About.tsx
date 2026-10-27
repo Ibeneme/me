@@ -1,6 +1,6 @@
 import React from "react";
 import { motion, Variants } from "framer-motion";
-import { Code2, Terminal,  GitCommit } from "lucide-react";
+import { Code2, Terminal, GitCommit } from "lucide-react";
 import me from "../../assets/images/image.png";
 
 /* ─────────────────────────────────────────────
@@ -8,16 +8,33 @@ import me from "../../assets/images/image.png";
 ───────────────────────────────────────────── */
 
 const content = {
-  headline: "I build fast, dependable software and keep it simple.",
+  headline: "I build high-performance mobile apps and reactive web frontends.",
   intro: [
-    "I've shipped fintech apps that move real money, logistics platforms tracking deliveries in real time, and the AI features layered on top of them. My focus stays the same across all of it: fewer moving parts, faster load times, and software that still works the way it's supposed to a year later.",
+    "I've shipped fintech apps that move real money, logistics platforms tracking deliveries in real time, and the AI features layered on top of them. My focus stays the same across all of it: buttery 60fps mobile interfaces, pixel-perfect web frontends, and resilient architectures that never let the user down.",
   ],
   approach: {
-    title: "How I work",
-    body: "I keep architecture simple and cut anything that doesn't earn its place whether that's a payment flow, live tracking, or an AI feature. The goal is always software that stays fast and doesn't break under real use. I'd rather ship something small and solid than something big and fragile.",
+    title: "How I build",
+    body: "I prioritize gesture fluidity, instant touch feedback, and clean component architecture so apps and web interfaces never stutter. Whether it's complex mobile navigation stacks or reactive state management, everything is engineered for speed and responsiveness.",
   },
   stackTitle: "What I build with",
-  stack: ["React Native", "TypeScript", "Node.js", "Next.js", "Rust"] as const,
+  stack: [
+    "React Native",
+    "React / Next.js",
+    "TypeScript",
+    "Node.js",
+    "Tailwind CSS",
+  ] as const,
+  softSkillsTitle: "Core Strengths",
+  softSkills: [
+    "Cross-Platform Mobile & Web UI Engineering",
+    "UX-First Mobile Intuition",
+    "Offline-First Architecture",
+    "State Management & Data Flow",
+    "Technical Communication & Mentorship",
+    "Pragmatic Problem Solving",
+    "Rapid Prototyping & Iteration",
+    "Cross-Functional Collaboration",
+  ] as const,
   importLine: {
     items: ["React Native", "TypeScript", "Node.js"],
     from: "@ikenna/core",
@@ -25,23 +42,23 @@ const content = {
   marquee: [
     "open to work",
     "react native",
-    "node.js",
-    "ml that ships",
+    "frontend major",
+    "buttery 60fps",
     "port harcourt → anywhere",
   ] as const,
   timeline: [
     {
       hash: "9f2a1c4",
-      role: "Lead Software Developer & Architect",
+      role: "Lead Mobile & Frontend Architect",
       period: "2024 — now",
-      copy: "Building complete systems for finance, logistics, and AI products — mobile apps, backend services, and the infrastructure that keeps transactions moving. Most weeks that means owning a product end to end, from the database schema up to the screen someone taps.",
+      copy: "Architecting high-performance mobile apps and web frontends for finance, logistics, and AI products — optimizing bridge communication, custom gesture handling, and responsive layouts. Owning the product lifecycle from design system down to production release.",
       active: true,
     },
     {
       hash: "3c8e9a2",
       role: "Full-Stack & Mobile Engineer",
       period: "2021 — 2024",
-      copy: "Built scalable web and mobile products for growing teams, and settled into TypeScript and cloud infrastructure as a daily practice. This is where I learned to think in systems instead of one-off features.",
+      copy: "Built scalable mobile products and responsive web interfaces for growing teams, mastering React Native animation worklets, state machines, and component optimization. This is where I honed my focus on frontend polish and user experience.",
       active: false,
     },
     {
@@ -82,7 +99,6 @@ const About: React.FC = () => {
         aria-hidden
       />
 
-
       <div className="relative z-10 px-6 sm:px-8">
         {/* Intro — widest section, sets the outer measure */}
         <motion.div
@@ -102,15 +118,16 @@ const About: React.FC = () => {
 
           <div>
             <h1 className="mb-5 text-3xl font-black leading-[1.05] tracking-tight text-white md:text-5xl">
-              I build fast, dependable{" "}
-              <span style={{ color: "#ffd000" }}>software</span> and keep it
-              simple.
+              I build smooth mobile apps and reactive web{" "}
+              <span style={{ color: "#ffd000" }}>frontends</span>.
             </h1>
             <p className="mb-4 text-base text-zinc-300 md:text-lg">
-              I'm a full-stack and mobile developer with{" "}
-              <span style={{ color: "#ffd000" }}> 5+ years </span>turning
-              complex problems into apps people actually enjoy using from mobile
-              products to the backends that carry them.
+              I'm a full-stack developer with a{" "}
+              <span style={{ color: "#ffd000" }}>mobile & frontend major</span>{" "}
+              and <span style={{ color: "#ffd000" }}> 5+ years </span>crafting
+              high-performance products people actually enjoy using—focusing on
+              fluid navigation, responsive touch interactions, and pixel-perfect
+              design.
             </p>
             {content.intro.map((paragraph, i) => (
               <p
@@ -127,33 +144,6 @@ const About: React.FC = () => {
           </div>
         </motion.div>
       </div>
-
-      {/* Marquee — full-bleed, edge to edge of its parent (no vw-based breakout, which mis-centers inside nested layouts) */}
-      {/* <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true, margin: "-40px" }}
-        transition={{ duration: 0.6 }}
-        className="mb-20 overflow-hidden py-3"
-      >
-        <div
-          aria-hidden
-          className="relative z-10 -rotate-1 overflow-hidden border-y-2 border-black bg-[#ffd000] py-6"
-        >
-          <div className="animate-marquee flex w-max gap-12 whitespace-nowrap text-xl font-black uppercase tracking-tight text-[#0B0014]">
-            {Array.from({ length: 3 }).map((_, i) => (
-              <span key={i} className="flex items-center gap-8">
-                {content.marquee.map((item) => (
-                  <React.Fragment key={item}>
-                    <span>{item}</span>
-                    <span>✦</span>
-                  </React.Fragment>
-                ))}
-              </span>
-            ))}
-          </div>
-        </div>
-      </motion.div> */}
 
       <div className="relative z-10 px-6 sm:px-8">
         {/* Approach + stack — matches intro measure */}
@@ -174,19 +164,37 @@ const About: React.FC = () => {
               </p>
             </div>
 
-            <div>
-              <h3 className="mb-3 text-base font-semibold text-white">
-                {content.stackTitle}
-              </h3>
-              <div className="flex flex-wrap gap-2">
-                {content.stack.map((tech) => (
-                  <span
-                    key={tech}
-                    className="rounded-lg border border-[#FFD000]/15 bg-[#FFD000]/[0.08] px-3 py-1.5 text-xs text-[#FFD000]"
-                  >
-                    {tech}
-                  </span>
-                ))}
+            <div className="space-y-6">
+              <div>
+                <h3 className="mb-3 text-base font-semibold text-white">
+                  {content.stackTitle}
+                </h3>
+                <div className="flex flex-wrap gap-2">
+                  {content.stack.map((tech) => (
+                    <span
+                      key={tech}
+                      className="rounded-lg border border-[#FFD000]/15 bg-[#FFD000]/[0.08] px-3 py-1.5 text-xs text-[#FFD000]"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <h3 className="mb-3 text-base font-semibold text-white">
+                  {content.softSkillsTitle}
+                </h3>
+                <div className="flex flex-wrap gap-2">
+                  {content.softSkills.map((skill) => (
+                    <span
+                      key={skill}
+                      className="rounded-lg border border-purple-500/20 bg-purple-500/10 px-3 py-1.5 text-xs text-purple-300"
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
           </div>

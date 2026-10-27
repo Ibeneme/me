@@ -58,7 +58,7 @@ const ContactUs: React.FC = () => {
 
           {/* WhatsApp */}
           <a
-            href="https://wa.me/2348120710198"
+            href="https://wa.me/2349069527816"
             target="_blank"
             rel="noopener noreferrer"
             className="group flex items-center justify-between gap-6 py-8 md:py-10 border-b border-black/15 transition-colors hover:bg-black/[0.03] -mx-5 md:-mx-10 px-5 md:px-10"

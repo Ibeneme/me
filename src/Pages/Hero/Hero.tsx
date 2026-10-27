@@ -28,29 +28,25 @@ const Hero: React.FC = () => {
             className="mb-6 flex uppercase font-bold items-center gap-2 text-[17px] tracking-wide text-[#FFD000]"
             style={{}}
           >
-            Software developer &amp; ML Engineer
+            Mobile &amp; Frontend Engineer
           </p>
 
           <h1 className="mb-6 overflow-hidden text-[clamp(2.6rem,6vw,4.2rem)] font-semibold leading-[1.02] tracking-tight">
-            <span
-              //  style={{ fontFamily: '"Parkinsans", sans-serif' }}
-              className="block  animate-reveal-up [animation-delay:120ms]"
-            >
+            <span className="block animate-reveal-up [animation-delay:120ms]">
               Ibeneme Ikenna
             </span>
           </h1>
 
           <p className="mb-10 max-w-[38ch] text-[15px] leading-relaxed text-[#8891A0] sm:text-base">
-            I build high-performance{" "}
-            <span style={{ color: "#ffd000" }}>software</span> and intelligent{" "}
-            <span style={{ color: "#ffd000" }}>systems</span> that feel
-            effortless, and AI models that hold up in production.
+            I build high-performance mobile apps and reactive web{" "}
+            <span style={{ color: "#ffd000" }}>frontends</span> that feel
+            effortless, with smooth 60fps animations and resilient architecture.
           </p>
 
-          <div className="mb-12  flex flex-wrap items-center gap-3">
+          <div className="mb-12 flex flex-wrap items-center gap-3">
             <a
               href="mailto:ikennaibenemee@gmail.com"
-              className="group inline-flex items-center gap-2 rounded-[48px] bg-[#FFD000]  px-6 py-3 text-sm font-bold  uppercase text-[#08110F] transition-colors duration-200 hover:bg-[#6FE1D6] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FFD000] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0A0314]"
+              className="group inline-flex items-center gap-2 rounded-[48px] bg-[#FFD000] px-6 py-3 text-sm font-bold uppercase text-[#08110F] transition-colors duration-200 hover:bg-[#6FE1D6] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FFD000] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0A0314]"
             >
               Email me
               <ArrowUpRight
@@ -65,7 +61,7 @@ const Hero: React.FC = () => {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Message me on WhatsApp (opens in a new tab)"
-              className="inline-flex uppercase items-center gap-2 rounded-[48px] border border-[#232830] px-6 py-3 text-sm font-bold  text-[#ECEFF3] transition-colors duration-200 hover:border-[#FFD000]/50 hover:text-[#FFD000] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FFD000] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0A0314]"
+              className="inline-flex uppercase items-center gap-2 rounded-[48px] border border-[#232830] px-6 py-3 text-sm font-bold text-[#ECEFF3] transition-colors duration-200 hover:border-[#FFD000]/50 hover:text-[#FFD000] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FFD000] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0A0314]"
             >
               <MessageCircle size={15} aria-hidden="true" />
               WhatsApp
@@ -150,9 +146,9 @@ const Hero: React.FC = () => {
               <span>✦</span>
               <span>react native</span>
               <span>✦</span>
-              <span>node.js</span>
+              <span>frontend major</span>
               <span>✦</span>
-              <span>ml that ships</span>
+              <span>buttery 60fps</span>
               <span>✦</span>
               <span>port harcourt → anywhere</span>
               <span>✦</span>

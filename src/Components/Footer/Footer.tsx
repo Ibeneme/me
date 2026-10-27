@@ -72,7 +72,7 @@ const Footer: React.FC = () => {
               </li>
               <li>
                 <a
-                  href="https://wa.me/2348120710198"
+                  href="https://wa.me/2349069527816"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-zinc-400 hover:text-white transition-all duration-200 hover:translate-x-1 inline-block"

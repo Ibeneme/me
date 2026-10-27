@@ -5,17 +5,10 @@ import kindredImg from "../../assets/projects/new/kindred.webp";
 import yareImg from "../../assets/projects/new/yare.png";
 import colsphere from "../../assets/projects/new/colsphere.webp";
 import care from "../../assets/projects/new/care.png";
-// (Make sure to include your other existing image imports like pickarsImg, kindredImg, etc. above)
+import skypayImg from "../../assets/projects/new/skypay.png";
 
 const recentProjects = [
-  {
-    title: "Colsphere",
-    company: "Colsphere",
-    description: "Collaborative ecosystem for team interaction.",
-    link: "#",
-    tag: "SaaS",
-    image: colsphere,
-  },
+ 
   {
     title: "Pickars",
     company: "Pickars Courier Limited",
@@ -23,6 +16,15 @@ const recentProjects = [
     link: "#",
     tag: "Logistics",
     image: pickarsImg,
+  },
+  {
+    title: "SkyPay Africa",
+    company: "SkyPay Africa",
+    description:
+      "Secure digital wallet built for seamless transfers, bill payments, and everyday money management.",
+    link: "https://www.skypay.africa/",
+    tag: "Fintech",
+    image: skypayImg,
   },
   {
     title: "Kokohor",
@@ -49,6 +51,15 @@ const recentProjects = [
     tag: "Healthcare",
     image: care,
   },
+  {
+    title: "Colsphere",
+    company: "Colsphere",
+    description: "Collaborative ecosystem for team interaction.",
+    link: "#",
+    tag: "SaaS",
+    image: colsphere,
+  },
+ 
 ];
 
 const ProjectsPage: React.FC = () => {
@@ -70,10 +81,7 @@ const ProjectsPage: React.FC = () => {
           <p className="text-[#FFD000] text-xs font-semibold tracking-[0.25em] uppercase mb-5">
             Selected Work
           </p>
-          <h2
-            // style={{ fontFamily: '"Parkinsans", sans-serif' }}
-            className="text-4xl md:text-6xl font-semibold text-white tracking-tight leading-[1.1] mb-6"
-          >
+          <h2 className="text-4xl md:text-6xl font-semibold text-white tracking-tight leading-[1.1] mb-6">
             Most Recent Clients
           </h2>
           <p className="text-zinc-400 text-lg md:text-xl font-light leading-relaxed">
@@ -135,6 +143,14 @@ const ProjectsPage: React.FC = () => {
 
                   <a
                     href={project.link}
+                    target={
+                      project.link.startsWith("http") ? "_blank" : "_self"
+                    }
+                    rel={
+                      project.link.startsWith("http")
+                        ? "noopener noreferrer"
+                        : undefined
+                    }
                     className="inline-flex items-center gap-2 self-start text-sm font-medium text-white/80 hover:text-white transition-colors duration-300 group/link"
                   >
                     View project

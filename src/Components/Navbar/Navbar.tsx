@@ -34,7 +34,7 @@ const Navbar: React.FC = () => {
   }, []);
 
   const handleContact = () =>
-    window.open("https://wa.me/2348120710198", "_blank");
+    window.open("https://wa.me/2349069527816", "_blank");
 
   return (
     <>
