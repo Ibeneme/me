@@ -1,5 +1,6 @@
-import React, { memo } from "react";
+import React, { memo, useRef } from "react";
 import ReactCountryFlag from "react-country-flag";
+import { Bracket, useMotion } from "../../Components/ui/design";
 
 const flags = [
   { code: "NG", name: "Nigeria" },
@@ -11,83 +12,40 @@ const flags = [
   { code: "GB", name: "United Kingdom" },
 ];
 
-// Memoize the MarqueeRow to prevent unnecessary re-renders
-const MarqueeRow = memo(
-  ({
-    items,
-    direction,
-    speed,
-  }: {
-    items: any[];
-    direction: "left" | "right";
-    speed: number;
-  }) => {
-    const doubled = [...items, ...items];
-    return (
-      <div className="relative w-full overflow-hidden">
-        <div
-          className={`flex items-center gap-8 md:gap-16 w-max ${
-            direction === "left"
-              ? "animate-marquee-left"
-              : "animate-marquee-right"
-          }`}
-          style={{ animationDuration: `${speed}s`, willChange: "transform" }}
-        >
-          {doubled.map(({ code, name }, i) => (
-            <div
-              key={`${code}-${i}`}
-              className="flex items-center gap-3 opacity-100 hover:opacity-100 transition-opacity duration-500 shrink-0"
-            >
-              {/* Added a stable container for the flag to prevent layout jump */}
-              <div className="w-[40px] h-[30px] rounded-[2px] overflow-hidden bg-zinc-900 flex items-center justify-center">
-                <ReactCountryFlag
-                  countryCode={code}
-                  svg
-                  style={{ width: "40px", height: "30px" }}
-                  title={name}
-                />
-              </div>
-              <span className="text-[14px] font-medium uppercase tracking-[0.2em] text-zinc-400">
-                {name}
-              </span>
-            </div>
-          ))}
+const MarqueeRow = memo(({ items, reverse }: { items: typeof flags; reverse?: boolean }) => (
+  <div className="overflow-hidden">
+    <div className={`flex w-max items-center gap-12 md:gap-16 ${reverse ? "marquee-rev" : "marquee"}`}>
+      {[...items, ...items, ...items, ...items].map(({ code, name }, i) => (
+        <div key={`${code}-${i}`} className="flex shrink-0 items-center gap-3">
+          <span className="h-[22px] w-[30px] overflow-hidden rounded-[4px] grayscale-[35%]">
+            <ReactCountryFlag countryCode={code} svg style={{ width: 30, height: 22, display: "block" }} title={name} />
+          </span>
+          <span className="text-[19px] text-cream">{name}</span>
         </div>
-      </div>
-    );
-  }
-);
+      ))}
+    </div>
+  </div>
+));
 
 const FlagsRow: React.FC = () => {
+  const root = useRef<HTMLElement>(null);
+  useMotion(root);
+
   return (
-    <section className="relative w-full bg-[#0A0314] py-16 md:py-24 overflow-hidden border-t border-zinc-900">
-      {/* Text Section */}
-      <div className="max-w-4xl mx-auto px-6 mb-16 text-center">
-        <h2 className="text-4xl md:text-6xl font-black text-white tracking-tight mb-6">
-          Building across borders.
+    <section ref={root} className="bg-ink py-20 md:py-28">
+      <div className="container-x mb-14 flex flex-col items-center gap-6 text-center">
+        <Bracket>Across borders</Bracket>
+        <h2 data-reveal className="t-heading max-w-[14ch] text-cream">
+          Building for seven countries.
         </h2>
-        <p className="text-zinc-500 text-lg md:text-xl font-light max-w-xl mx-auto">
-          Operational reach across seven countries, delivering high-impact
-          solutions.
+        <p data-reveal className="t-body-lg max-w-[40ch] text-muted">
+          Shipping products for teams and users across Africa, Europe and North America.
         </p>
       </div>
-
-      {/* Marquee Section */}
-      <div className="space-y-12 mask-gradient">
-        <MarqueeRow items={flags} direction="left" speed={40} />
-        <MarqueeRow items={[...flags].reverse()} direction="right" speed={45} />
+      <div className="mask-x space-y-8">
+        <MarqueeRow items={flags} />
+        <MarqueeRow items={[...flags].reverse()} reverse />
       </div>
-
-      <style>{`
-        .mask-gradient {
-          mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-          -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-        }
-        @keyframes marquee-left { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-        @keyframes marquee-right { from { transform: translateX(-50%); } to { transform: translateX(0); } }
-        .animate-marquee-left { animation-name: marquee-left; animation-timing-function: linear; animation-iteration-count: infinite; }
-        .animate-marquee-right { animation-name: marquee-right; animation-timing-function: linear; animation-iteration-count: infinite; }
-      `}</style>
     </section>
   );
 };

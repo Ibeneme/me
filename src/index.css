@@ -1,57 +1,288 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&display=swap");
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
 
-
-/* Root Variables - Dark Theme */
+/* ─────────────────────────────────────────────
+   Design tokens — dark "chalkboard" system
+   Near-black stage, warm cream chalk, five discipline highlighters.
+───────────────────────────────────────────── */
 :root {
-  --primary-font: "Lufga", Arial, sans-serif;
-  --secondary-font: "Lufga", Arial, sans-serif;
-  
-  /* Dark Theme Colors */
-  --bg-color: #0A0314;
-  --text-color: #e4e4e7;       /* Soft white for readability */
-  --muted-text: #a1a1aa;       /* Muted gray for secondary text */
-  --primary-color: #ffd000;    /* Your signature yellow */
-  --accent-color: #ffffff;
+  --font-sans: "Inter Tight", "DM Sans", ui-sans-serif, sans-serif;
+
+  /* Surfaces */
+  --black: #0e100f; /* page canvas */
+  --off-black: #191919; /* nested panels, footer */
+  --cream: #fffce1; /* primary text & hairline controls */
+  --surface-50: #7c7c6f; /* muted text */
+  --surface-25: #42433d; /* hairlines */
+
+  /* Discipline highlighters */
+  --green: #0ae448; /* brand */
+  --light-green: #abff84;
+  --orange: #ff8709; /* backend / systems */
+  --pink: #fec5fb; /* mobile */
+  --lilac: #9d95ff; /* AI */
+  --blue: #00bae2; /* web / frontend */
+  --core-green: #dfffd1;
+  --lipstick: #f100cb;
+
+  --brand-gradient: linear-gradient(114.41deg, #0ae448 20.74%, #abff84 65.5%);
 }
 
-/* Global Styles */
+@theme {
+  --color-ink: #0e100f;
+  --color-panel: #191919;
+  --color-cream: #fffce1;
+  --color-muted: #7c7c6f;
+  --color-line: #42433d;
+  --color-brand: #0ae448;
+  --color-brand-light: #abff84;
+  --color-orangey: #ff8709;
+  --color-pinky: #fec5fb;
+  --color-lilac: #9d95ff;
+  --color-sky: #00bae2;
+  --font-sans: "Inter Tight", "DM Sans", ui-sans-serif, sans-serif;
+}
+
+@layer base {
 html,
 body {
   width: 100%;
   overflow-x: hidden;
-  /* Ensure background covers the full page */
-  background-color: var(--bg-color);
+  background-color: var(--black);
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: var(--primary-font);
-  /* Smoother text rendering for dark backgrounds */
+body {
+  font-family: var(--font-sans);
+  background-color: var(--black);
+  color: var(--cream);
+  font-size: 19px;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-body {
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  line-height: 1.6;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--cream);
+  font-weight: 600;
+  letter-spacing: -0.011em;
 }
 
-/* Typography settings for dark mode */
-h1, h2, h3, h4, h5, h6 {
-  color: #ffffff; /* Brighter white for headings */
-  font-family: var(--primary-font);
-}
-
-p {
-  color: var(--muted-text);
-}
-
-/* Optional: Highlight color for text selection */
 ::selection {
-  background-color: var(--primary-color);
-  color: #000;
+  background-color: var(--cream);
+  color: var(--black);
+}
+
+:focus-visible {
+  outline: 1.5px solid var(--light-green);
+  outline-offset: 3px;
+  border-radius: 100px;
+}
+}
+
+@layer components {
+/* ─────────────────────────────────────────────
+   Type scale
+───────────────────────────────────────────── */
+.t-display {
+  font-size: clamp(76px, 17vw, 224px);
+  font-weight: 600;
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+}
+.t-heading-lg {
+  font-size: clamp(54px, 8vw, 101px);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.011em;
+}
+.t-heading {
+  font-size: clamp(40px, 5.5vw, 66px);
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.011em;
+}
+.t-heading-sm {
+  font-size: clamp(32px, 3.6vw, 44px);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.011em;
+}
+.t-sub {
+  font-size: clamp(26px, 2.8vw, 34px);
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+.t-body-lg {
+  font-size: clamp(19px, 1.8vw, 23px);
+  line-height: 1.38;
+  letter-spacing: -0.01em;
+}
+.t-caption {
+  font-size: 14px;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+}
+
+/* ─────────────────────────────────────────────
+   Signature pieces
+───────────────────────────────────────────── */
+
+/* { Curly-bracket annotation } */
+.bracket {
+  display: inline-block;
+  font-size: 17px;
+  font-weight: 400;
+  color: var(--cream);
+  white-space: nowrap;
+}
+.bracket::before {
+  content: "{ ";
+}
+.bracket::after {
+  content: " }";
+}
+
+/* Outlined cream pill */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 15px 24px;
+  border: 1px solid var(--cream);
+  border-radius: 100px;
+  background: transparent;
+  color: var(--cream);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  cursor: pointer;
+  white-space: nowrap;
+  transition:
+    color 0.25s ease,
+    border-color 0.25s ease;
+}
+.pill:hover {
+  border-color: var(--light-green);
+  color: var(--light-green);
+}
+.pill-sm {
+  padding: 10px 18px;
+  font-size: 16px;
+}
+
+/* Gradient-stroked CTA pill — the only chromatic control */
+.pill-cta {
+  position: relative;
+  border-color: transparent;
+  background:
+    linear-gradient(var(--black), var(--black)) padding-box,
+    var(--brand-gradient) border-box;
+  border-width: 1.5px;
+}
+.pill-cta:hover {
+  color: var(--light-green);
+  border-color: transparent;
+}
+
+/* Ghost nav link */
+.ghost-link {
+  font-size: 16px;
+  line-height: 1.15;
+  color: var(--surface-50);
+  transition: color 0.2s ease;
+}
+.ghost-link:hover,
+.ghost-link[aria-current="page"] {
+  color: var(--cream);
+}
+
+.hairline {
+  height: 1px;
+  width: 100%;
+  background: var(--surface-25);
+}
+
+.brand-text {
+  background: var(--brand-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.container-x {
+  width: 100%;
+  max-width: 1280px;
+  margin-inline: auto;
+  padding-inline: 16px;
+}
+@media (min-width: 640px) {
+  .container-x {
+    padding-inline: 32px;
+  }
+}
+
+/* ─────────────────────────────────────────────
+   Soft 3D organic shapes — lit from within, never shadowed
+───────────────────────────────────────────── */
+.blob {
+  position: absolute;
+  pointer-events: none;
+  will-change: transform;
+}
+.blob-shape-pill {
+  border-radius: 9999px;
+}
+.blob-shape-dome {
+  border-radius: 50% 50% 18% 18% / 70% 70% 30% 30%;
+}
+.blob-shape-liquid {
+  border-radius: 42% 58% 63% 37% / 41% 44% 56% 59%;
+}
+.blob-shape-orb {
+  border-radius: 50%;
+}
+}
+
+/* Marquee */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+@keyframes marquee-rev {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+.marquee {
+  animation: marquee 40s linear infinite;
+}
+.marquee-rev {
+  animation: marquee-rev 45s linear infinite;
+}
+.mask-x {
+  mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee,
+  .marquee-rev {
+    animation: none;
+  }
 }

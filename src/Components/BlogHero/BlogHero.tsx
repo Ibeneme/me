@@ -1,70 +1,38 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { Blob, Discipline, prefersReducedMotion } from "../ui/design";
 
-interface BlogHeroProps {
+interface PageHeroProps {
   title: string;
-  category?: string;
-  date?: string;
+  eyebrow?: string;
+  accent?: Discipline;
 }
 
-const BlogHero: React.FC<BlogHeroProps> = ({
-  title,
-  category = "Engineering",
-  date = "April 2026",
-}) => {
+/** Edge-bleeding page header used on inner pages. */
+const PageHero: React.FC<PageHeroProps> = ({ title, eyebrow = "Ibeneme Ikenna", accent = "web" }) => {
+  const root = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    if (!root.current || prefersReducedMotion()) return;
+    const ctx = gsap.context(() => {
+      gsap
+        .timeline({ defaults: { ease: "power4.out" } })
+        .from(".ph-title > span", { yPercent: 110, duration: 1.1 })
+        .from(".ph-eyebrow", { opacity: 0, y: 16, duration: 0.6 }, "-=0.7")
+        .from(".blob", { scale: 0.4, opacity: 0, duration: 1, ease: "back.out(1.6)" }, "-=0.8");
+    }, root);
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section className="bg-[#0A0314] pt-40 pb-32 md:pt-52 md:pb-40 px-6">
-      <div className="max-w-4xl mx-auto">
-        {/* Metadata */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          className="flex items-center gap-6 mb-8"
-        >
-          <span className="text-[10px] uppercase tracking-[0.3em] text-[#ffd000]">
-            {category}
-          </span>
-          <div className="h-[1px] w-8 bg-zinc-800" />
-          <span className="text-[10px] uppercase tracking-[0.3em] text-zinc-600">
-            {date}
-          </span>
-        </motion.div>
-
-        {/* Title */}
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          className="text-4xl md:text-6xl font-light text-white tracking-tight leading-[1.05] max-w-3xl"
-        >
-          {title}
-        </motion.h1>
-
-        {/* Accent bar */}
-        <motion.div
-          initial={{ scaleX: 0 }}
-          animate={{ scaleX: 1 }}
-          transition={{ duration: 0.6, delay: 0.3, ease: [0.25, 0, 0, 1] }}
-          className="h-[3px] w-16 bg-[#ffd000] origin-left mt-10"
-        />
-
-        {/* Author line */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.4 }}
-          className="mt-10 flex items-center gap-3"
-        >
-          <div className="w-7 h-7 rounded-full bg-zinc-900 border border-zinc-800 flex items-center justify-center">
-            <span className="text-[9px] font-bold text-zinc-400">II</span>
-          </div>
-          <span className="text-[10px] uppercase tracking-[0.3em] text-zinc-500">
-            Ibeneme Ikenna
-          </span>
-        </motion.div>
-      </div>
+    <section ref={root} className="relative overflow-hidden bg-ink px-4 pt-20 pb-12 sm:px-8 md:pt-28 md:pb-16">
+      <Blob d={accent} shape="liquid" className="right-[6%] top-[18%] h-[100px] w-[100px] md:h-[180px] md:w-[180px]" />
+      <span className="ph-eyebrow bracket mb-6 block">{eyebrow}</span>
+      <h1 className="ph-title t-display relative overflow-hidden pb-[0.04em] text-cream">
+        <span className="block">{title}</span>
+      </h1>
     </section>
   );
 };
 
-export default BlogHero;
+export default PageHero;

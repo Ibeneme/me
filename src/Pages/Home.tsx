@@ -1,18 +1,15 @@
 import Hero from "./Hero/Hero";
 import FlagsRow from "./Hero/FlagsRow";
+import Disciplines from "../Components/Disciplines/Disciplines";
 import Projects from "../Components/Projects/Projects";
-//import AccordionSection from "../Components/AccordionSection/AccordionSection";
 
-
-const Home = () => {
-  return (
-    <div style={{ margin: 0, padding: 0 }}>
-      <Hero />
-      <FlagsRow />
-      <Projects />
-      {/* <AccordionSection /> */}
-    </div>
-  );
-};
+const Home = () => (
+  <main className="bg-ink">
+    <Hero />
+    <Disciplines />
+    <Projects />
+    <FlagsRow />
+  </main>
+);
 
 export default Home;

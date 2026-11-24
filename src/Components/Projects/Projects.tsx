@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { ArrowUpRight } from "lucide-react";
 import pickarsImg from "../../assets/projects/new/new_pickars.png";
 import kindredImg from "../../assets/projects/new/kindred.webp";
@@ -6,15 +6,26 @@ import yareImg from "../../assets/projects/new/yare.png";
 import colsphere from "../../assets/projects/new/colsphere.webp";
 import care from "../../assets/projects/new/care.png";
 import skypayImg from "../../assets/projects/new/skypay.png";
+import { Bracket, CategoryLabel, Discipline, useMotion } from "../ui/design";
 
-const recentProjects = [
- 
+type Project = {
+  title: string;
+  company: string;
+  description: string;
+  link: string;
+  tag: string;
+  discipline: Discipline;
+  image: string;
+};
+
+const recentProjects: Project[] = [
   {
     title: "Pickars",
     company: "Pickars Courier Limited",
     description: "Logistics ecosystem streamlining last-mile delivery.",
     link: "#",
     tag: "Logistics",
+    discipline: "mobile",
     image: pickarsImg,
   },
   {
@@ -24,6 +35,7 @@ const recentProjects = [
       "Secure digital wallet built for seamless transfers, bill payments, and everyday money management.",
     link: "https://www.skypay.africa/",
     tag: "Fintech",
+    discipline: "mobile",
     image: skypayImg,
   },
   {
@@ -32,6 +44,7 @@ const recentProjects = [
     description: "Cooperative management for financial transparency.",
     link: "#",
     tag: "Management",
+    discipline: "web",
     image: kindredImg,
   },
   {
@@ -40,15 +53,16 @@ const recentProjects = [
     description: "Democratizing access to high-impact learning.",
     link: "#",
     tag: "Edutech",
+    discipline: "web",
     image: yareImg,
   },
   {
     title: "One Community Home Health",
     company: "JACOP Healthcare Services, Inc.",
-    description:
-      "Modern digital interface and brand bento grids for a Texas-based care provider.",
+    description: "Modern digital interface and brand bento grids for a Texas-based care provider.",
     link: "https://one-community-one.vercel.app/",
     tag: "Healthcare",
+    discipline: "web",
     image: care,
   },
   {
@@ -57,108 +71,71 @@ const recentProjects = [
     description: "Collaborative ecosystem for team interaction.",
     link: "#",
     tag: "SaaS",
+    discipline: "mobile",
     image: colsphere,
   },
- 
 ];
 
-const ProjectsPage: React.FC = () => {
-  return (
-    <section className="relative bg-[#07020F] py-28 md:py-36 px-6 overflow-hidden">
-      {/* Subtle grid */}
-      <div
-        className="pointer-events-none absolute inset-0 opacity-[0.07]"
-        style={{
-          backgroundImage:
-            "linear-gradient(#ffffff 1px, transparent 1px), linear-gradient(90deg, #ffffff 1px, transparent 1px)",
-          backgroundSize: "64px 64px",
-        }}
-      />
+const Projects: React.FC = () => {
+  const root = useRef<HTMLElement>(null);
+  useMotion(root);
 
-      <div className="relative max-w-6xl mx-auto">
-        {/* Header */}
-        <div className="mb-20 md:mb-28 max-w-2xl">
-          <p className="text-[#FFD000] text-xs font-semibold tracking-[0.25em] uppercase mb-5">
-            Selected Work
-          </p>
-          <h2 className="text-4xl md:text-6xl font-semibold text-white tracking-tight leading-[1.1] mb-6">
-            Most Recent Clients
-          </h2>
-          <p className="text-zinc-400 text-lg md:text-xl font-light leading-relaxed">
-            A curated selection of products, platforms, and systems we’ve
-            designed and shipped — from logistics to learning.
+  return (
+    <section ref={root} className="bg-ink py-20 md:py-28">
+      <div className="container-x">
+        <div className="mb-16 flex flex-col gap-6 md:mb-20 md:flex-row md:items-end md:justify-between">
+          <div className="flex flex-col gap-6">
+            <Bracket>Selected work</Bracket>
+            <h2 data-reveal className="t-heading-lg max-w-[12ch] text-cream">
+              Most recent clients
+            </h2>
+          </div>
+          <p data-reveal className="t-body-lg max-w-[36ch] text-muted">
+            Products, platforms and systems designed and shipped — from logistics to learning.
           </p>
         </div>
 
-        {/* Projects */}
-        <div className="space-y-24 md:space-y-32">
-          {recentProjects.map((project, index) => {
-            const isEven = index % 2 === 1;
-
+        <div className="grid gap-6 md:grid-cols-2">
+          {recentProjects.map((p, i) => {
+            const external = p.link.startsWith("http");
             return (
               <article
-                key={index}
-                className={`group flex flex-col ${
-                  isEven ? "md:flex-row-reverse" : "md:flex-row"
-                } gap-10 md:gap-16 items-center`}
+                key={p.title}
+                data-reveal
+                className="group flex flex-col gap-6 rounded-[8px] bg-panel p-6"
               >
-                {/* Image */}
-                <div className="w-full md:w-[52%] relative">
-                  <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-zinc-900/80 border border-white/[0.06]">
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-[1.04] opacity-90 group-hover:opacity-100"
-                      loading="lazy"
-                    />
-                    {/* Soft overlay on hover */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  </div>
-
-                  {/* Number badge */}
-                  <div className="absolute -top-4 -left-4 md:-top-5 md:-left-5 w-12 h-12 rounded-full bg-[#0A0314] border border-white/10 flex items-center justify-center text-sm font-medium text-white/70">
-                    {String(index + 1).padStart(2, "0")}
-                  </div>
+                <div className="relative aspect-[16/10] overflow-hidden rounded-[8px] bg-ink">
+                  <img
+                    src={p.image}
+                    alt={p.title}
+                    loading="lazy"
+                    className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+                  />
                 </div>
 
-                {/* Content */}
-                <div className="w-full md:w-[48%] flex flex-col">
-                  <div className="mb-5">
-                    <span className="inline-flex items-center px-3 py-1 rounded-full text-[11px] font-medium tracking-wide uppercase bg-[#FFD000]/10 text-[#FFD000] border border-[#FFD000]/20">
-                      {project.tag}
-                    </span>
-                  </div>
+                <div className="flex items-center justify-between gap-4">
+                  <CategoryLabel d={p.discipline} />
+                  <span className="t-caption text-muted">
+                    {String(i + 1).padStart(2, "0")} — {p.tag}
+                  </span>
+                </div>
 
-                  <h3 className="text-3xl md:text-4xl font-semibold text-white tracking-tight mb-2 group-hover:text-[#FFD000] transition-colors duration-300">
-                    {project.title}
+                <div className="flex flex-col gap-3">
+                  <h3 className="text-[28px] font-semibold leading-[1.1] tracking-[-0.011em] text-cream md:text-[33px]">
+                    {p.title}
                   </h3>
-
-                  <p className="text-zinc-500 text-sm font-medium mb-4">
-                    {project.company}
-                  </p>
-
-                  <p className="text-zinc-400 text-base md:text-lg font-light leading-relaxed max-w-md mb-8">
-                    {project.description}
-                  </p>
-
-                  <a
-                    href={project.link}
-                    target={
-                      project.link.startsWith("http") ? "_blank" : "_self"
-                    }
-                    rel={
-                      project.link.startsWith("http")
-                        ? "noopener noreferrer"
-                        : undefined
-                    }
-                    className="inline-flex items-center gap-2 self-start text-sm font-medium text-white/80 hover:text-white transition-colors duration-300 group/link"
-                  >
-                    View project
-                    <span className="flex items-center justify-center w-8 h-8 rounded-full border border-white/15 group-hover/link:bg-white group-hover/link:text-black group-hover/link:border-white transition-all duration-300">
-                      <ArrowUpRight size={14} />
-                    </span>
-                  </a>
+                  <p className="t-caption text-muted">{p.company}</p>
+                  <p className="text-[19px] leading-[1.38] text-cream/80">{p.description}</p>
                 </div>
+
+                <a
+                  href={p.link}
+                  target={external ? "_blank" : undefined}
+                  rel={external ? "noopener noreferrer" : undefined}
+                  className="pill pill-sm mt-auto self-start"
+                >
+                  View project <ArrowUpRight size={16} strokeWidth={1.5} aria-hidden />
+                </a>
               </article>
             );
           })}
@@ -168,4 +145,4 @@ const ProjectsPage: React.FC = () => {
   );
 };
 
-export default ProjectsPage;
+export default Projects;
