@@ -1,0 +1,64 @@
+/* Lufga — self-hosted */
+@font-face {
+  font-family: "Lufga";
+  src: url("../assets/fonts/LufgaLight.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Lufga";
+  src: url("../assets/fonts/LufgaRegular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Lufga";
+  src: url("../assets/fonts/LufgaItalic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Lufga";
+  src: url("../assets/fonts/LufgaMedium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Lufga";
+  src: url("../assets/fonts/LufgaMediumItalic.ttf") format("truetype");
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Lufga";
+  src: url("../assets/fonts/LufgaSemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Lufga";
+  src: url("../assets/fonts/LufgaBold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Lufga";
+  src: url("../assets/fonts/LufgaExtraBold.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Lufga";
+  src: url("../assets/fonts/LufgaBlack.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}

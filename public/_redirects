@@ -1,6 +1,2 @@
-# Required for React/Vite to serve index.html on all routes
+# Serve index.html on all routes (SPA)
 /*    /index.html   200
-
-# Redirect root domain to www (important)
-http://boringthinkers.com/*    https://www.boringthinkers.com/:splat    301
-https://boringthinkers.com/*   https://www.boringthinkers.com/:splat    301

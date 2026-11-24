@@ -1,33 +1,43 @@
-import { Suspense, lazy, useState } from "react";
+import { Suspense, lazy, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
-import ScrollToTop from "./ScrollToTop";
-import Navbar from "./Components/Navbar/Navbar";
-import Footer from "./Components/Footer/Footer";
-import ContactUs from "./Components/Footer/ContactUs";
-import LoadingScreen from "./LoadingScreen";
+import Navbar from "./components/layout/Navbar";
+import Footer from "./components/layout/Footer";
+import Cursor from "./components/layout/Cursor";
+import LoadingScreen from "./components/layout/LoadingScreen";
+import PageTransition from "./components/layout/PageTransition";
+import Contact from "./sections/Contact";
+import { ScrollTrigger } from "./lib/gsap";
 
-const Home = lazy(() => import("./Pages/Home"));
-const OurProjectsPage = lazy(() => import("./Pages/OurProjectsPage"));
-const NotFound = lazy(() => import("./Pages/NotFound"));
-const AboutPage = lazy(() => import("./Pages/AboutPage"));
+const HomePage = lazy(() => import("./pages/HomePage"));
+const AboutPage = lazy(() => import("./pages/AboutPage"));
+const ProjectsPage = lazy(() => import("./pages/ProjectsPage"));
+const NotFoundPage = lazy(() => import("./pages/NotFoundPage"));
 
 function App() {
-  const [isFirstLoad, setIsFirstLoad] = useState(true);
+  // Re-measure scroll animations once fonts and images have settled
+  useEffect(() => {
+    const refresh = () => ScrollTrigger.refresh();
+    window.addEventListener("load", refresh);
+    document.fonts?.ready.then(refresh);
+    return () => window.removeEventListener("load", refresh);
+  }, []);
 
   return (
     <>
-      <ScrollToTop />
-      {isFirstLoad && <LoadingScreen minDisplayTime={3000} onComplete={() => setIsFirstLoad(false)} />}
+      <LoadingScreen />
+      <PageTransition />
+      <Cursor />
+      <div className="grain" aria-hidden />
       <Navbar />
-      <Suspense fallback={null}>
+      <Suspense fallback={<div className="min-h-screen bg-ink" />}>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
-          <Route path="/projects" element={<OurProjectsPage />} />
-          <Route path="*" element={<NotFound />} />
+          <Route path="/projects" element={<ProjectsPage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Suspense>
-      <ContactUs />
+      <Contact />
       <Footer />
     </>
   );
