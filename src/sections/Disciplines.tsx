@@ -1,14 +1,25 @@
 import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import { Blob, Bracket, CategoryLabel } from "../components/ui";
+import { Bracket, CategoryLabel } from "../components/ui";
+import MobileExplainer from "../components/explainers/MobileExplainer";
+import WebExplainer from "../components/explainers/WebExplainer";
+import BackendExplainer from "../components/explainers/BackendExplainer";
+import AiExplainer from "../components/explainers/AiExplainer";
 import { DISCIPLINE_BLOCKS } from "../data/about";
-import { DISCIPLINES } from "../lib/disciplines";
+import { DISCIPLINES, Discipline } from "../lib/disciplines";
+
+const EXPLAINERS: Partial<Record<Discipline, React.FC>> = {
+  mobile: MobileExplainer,
+  web: WebExplainer,
+  backend: BackendExplainer,
+  ai: AiExplainer,
+};
 import { gsap, prefersReducedMotion } from "../lib/gsap";
 import { useMotion } from "../hooks/useMotion";
 
 /**
  * Desktop: the section pins and the four disciplines slide past horizontally,
- * each shape spinning as it crosses the screen. Mobile: a vertical stack.
+ * each with a looping animated explainer. Mobile: a vertical stack.
  */
 const Disciplines: React.FC = () => {
   const root = useRef<HTMLElement>(null);
@@ -42,16 +53,15 @@ const Disciplines: React.FC = () => {
       });
 
       panels.forEach((p) => {
-        const shape = p.querySelector(".d-shape");
         const text = p.querySelectorAll(".d-text > *");
         gsap.fromTo(
-          shape,
-          { rotate: -90, scale: 0.6 },
+          p.querySelector(".d-shape"),
+          { scale: 0.8, opacity: 0.3 },
           {
-            rotate: 90,
             scale: 1,
+            opacity: 1,
             ease: "none",
-            scrollTrigger: { trigger: p, containerAnimation: scroll, start: "left right", end: "right left", scrub: true },
+            scrollTrigger: { trigger: p, containerAnimation: scroll, start: "left right", end: "center center", scrub: true },
           }
         );
         gsap.from(text, {
@@ -74,11 +84,11 @@ const Disciplines: React.FC = () => {
           ease: "expo.out",
           scrollTrigger: { trigger: p, start: "top 75%", toggleActions: "play none none none" },
         });
-        gsap.fromTo(p.querySelector(".d-shape"), { rotate: -60, scale: 0.7 }, {
-          rotate: 30,
+        gsap.fromTo(p.querySelector(".d-shape"), { scale: 0.85, opacity: 0.3 }, {
           scale: 1,
+          opacity: 1,
           ease: "none",
-          scrollTrigger: { trigger: p, start: "top bottom", end: "bottom top", scrub: true },
+          scrollTrigger: { trigger: p, start: "top bottom", end: "center center", scrub: true },
         });
       });
     });
@@ -108,18 +118,10 @@ const Disciplines: React.FC = () => {
                   0{i + 1}
                 </span>
                 <div className="d-shape absolute inset-0">
-                  <Blob
-                    d={b.d}
-                    shape={b.shape}
-                    rotate={b.shape === "pill" ? -32 : 0}
-                    className={
-                      b.shape === "pill"
-                        ? "inset-x-[4%] top-[30%] h-[40%]"
-                        : b.shape === "dome"
-                          ? "inset-x-[12%] top-[18%] bottom-[18%]"
-                          : "inset-[14%]"
-                    }
-                  />
+                  {(() => {
+                    const Art = EXPLAINERS[b.d];
+                    return Art ? <Art /> : null;
+                  })()}
                 </div>
               </div>
               <div className="d-text flex flex-col items-start gap-5">

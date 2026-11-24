@@ -3,7 +3,7 @@ import AboutDetails from "../sections/AboutDetails";
 
 const AboutPage = () => (
   <main>
-    <PageHero eyebrow="Who I am" title="About me" accent="web" />
+    <PageHero eyebrow="Who I am" title="About me" />
     <AboutDetails />
   </main>
 );

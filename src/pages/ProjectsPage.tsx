@@ -4,7 +4,7 @@ import LiveApps from "../sections/LiveApps";
 
 const ProjectsPage = () => (
   <main>
-    <PageHero eyebrow="2025 — 26" title="Projects" accent="mobile" />
+    <PageHero eyebrow="2025 — 26" title="Projects" />
     <div className="container-x">
       <div className="hairline" />
     </div>

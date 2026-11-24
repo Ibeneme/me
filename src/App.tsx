@@ -3,7 +3,6 @@ import { Route, Routes } from "react-router-dom";
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
 import Cursor from "./components/layout/Cursor";
-import LoadingScreen from "./components/layout/LoadingScreen";
 import PageTransition from "./components/layout/PageTransition";
 import Contact from "./sections/Contact";
 import { ScrollTrigger } from "./lib/gsap";
@@ -24,7 +23,6 @@ function App() {
 
   return (
     <>
-      <LoadingScreen />
       <PageTransition />
       <Cursor />
       <div className="grain" aria-hidden />

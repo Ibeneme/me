@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { ArrowUpRight } from "lucide-react";
-import { Blob, Bracket } from "../components/ui";
+import { Bracket } from "../components/ui";
 import { SITE } from "../data/site";
 import { gsap, prefersReducedMotion } from "../lib/gsap";
 import { useMotion } from "../hooks/useMotion";
@@ -10,7 +10,7 @@ const METHODS = [
   { label: "WhatsApp", value: SITE.whatsappDisplay, href: SITE.whatsapp, external: true },
 ];
 
-/** A giant "Let's talk" zooms through the screen, then the contact rows. */
+/** Contact rows sweep in from alternating sides. */
 const Contact: React.FC = () => {
   const root = useRef<HTMLElement>(null);
   useMotion(root);
@@ -18,17 +18,6 @@ const Contact: React.FC = () => {
   useEffect(() => {
     if (!root.current || prefersReducedMotion()) return;
     const ctx = gsap.context(() => {
-      gsap.fromTo(
-        ".talk",
-        { scale: 0.35, rotate: -8, opacity: 0.2 },
-        {
-          scale: 1,
-          rotate: 0,
-          opacity: 1,
-          ease: "none",
-          scrollTrigger: { trigger: ".talk-wrap", start: "top bottom", end: "center center", scrub: 1 },
-        }
-      );
       gsap.from(".contact-row", {
         xPercent: (i) => (i % 2 ? 40 : -40),
         opacity: 0,
@@ -43,16 +32,7 @@ const Contact: React.FC = () => {
 
   return (
     <section ref={root} className="relative overflow-hidden bg-ink py-20 md:py-28">
-      <Blob d="brand" shape="liquid" parallax={0.6} className="-right-10 top-24 h-[140px] w-[140px] md:right-[6%] md:h-[240px] md:w-[240px]" />
-      <Blob d="ai" shape="pill" rotate={24} parallax={1.1} className="left-[55%] top-[40%] hidden h-[60px] w-[150px] md:block" />
-      <Blob d="mobile" shape="orb" parallax={0.3} className="left-[4%] top-[8%] h-[50px] w-[50px] md:h-[80px] md:w-[80px]" />
 
-      <div className="talk-wrap container-x relative mb-20 text-center md:mb-28">
-        <p className="talk inline-block text-[clamp(80px,22vw,320px)] font-semibold leading-[0.85] tracking-[-0.05em]">
-          Let&apos;s <em className="font-medium">talk</em>
-          <span className="text-brand">.</span>
-        </p>
-      </div>
 
       <div className="container-x relative">
         <div className="mb-14 grid gap-8 md:mb-20 md:grid-cols-2 md:items-end">
@@ -63,8 +43,8 @@ const Contact: React.FC = () => {
             </h2>
           </div>
           <p data-split="scrub" className="t-body-lg max-w-[42ch]">
-            Currently taking on new collaborations and engineering projects — let&apos;s talk through your architecture,
-            design goals and execution strategy.
+            Currently taking on new collaborations and engineering projects — happy to dig into your architecture, design
+            goals and execution strategy.
           </p>
         </div>
 

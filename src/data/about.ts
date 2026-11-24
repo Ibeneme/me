@@ -2,35 +2,30 @@ import type { Discipline } from "../lib/disciplines";
 
 export const DISCIPLINE_BLOCKS: {
   d: Discipline;
-  shape: "pill" | "dome" | "liquid" | "orb";
   title: string;
   body: string;
   cta: { label: string; to: string };
 }[] = [
   {
     d: "mobile",
-    shape: "pill",
     title: "Native-feeling apps that never stutter.",
     body: "React Native apps for iOS and Android with gesture fluidity, instant touch feedback and animation worklets tuned for a steady 60fps — shipped to both stores.",
     cta: { label: "Explore Mobile", to: "/projects" },
   },
   {
     d: "web",
-    shape: "dome",
     title: "Pixel-perfect, reactive frontends.",
     body: "React and Next.js interfaces with clean component architecture, considered state management and design systems that scale from landing page to dashboard.",
     cta: { label: "Explore Web", to: "/projects" },
   },
   {
     d: "backend",
-    shape: "liquid",
     title: "Resilient systems underneath.",
     body: "Node.js services, offline-first data flow and real-time tracking that keep fintech and logistics products dependable when it matters.",
     cta: { label: "Explore Backend", to: "/about" },
   },
   {
     d: "ai",
-    shape: "orb",
     title: "AI features, layered in thoughtfully.",
     body: "Intelligent workflows built into real products — practical models and assistants that make the experience feel smarter, not noisier.",
     cta: { label: "Explore AI", to: "/about" },

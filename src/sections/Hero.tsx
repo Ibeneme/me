@@ -1,11 +1,10 @@
 import React, { useEffect, useRef } from "react";
 import { ArrowUpRight } from "lucide-react";
 import meVideo from "../assets/images/me.mp4";
-import { Blob, VelocityMarquee } from "../components/ui";
+import { VelocityMarquee } from "../components/ui";
 import { SITE } from "../data/site";
 import { DISCIPLINES, Discipline } from "../lib/disciplines";
 import { gsap, isFinePointer, prefersReducedMotion } from "../lib/gsap";
-import { onReady } from "../lib/ready";
 
 const LINES = ["Ibeneme", "Ikenna"];
 const MARQUEE: [Discipline, string][] = [
@@ -40,24 +39,19 @@ const Hero: React.FC = () => {
     const ctx = gsap.context(() => {
       const chars = gsap.utils.toArray<HTMLElement>(".h-char");
       gsap.set(chars, { yPercent: 130, rotate: () => gsap.utils.random(-40, 40), opacity: 0 });
-      gsap.set([".hero-shape", ".hero-fade", ".spin-wrap"], { opacity: 0 });
+      gsap.set([".hero-fade", ".spin-wrap"], { opacity: 0 });
 
-      // 1 ── Entrance (waits for the loader to clear)
-      cleanups.push(
-        onReady(() => {
-          gsap
-            .timeline({ defaults: { ease: "expo.out" } })
-            .to(chars, { yPercent: 0, rotate: 0, opacity: 1, duration: 1.4, stagger: { each: 0.045, from: "random" } })
-            .fromTo(".hero-shape", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 1.6, stagger: 0.12, ease: "elastic.out(1, 0.55)" }, 0.4)
-            .fromTo(".hero-fade", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 1, stagger: 0.1 }, 0.7)
-            .fromTo(".spin-wrap", { scale: 0, rotate: -180, opacity: 0 }, { scale: 1, rotate: 0, opacity: 1, duration: 1.4 }, 0.8);
-        })
-      );
+      // 1 ── Entrance
+      gsap
+        .timeline({ defaults: { ease: "expo.out" }, delay: 0.15 })
+        .to(chars, { yPercent: 0, rotate: 0, opacity: 1, duration: 1.4, stagger: { each: 0.045, from: "random" } })
+        .fromTo(".hero-fade", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 1, stagger: 0.1 }, 0.7)
+        .fromTo(".spin-wrap", { scale: 0, rotate: -180, opacity: 0 }, { scale: 1, rotate: 0, opacity: 1, duration: 1.4 }, 0.8);
 
       // 2 ── Badge spins forever
       gsap.to(".spin-badge", { rotate: 360, duration: 14, ease: "none", repeat: -1, transformOrigin: "50% 50%" });
 
-      // 3 ── Scroll away: letters scatter, shapes fly at different depths
+      // 3 ── Scroll away: letters scatter
       gsap
         .timeline({ scrollTrigger: { trigger: el, start: "top top", end: "bottom top", scrub: 1 } })
         .to(chars, {
@@ -67,10 +61,7 @@ const Hero: React.FC = () => {
           opacity: 0,
           ease: "none",
           stagger: { each: 0.02, from: "center" },
-        }, 0)
-        .to(".hero-shape-a", { y: -400, rotate: 120, ease: "none" }, 0)
-        .to(".hero-shape-b", { y: -250, x: 120, ease: "none" }, 0)
-        .to(".hero-shape-c", { y: -600, ease: "none" }, 0);
+        }, 0);
 
       if (!isFinePointer()) return;
 
@@ -80,12 +71,6 @@ const Hero: React.FC = () => {
         x: gsap.quickTo(c, "x", { duration: 0.6, ease: "power3" }),
         y: gsap.quickTo(c, "y", { duration: 0.6, ease: "power3" }),
         r: gsap.quickTo(c, "rotation", { duration: 0.6, ease: "power3" }),
-      }));
-      // shapes drift toward the cursor at different depths
-      const shapes = gsap.utils.toArray<HTMLElement>(".hero-shape").map((s, i) => ({
-        x: gsap.quickTo(s, "x", { duration: 1.2, ease: "power3" }),
-        y: gsap.quickTo(s, "y", { duration: 1.2, ease: "power3" }),
-        depth: (i + 1) * 18,
       }));
       const bx = gsap.quickTo(bubble.current, "x", { duration: 0.6, ease: "power3" });
       const by = gsap.quickTo(bubble.current, "y", { duration: 0.6, ease: "power3" });
@@ -102,12 +87,6 @@ const Hero: React.FC = () => {
           m.x((dx / (d || 1)) * f * 60);
           m.y((dy / (d || 1)) * f * 60);
           m.r(f * (dx > 0 ? 18 : -18));
-        });
-        const nx = e.clientX / window.innerWidth - 0.5;
-        const ny = e.clientY / window.innerHeight - 0.5;
-        shapes.forEach((s) => {
-          s.x(nx * s.depth * 2);
-          s.y(ny * s.depth * 2);
         });
         const hr = title.current!.getBoundingClientRect();
         bx(e.clientX - hr.left);
@@ -147,10 +126,6 @@ const Hero: React.FC = () => {
   return (
     <section ref={root} className="relative overflow-hidden bg-ink">
       <div className="relative px-4 pt-32 sm:px-8 md:pt-40">
-        <Blob d="mobile" shape="pill" rotate={-28} float={false} className="hero-shape hero-shape-a left-[44%] top-[16%] z-10 h-[80px] w-[190px] md:h-[150px] md:w-[350px]" />
-        <Blob d="backend" shape="liquid" float={false} className="hero-shape hero-shape-b right-[3%] top-[46%] z-10 h-[100px] w-[100px] md:h-[210px] md:w-[210px]" />
-        <Blob d="brand" shape="orb" float={false} className="hero-shape hero-shape-c left-[5%] top-[62%] z-0 h-[56px] w-[56px] md:h-[110px] md:w-[110px]" />
-        <Blob d="ai" shape="dome" float={false} className="hero-shape left-[30%] top-[86%] z-0 hidden h-[60px] w-[80px] md:block" />
 
         <h1 ref={title} aria-label="Ibeneme Ikenna" className="t-display relative z-[5] select-none">
           {/* cursor-following video bubble */}

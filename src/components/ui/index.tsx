@@ -16,37 +16,6 @@ export const CategoryLabel: React.FC<{ d: Discipline; className?: string }> = ({
   </span>
 );
 
-/* Soft 3D organic shape, lit from within via layered gradients — never a drop shadow */
-export const Blob: React.FC<{
-  d: Discipline;
-  shape?: "pill" | "dome" | "liquid" | "orb";
-  className?: string;
-  rotate?: number;
-  float?: boolean;
-  parallax?: number;
-}> = ({ d, shape = "liquid", className = "", rotate = 0, float = true, parallax }) => {
-  const { from, to } = DISCIPLINES[d];
-  const blob = (
-    <div
-      aria-hidden
-      data-float={float ? "" : undefined}
-      className={`blob blob-shape-${shape} ${parallax === undefined ? className : "inset-0"}`}
-      style={{
-        background: `radial-gradient(circle at 30% 22%, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 28%),
-          radial-gradient(circle at 75% 85%, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0) 55%),
-          linear-gradient(135deg, ${from} 0%, ${to} 100%)`,
-        rotate: `${rotate}deg`,
-      }}
-    />
-  );
-  if (parallax === undefined) return blob;
-  return (
-    <div aria-hidden data-parallax={parallax} className={`pointer-events-none absolute ${className}`}>
-      {blob}
-    </div>
-  );
-};
-
 /**
  * Infinite marquee whose speed and skew react to scroll velocity —
  * scroll hard and it whips past, reverse and it runs backwards.

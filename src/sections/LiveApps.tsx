@@ -73,7 +73,7 @@ const LiveApps: React.FC = () => {
           </h2>
         </div>
 
-        <div className="app-grid grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4">
+        <div className="app-grid grid grid-cols-1 gap-6 md:grid-cols-3">
           {LIVE_APPS.map((p, i) => {
             const open = p.status === "Open";
             return (

@@ -4,7 +4,8 @@ import skypay from "../assets/images/skypay.webp";
 import kokohor from "../assets/images/kokohor.webp";
 import yare from "../assets/images/yare.webp";
 import oneCommunity from "../assets/images/one-community.webp";
-import colsphere from "../assets/images/colsphere.webp";
+import bussto from "../assets/images/bussto.webp";
+import medicules from "../assets/images/medicules.webp";
 
 export type Project = {
   title: string;
@@ -38,17 +39,18 @@ export const PROJECTS: Project[] = [
   {
     title: "Kokohor",
     company: "Boring Thinkers Ltd",
-    description: "Cooperative management for financial transparency.",
-    link: "#",
-    tag: "Management",
-    discipline: "web",
+    description:
+      "A private space for the circles you care about — chat freely, keep family history safe, and protect what matters in a Safety Vault.",
+    link: "https://www.kokohorcircle.com/",
+    tag: "Community",
+    discipline: "mobile",
     image: kokohor,
   },
   {
-    title: "Yare",
-    company: "Yare Learning Hub",
-    description: "Democratizing access to high-impact learning.",
-    link: "#",
+    title: "Yare Height",
+    company: "Yare Height Learning Hub",
+    description: "Live online lessons for Nigerian families — qualified teachers, live classes, homework and progress reports in one place.",
+    link: "https://www.yareheightlearninghub.com/",
     tag: "Edutech",
     discipline: "web",
     image: yare,
@@ -63,13 +65,24 @@ export const PROJECTS: Project[] = [
     image: oneCommunity,
   },
   {
-    title: "Colsphere",
-    company: "Colsphere",
-    description: "Collaborative ecosystem for team interaction.",
-    link: "#",
-    tag: "SaaS",
-    discipline: "mobile",
-    image: colsphere,
+    title: "Bussto",
+    company: "Bussto",
+    description:
+      "Agentic CRM for customer support — live chat, email, voice and WhatsApp in one inbox, with AI agents handling routing and replies.",
+    link: "https://bussto.com/",
+    tag: "CRM",
+    discipline: "ai",
+    image: bussto,
+  },
+  {
+    title: "Medicules",
+    company: "Medicules",
+    description:
+      "Agentic EMR and hospital management — clinical notes, billing & HMO, lab and pharmacy workflows, and real-time ward tracking.",
+    link: "https://medicules.vercel.app/",
+    tag: "Healthcare",
+    discipline: "ai",
+    image: medicules,
   },
 ];
 
@@ -115,13 +128,6 @@ export const LIVE_APPS: LiveApp[] = [
         android: "https://play.google.com/store/apps/details?id=com.pickars.drivers&hl=en",
       },
     ],
-  },
-  {
-    label: "Live product",
-    title: "Colsphere",
-    description: "A clean, focused mobile experience designed for seamless everyday use.",
-    status: "Live",
-    apps: [{ android: "https://play.google.com/store/apps/details?id=com.colz.app" }],
   },
   {
     label: "Upcoming",

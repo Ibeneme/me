@@ -217,26 +217,6 @@
     }
   }
 
-  /* Soft 3D shapes, lit from within */
-  .blob {
-    position: absolute;
-    pointer-events: none;
-    will-change: transform;
-  }
-  .blob-shape-pill {
-    border-radius: 9999px;
-  }
-  .blob-shape-dome {
-    border-radius: 50% 50% 18% 18% / 70% 70% 30% 30%;
-  }
-  .blob-shape-liquid {
-    border-radius: 42% 58% 63% 37% / 41% 44% 56% 59%;
-    animation: morph 9s ease-in-out infinite;
-  }
-  .blob-shape-orb {
-    border-radius: 50%;
-  }
-
   /* Rolling hover text */
   .roll {
     display: inline-block;
@@ -264,19 +244,6 @@
   .word {
     display: inline-block;
     will-change: transform;
-  }
-}
-
-@keyframes morph {
-  0%,
-  100% {
-    border-radius: 42% 58% 63% 37% / 41% 44% 56% 59%;
-  }
-  33% {
-    border-radius: 63% 37% 41% 59% / 55% 62% 38% 45%;
-  }
-  66% {
-    border-radius: 38% 62% 52% 48% / 64% 35% 65% 36%;
   }
 }
 
@@ -313,7 +280,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .blob-shape-liquid,
   .grain {
     animation: none;
   }

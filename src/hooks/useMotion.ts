@@ -8,7 +8,6 @@ import { gsap, prefersReducedMotion, SplitText } from "../lib/gsap";
  *  data-split             headline chars fly up, rotate and settle
  *  data-split="scrub"     words light up from grey to white as you scroll
  *  data-scramble          text decodes from random glyphs when it enters
- *  data-float             endless bob + drift (decorative shapes)
  *  data-parallax="0.3"    moves at a different speed while scrolling
  *  data-clip              image wipes open from the bottom with a zoom-out
  *  data-tilt              follows the pointer in 3D on hover
@@ -81,18 +80,6 @@ export const useMotion = (scope: RefObject<HTMLElement | null>, deps: unknown[] 
           duration: 1.2,
           scrambleText: { text, chars: "!<>-_\\/[]{}—=+*^?#01", speed: 0.6 },
           scrollTrigger: { trigger: el, start: "top 95%", toggleActions: "play none none none" },
-        });
-      });
-
-      q("[data-float]").forEach((el, i) => {
-        gsap.to(el, {
-          y: i % 2 ? 26 : -26,
-          x: i % 3 ? 10 : -10,
-          rotation: `+=${i % 2 ? 10 : -10}`,
-          duration: 3.5 + (i % 3),
-          ease: "sine.inOut",
-          yoyo: true,
-          repeat: -1,
         });
       });
 

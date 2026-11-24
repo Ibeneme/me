@@ -64,7 +64,7 @@ const Navbar: React.FC = () => {
           </ul>
 
           <a href={SITE.whatsapp} target="_blank" rel="noopener noreferrer" data-magnetic className="pill pill-sm hidden md:inline-flex">
-            Let&apos;s talk
+            Get in touch
           </a>
 
           <button

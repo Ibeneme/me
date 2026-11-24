@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import portrait from "../assets/images/portrait.webp";
-import { Blob, Bracket, CategoryLabel } from "../components/ui";
+import { Bracket, CategoryLabel } from "../components/ui";
 import { ABOUT } from "../data/about";
 import { gsap, prefersReducedMotion } from "../lib/gsap";
 import { useMotion } from "../hooks/useMotion";
@@ -54,8 +54,6 @@ const AboutDetails: React.FC = () => {
         {/* Intro */}
         <div className="grid items-center gap-12 py-16 md:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] md:gap-16 md:py-20">
           <div className="relative mx-auto w-full max-w-[420px]">
-            <Blob d="mobile" shape="pill" rotate={-30} className="-right-6 -top-6 z-10 h-[70px] w-[160px]" />
-            <Blob d="backend" shape="orb" className="-bottom-5 -left-5 z-10 h-[80px] w-[80px]" />
             <div data-tilt>
               <div data-clip className="relative aspect-[4/5] overflow-hidden rounded-[8px] bg-panel">
                 <img src={portrait} alt="Ikenna Ibeneme" className="h-full w-full object-cover grayscale transition-[filter] duration-700 hover:grayscale-0" />

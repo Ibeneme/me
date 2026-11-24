@@ -1,9 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Blob } from "../components/ui";
 import { DISCIPLINES } from "../lib/disciplines";
 import { gsap, prefersReducedMotion } from "../lib/gsap";
-import { onReady } from "../lib/ready";
 
 const DIGITS: [string, string][] = [
   ["4", DISCIPLINES.mobile.color],
@@ -18,28 +16,21 @@ const NotFoundPage: React.FC = () => {
 
   useEffect(() => {
     if (!root.current || prefersReducedMotion()) return;
-    let off = () => {};
     const ctx = gsap.context(() => {
       const digits = gsap.utils.toArray<HTMLElement>(".nf-digit");
       gsap.set(digits, { y: "-120vh", rotate: () => gsap.utils.random(-90, 90) });
-      off = onReady(() =>
-        gsap.to(digits, { y: 0, rotate: (i) => [-8, 6, -4][i], duration: 1.6, ease: "bounce.out", stagger: 0.18 })
-      );
+      gsap.to(digits, { y: 0, rotate: (i) => [-8, 6, -4][i], duration: 1.6, ease: "bounce.out", stagger: 0.18, delay: 0.35 });
       digits.forEach((d) =>
         d.addEventListener("pointerenter", () =>
           gsap.fromTo(d, { rotate: "+=0" }, { rotate: "+=25", duration: 1, ease: "elastic.out(1,0.3)", yoyo: true, repeat: 1 })
         )
       );
     }, root);
-    return () => {
-      off();
-      ctx.revert();
-    };
+    return () => ctx.revert();
   }, []);
 
   return (
     <main ref={root} className="relative flex min-h-screen flex-col justify-center overflow-hidden bg-ink px-4 pt-32 pb-20 sm:px-8">
-      <Blob d="ai" shape="orb" className="left-[60%] bottom-[16%] h-[70px] w-[70px] md:h-[120px] md:w-[120px]" />
       <span className="bracket mb-6">Error</span>
       <h1 aria-label="404" className="flex text-[clamp(140px,34vw,460px)] font-black leading-[0.85] tracking-[-0.06em]">
         {DIGITS.map(([d, c], i) => (
